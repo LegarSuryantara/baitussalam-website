@@ -11,32 +11,32 @@
                     data-bs-target="#navbarNavDropdown">
                 </button>
 
-                <ul class="navbar-nav mx-auto">
+                <ul class="navbar-nav mx-auto gap-4">
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center gap-2" href="#">
+                        <a class="nav-link d-flex align-items-center gap-2" href="{{ route('beranda') }}">
                             <i class="bi bi-house nav-icon"></i>
-                            <span>Beranda</span>
+                            <span>BERANDA</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center gap-2" href="#">
+                        <a class="nav-link d-flex align-items-center gap-2" href="{{ route('profile') }}">
                             <i class="bi bi-person nav-icon"></i>
-                            <span>Profile</span>
+                            <span>PROFILE</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center gap-2" href="#">
+                        <a class="nav-link d-flex align-items-center gap-2" href="{{ route('organisasi')}}">
                             <i class="bi bi-people nav-icon"></i>
-                            <span>Organisasi</span>
+                            <span>ORGANISASI</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center gap-2" href="#">
+                        <a class="nav-link d-flex align-items-center gap-2" href="{{ route('galeri') }}">
                             <i class="bi bi-image nav-icon"></i>
-                            <span>Galeri</span>
+                            <span>GALERI</span>
                         </a>
                     </li>
 
@@ -44,19 +44,19 @@
                         <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#"
                             data-bs-toggle="dropdown">
                             <i class="bi bi-headset nav-icon"></i>
-                            <span>Layanan</span>
+                            <span>LAYANAN</span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Zakat & Infaq</a></li>
-                            <li><a class="dropdown-item" href="#">Literasi Keagamaan</a></li>
-                            <li><a class="dropdown-item" href="#">Peminjaman Fasilitas</a></li>
+                            <li><a class="dropdown-item" href="{{ route('zakatinfaq') }}">Zakat & Infaq</a></li>
+                            <li><a class="dropdown-item" href="{{ route('leterasikeagamaan') }}">Literasi Keagamaan</a></li>
+                            <li><a class="dropdown-item" href="{{ route('peminjamanfasilitas') }}">Peminjaman Fasilitas</a></li>
                         </ul>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center gap-2" href="#">
+                        <a class="nav-link d-flex align-items-center gap-2" href="{{ route('kontak') }}">
                             <i class="bi bi-telephone nav-icon"></i>
-                            <span>Kontak</span>
+                            <span>KONTAK</span>
                         </a>
                     </li>
 
