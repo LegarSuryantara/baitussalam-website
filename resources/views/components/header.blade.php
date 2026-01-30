@@ -6,18 +6,21 @@
             </div>
             <div class="Logo m-3">
                 <a class="navbar-brand" href="#">
-                    <img src="assets/images/logo.png" alt="BaitussalamLogo" width="120" height="96">
+                    <img src="{{ asset('assets/images/logobaitussalam.png') }}" alt="BaitussalamLogo" width="120" height="96">
                 </a>
             </div>
-            <div class="input-group mx-auto w-50" id="searchBarDesktop">
+            {{-- <div class="input-group mx-auto w-50" id="searchBarDesktop">
                 <x-SearchBar></x-SearchBar>
+            </div> --}}
+            <div class="ms-auto">
+                <x-SignIn></x-SignIn>
             </div>
-            <div class="fotoProfileContainer">
+            {{-- <div class="fotoProfileContainer ms-auto">
                 <a href="">
-                    <img class="rounded-circle m-3" src="assets/images/fotoProfile.jpg" alt="fotoProfile" width="50"
+                    <img class="rounded-circle m-3" src="{{ asset('assets/images/fotoProfile.jpg') }}" alt="fotoProfile" width="50"
                         height="50">
                 </a>
-            </div>
+            </div> --}}
         </div>
     </div>
     <div class="navbar1">
