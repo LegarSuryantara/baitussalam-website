@@ -100,7 +100,7 @@ Route::get('/penjadwalan/lihat/{id}', [ScheduleController::class, 'show'])
 
 Route::prefix('kegiatan')->group(function () {
 
-  Route::get('/', fn() => view('kegiatan_masjid/kegiatanPage'))
+  Route::get('/', [ScheduleController::class, 'kegiatanPage'])
     ->name('kegiatan');
 
   Route::get('/lihat', fn() => view('kegiatan_masjid/lihatPage'))

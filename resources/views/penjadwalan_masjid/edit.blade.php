@@ -36,6 +36,8 @@
                             <label class="form-label">Kategori</label>
                             <select name="category" class="form-select rounded-3">
                                 <option {{ $schedule->category == 'Kajian' ? 'selected' : '' }}>Kajian</option>
+                                <option {{ $schedule->category == 'Pelatihan' ? 'selected' : '' }}>Pelatihan</option>
+                                <option {{ $schedule->category == 'Kegiatan Sosial' ? 'selected' : '' }}>Kegiatan Sosial</option>
                                 <option {{ $schedule->category == 'Rutin' ? 'selected' : '' }}>Rutin</option>
                                 <option {{ $schedule->category == 'Acara Besar' ? 'selected' : '' }}>Acara Besar</option>
                             </select>
@@ -49,6 +51,15 @@
                                 readonly>
                         </div>
 
+                        <div class="mb-3">
+                            <label class="form-label">Tanggal Berakhir (Opsional)</label>
+                            <input type="date" name="end_date"
+                                class="form-control"
+                                value="{{ old('end_date', $schedule->end_date) }}">
+                            <small class="text-muted">
+                                Kosongkan jika acara hanya 1 hari
+                            </small>
+                        </div>
 
                         <div class="mb-3">
                             <label class="form-label">Lokasi</label>
@@ -72,14 +83,6 @@
                                 value="{{ old('end_time', $schedule->end_time) }}">
                         </div>
 
-                        <div class="mb-4">
-                            <label class="form-label">Status</label>
-                            <select name="status" class="form-select rounded-3">
-                                <option {{ $schedule->status == 'Hari Ini' ? 'selected' : '' }}>Hari Ini</option>
-                                <option {{ $schedule->status == 'Akan Datang' ? 'selected' : '' }}>Akan Datang</option>
-                                <option {{ $schedule->status == 'Selesai' ? 'selected' : '' }}>Selesai</option>
-                            </select>
-                        </div>
 
                     </div>
 

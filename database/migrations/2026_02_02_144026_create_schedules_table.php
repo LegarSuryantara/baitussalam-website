@@ -13,13 +13,15 @@ return new class extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
-            $table->string('title',25);
+            $table->string('title', 25);
             $table->string('category');
             $table->dateTime('start');
             $table->dateTime('end');
             $table->date('date');
-            $table->enum('status',['Hari Ini','Akan Datang','Selesai']);
-            $table->string('location',30)->default('Masjid Baitussalam');
+            $table->date('end_date')->nullable();
+            $table->string('pemateri', 30)->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('location', 30)->default('Masjid Baitussalam');
             $table->text('description')->nullable();
             $table->timestamps();
         });

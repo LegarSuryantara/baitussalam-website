@@ -62,7 +62,9 @@
                 });
 
                 calendar.render();
-
+                setInterval(() => {
+                    loadAgendaByDate(selectedDate);
+                }, 1200000); // 120 detik
 
                 // load hari ini pertama kali
                 const today = new Date().toISOString().slice(0, 10);
@@ -129,10 +131,13 @@
                                     <i class="bi bi-geo-alt me-1"></i>
                                     ${a.location}
                                 </div>
-                                <div>
-                                    Kategori :
+                                <div class="d-flex flex-wrap gap-2">
                                     <span class="badge bg-success-subtle text-success px-3 rounded-pill">
-                                        ${a.category}
+                                            ${a.category}
+                                    </span>
+
+                                    <span class="badge ${getStatusBadgeClass(a.status)} px-3 rounded-pill">
+                                            ${a.status}
                                     </span>
                                 </div>
                             </div>
@@ -147,6 +152,18 @@
                         `;
                 }
 
+                function getStatusBadgeClass(status) {
+                    switch (status) {
+                        case 'Hari Ini':
+                            return 'bg-success text-white';
+                        case 'Akan Datang':
+                            return 'bg-primary text-white';
+                        case 'Selesai':
+                            return 'bg-secondary text-white';
+                        default:
+                            return 'bg-light text-dark';
+                    }
+                }
 
             });
         </script>

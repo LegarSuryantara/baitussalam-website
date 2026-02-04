@@ -16,9 +16,16 @@ class Schedule extends Model
         'start',
         'end',
         'date',
-        'status',
+        'end_date',
         'location',
         'description',
+    ];
+
+    protected $casts = [
+        'date' => 'date',
+        'end_date' => 'date',
+        'start' => 'datetime',
+        'end' => 'datetime',
     ];
 
     public function getStartTimeAttribute()
@@ -34,5 +41,43 @@ class Schedule extends Model
             ? Carbon::parse($this->end)->format('H:i')
             : null;
     }
-    
+
+    protected $appends = ['status', 'date_label'];
+
+    public function getStatusAttribute()
+    {
+        $now = Carbon::now();
+
+        $startDate = Carbon::parse($this->date)->startOfDay();
+        $endDate = $this->end_date
+            ? Carbon::parse($this->end_date)->endOfDay()
+            : Carbon::parse($this->date)->endOfDay();
+
+        if ($now->between($startDate, $endDate)) {
+            return 'Hari Ini';
+        }
+
+        if ($now->lt($startDate)) {
+            return 'Akan Datang';
+        }
+
+        return 'Selesai';
+    }
+    public function getDateLabelAttribute()
+    {
+        $start = Carbon::parse($this->date);
+        $end   = $this->end_date
+            ? Carbon::parse($this->end_date)
+            : $start;
+
+        // Kalau 1 hari
+        if ($start->equalTo($end)) {
+            return $start->translatedFormat('d F Y');
+        }
+
+        // Kalau multi-day
+        return $start->translatedFormat('d F Y')
+            . ' - ' .
+            $end->translatedFormat('d F Y');
+    }
 }
