@@ -1251,12 +1251,208 @@ div.cardQris{
 .profileSejarah p{
     font-size: 12px;
 }
+/* =========================
+   ZAKAT & INFAQ - MOBILE FIX
+========================= */
 
+/* Heading utama */
+.container h3 {
+    font-size: 20px;
+}
+
+.container p.text-muted {
+    font-size: 13px;
+}
+
+/* Card zakat */
+.zakat-card {
+    padding: 18px !important;
+    border-radius: 14px;
+}
+
+.zakat-card i {
+    font-size: 20px !important;
+}
+
+.zakat-card h6 {
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.zakat-card p {
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* Informasi rekening & QR */
+.zakatInformasi {
+    padding: 20px !important;
+    border-radius: 14px;
+}
+
+.zakatInformasi h6 {
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.zakatInformasi ul li {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* QR Code lebih seimbang */
+.zakatInformasi img {
+    max-width: 150px;
+    height: auto;
+    margin-top: 10px;
+}
+
+/* Susunan kolom jadi vertikal rapi */
+.zakatInformasi .row {
+    flex-direction: column;
+    gap: 10px;
+}
+
+.zakatInformasi .col-md-8,
+.zakatInformasi .col-md-4 {
+    width: 100%;
+    text-align: center;
+}
+
+/* Button hubungi */
+.zakatInformasi a.btn {
+    font-size: 14px;
+    padding: 14px 0;
+    border-radius: 12px;
+}
+/* =========================
+   KONTAK - MOBILE FIX
+========================= */
+
+/* Form container */
+.kontakForm {
+    padding: 5px 2px;
+}
+
+/* Label */
+.kontakForm label {
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+/* Input & textarea */
+.kontakInputForm {
+    font-size: 13px;
+    padding: 10px 12px;
+    border-radius: 10px;
+}
+
+/* Button kirim */
+.kontakForm button {
+    width: 100%;
+    font-size: 14px;
+    padding: 14px 0;
+    border-radius: 12px;
+}
+
+/* Map container */
+.map-box {
+    margin-top: 10px;
+    border-radius: 14px;
+
+}
+/* =========================
+   PEMINJAMAN - MOBILE FIX
+========================= */
+
+/* Judul & deskripsi */
+.container h4 {
+    font-size: 18px;
+}
+
+.container p.text-muted {
+    font-size: 13px;
+}
+
+/* Gambar */
+.container img.img-fluid {
+    border-radius: 16px !important;
+    margin-bottom: 10px;
+}
+
+/* Card */
+.cardHeaderPeminjaman {
+    font-size: 14px;
+    padding: 12px 16px;
+}
+
+.card .card-body {
+    padding: 16px;
+}
+
+.card .card-body ul li {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* Spacing antar card */
+.card {
+    border-radius: 14px !important;
+}
+
+/* Button container */
+.buttonPeminjaman {
+    justify-content: center;
+}
+
+/* Button WA */
+.buttonPeminjaman a.btn {
+    width: 100%;
+    font-size: 14px;
+    padding: 14px 0;
+    border-radius: 12px;
+}
 
 
 }
 
 @media (max-width: 767px) {
+.zakat-card {
+    padding: 16px !important;
+}
+
+.zakatInformasi {
+    padding: 16px !important;
+}
+
+.zakatInformasi img {
+    max-width: 130px;
+}
+
+.kontakInputForm {
+    padding: 9px 11px;
+}
+
+.map-box iframe {
+    height: 220px;
+}
+
+.info-box {
+    padding: 12px;
+}
+
+.container img.img-fluid {
+    max-height: 220px;
+    object-fit: cover;
+}
+
+.card .card-body {
+    padding: 14px;
+}
+
+.buttonPeminjaman a.btn {
+    font-size: 13px;
+}
 
 
     .hero-card-wrapper {
