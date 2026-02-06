@@ -1,6 +1,6 @@
 <x-layout title="edit kegiatan">
     <div>
-        <div class="container my-4">
+        <div class="container my-4 px-4">
 
             <a href="{{ route('lihatkegiatan') }}" class="text-decoration-none text-dark mb-3 d-inline-block">
                 ← Kembali ke Halaman Kegiatan
@@ -83,7 +83,7 @@ Kajian membahas tentang fiqih dan hukum-hukum Islam yang berkaitan dengan wanita
                         Hapus Kegiatan
                     </button>
 
-                    <button class="btn btn-outline-secondary px-4">
+                    <button class="btn btnBatal btn-outline-secondary px-4">
                         Batal
                     </button>
 

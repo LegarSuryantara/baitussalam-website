@@ -5,7 +5,7 @@
                 ← Kembali ke Halaman Penjadwalan
             </a>
 
-            <div class="card shadow-sm rounded-4 p-4">
+            <div class="card cardEditJadwal shadow-sm rounded-4 p-4">
                 <h4 class="fw-bold mb-1">Edit Jadwal Kegiatan</h4>
                 <p class="text-muted mb-4">Hanya dapat diakses oleh takmir</p>
 
@@ -63,15 +63,15 @@
 
                         </div>
                         <div class="col-12 d-flex justify-content-end gap-3 mt-3">
-                            <button type="submit" class="btn btn-success px-4 py-2 rounded-pill shadow-sm">
+                            <button type="submit" class="btn btn-success px-4 py-2 badge shadow-sm">
                                 Simpan Perubahan
                             </button>
 
-                            <button type="button" class="btn btn-danger px-4 py-2 rounded-pill shadow-sm">
+                            <button type="button" class="btn btn-danger px-4 py-2 badge shadow-sm">
                                 Hapus Jadwal
                             </button>
 
-                            <button type="button" class="btn btn-outline-secondary px-4 py-2 rounded-pill">
+                            <button type="button" class="btn btnJadwalBatal btn-outline-secondary px-4 py-2 badge">
                                 Batal
                             </button>
                         </div>

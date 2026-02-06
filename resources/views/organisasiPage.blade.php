@@ -1,5 +1,5 @@
 <x-layout title="Organisasi | Baitussalam">
-    <div>
+    <div id="containerOrganisasi">
         <div class="herosectionOrganisasi">
             <div class="container">
                 <h1 class="fw-bold">
@@ -13,7 +13,7 @@
             </div>
         </div>
 
-        <div class="container hero-card-wrapper">
+        <div class="container cardOrganisasi hero-card-wrapper">
             <div class="row justify-content-center g-4">
                 <div class="col-md-4 col-lg-3">
                     <a class="text-decoration-none text-dark" href="{{ route('remajamasjid') }}">
@@ -38,7 +38,7 @@
                         <div class="card text-center border-0 shadow-sm rounded-4 p-4 cardItemsOrganisasi">
                             <i class="bi bi-person fs-1 mb-3"></i>
                             <p class="fw-semibold mb-0">
-                                Bapak-bapak <br> Pengajian / Jamaah
+                                Pengajian Bapak-Bapak
                             </p>
                         </div>
                     </a>

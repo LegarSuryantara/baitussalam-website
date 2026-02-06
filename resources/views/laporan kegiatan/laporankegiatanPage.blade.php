@@ -1,6 +1,6 @@
-<x-layout title="Laporan Keuangan | Baitussalam">
+<x-layout title="Laporan kegiatan | Baitussalam">
     <div>
-        <div class="container laporanKeuanganContainer my-4">
+        <div class="container laporankegiatanContainer my-4">
 
             <a href="{{ route('dokumen') }}" class="text-decoration-none text-dark mb-3 d-inline-block">
                 ← Kembali
@@ -8,13 +8,13 @@
 
             <div class="d-flex justify-content-between align-items-start mb-3">
                 <div>
-                    <h4 class="fw-bold mb-1">Laporan Keuangan Masjid</h4>
+                    <h4 class="fw-bold mb-1">Laporan Kegiatan Masjid</h4>
                     <p class="text-muted mb-0">
-                        Rekap laporan keuangan masjid per periode
+                        Rekap laporan kegiatan masjid per periode
                     </p>
                 </div>
 
-                <a href="{{ route('unggahlaporankeuangan') }}" class="btn btn-success fw-light badge px-4 py-3">
+                <a href="{{ route('unggahlaporankegiatan') }}" class="btn btn-success fw-light badge px-4 py-3">
                     <i class="bi bi-plus-circle me-1"></i> Unggah Dokumen
                 </a>
             </div>
@@ -55,14 +55,14 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <strong>Laporan Rekap Keuangan Bulanan</strong><br>
+                                    <strong>Laporan Rekap Kegiatan Bulanan</strong><br>
                                     <small class="text-muted">12 Januari 2026</small>
                                 </td>
                                 <td>Januari 2026</td>
                                 <td>2 Januari 2026</td>
                                 <td>Sekretaris</td>
                                 <td class="text-center">
-                                    <a href="{{ route('lihatlaporankeuangan') }}" class="btn btn-success btn-sm rounded-pill px-4">
+                                    <a href="{{ route('lihatlaporankegiatan') }}" class="btn btn-success btn-sm rounded-pill px-4">
                                         Lihat
                                     </a>
                                 </td>
@@ -70,7 +70,7 @@
 
                             <tr>
                                 <td>
-                                    <strong>Laporan Keuangan Bulan Januari</strong><br>
+                                    <strong>Laporan Kegiatan Bulan Januari</strong><br>
                                     <small class="text-muted">28 Januari 2026</small>
                                 </td>
                                 <td>Januari 2026</td>

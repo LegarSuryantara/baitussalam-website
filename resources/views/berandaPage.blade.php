@@ -13,10 +13,12 @@
                             <div class="icon-box">
                                 <i class="bi bi-moon-stars"></i>
                             </div>
-                            <h5 class="fw-semibold mt-3">Kegiatan</h5>
-                            <p class="text-muted small">
-                                Agenda & aktivitas masjid
-                            </p>
+                            <div>
+                                <h5 class="fw-semibold mt-3">Kegiatan</h5>
+                                <p class="text-muted small">
+                                    Agenda & aktivitas masjid
+                                </p>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -27,10 +29,12 @@
                             <div class="icon-box">
                                 <i class="bi bi-currency-dollar"></i>
                             </div>
-                            <h5 class="fw-semibold mt-3">Donasi</h5>
-                            <p class="text-muted small">
-                                Infaq & sedekah online
-                            </p>
+                            <div>
+                                <h5 class="fw-semibold mt-3">Donasi</h5>
+                                <p class="text-muted small">
+                                    Infaq & sedekah online
+                                </p>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -44,10 +48,12 @@
                             <div class="icon-box">
                                 <i class="bi bi-folder-check"></i>
                             </div>
-                            <h5 class="fw-semibold mt-3">Dokumen</h5>
-                            <p class="text-muted small">
-                                Laporan keuangan & arsip
-                            </p>
+                            <div>
+                                <h5 class="fw-semibold mt-3">Dokumen</h5>
+                                <p class="text-muted small">
+                                    Laporan keuangan & arsip
+                                </p>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -58,10 +64,12 @@
                             <div class="icon-box">
                                 <i class="bi bi-calendar-check"></i>
                             </div>
-                            <h5 class="fw-semibold mt-3">Penjadwalan</h5>
-                            <p class="text-muted small">
-                                Waktu shalat & acara
-                            </p>
+                            <div>
+                                <h5 class="fw-semibold mt-3">Penjadwalan</h5>
+                                <p class="text-muted small">
+                                    Waktu shalat & acara
+                                </p>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -81,9 +89,13 @@
                     <p class="text-muted">
                         Membuat anda lebih fokus dalam memperbaiki diri dan meningkatkan keimanan.
                     </p>
+                    <a class="btn btn-success" href="">
+                        <span>Selengkapnya</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </a>
                 </div>
 
-                <div class="col-lg-6">
+                <div class="listberita col-lg-6">
                     <div class="d-flex flex-column gap-3">
 
                         <div class="d-flex align-items-center gap-3">
@@ -101,26 +113,34 @@
                             </p>
                         </div>
 
-                        <div class="d-flex align-items-center gap-3">
-                            <img src="assets/images/gambarMasjid.png" class="rounded-3" width="80" height="60">
-                            <p class="mb-0 small fw-medium">
-                                Tafsir Surah Ar-Rahman
-                            </p>
+                        <div class="d-none d-lg-block">
+                            <div class="d-flex flex-column gap-3 ">
+                                <div class="d-flex align-items-center gap-3">
+                                    <img src="assets/images/gambarMasjid.png" class="rounded-3" width="80"
+                                        height="60">
+                                    <p class="mb-0 small fw-medium">
+                                        Tafsir Surah Ar-Rahman
+                                    </p>
+                                </div>
+
+                                <div class="d-flex align-items-center gap-3">
+                                    <img src="assets/images/gambarMasjid.png" class="rounded-3" width="80"
+                                        height="60">
+                                    <p class="mb-0 small fw-medium">
+                                        Tafsir Surah Al-Mulk
+                                    </p>
+                                </div>
+
+                                <div class="d-flex align-items-center gap-3">
+                                    <img src="assets/images/gambarMasjid.png" class="rounded-3" width="80"
+                                        height="60">
+                                    <p class="mb-0 small fw-medium">
+                                        Pentingnya menjaga Ukhuwah Islamiyah
+                                    </p>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="d-flex align-items-center gap-3">
-                            <img src="assets/images/gambarMasjid.png" class="rounded-3" width="80" height="60">
-                            <p class="mb-0 small fw-medium">
-                                Tafsir Surah Al-Mulk
-                            </p>
-                        </div>
-
-                        <div class="d-flex align-items-center gap-3">
-                            <img src="assets/images/gambarMasjid.png" class="rounded-3" width="80" height="60">
-                            <p class="mb-0 small fw-medium">
-                                Pentingnya menjaga Ukhuwah Islamiyah
-                            </p>
-                        </div>
 
                     </div>
                 </div>
@@ -137,20 +157,52 @@
                 tempor incididunt ut labore et dolore magna aliqua”
             </p>
 
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <img src="assets/images/background2.png" class="img-fluid rounded-4 w-100"
-                        style="height: 300px; object-fit: cover;">
-                </div>
+            <div class="container">
 
-                <div class="col-md-4">
-                    <img src="assets/images/background2.png" class="img-fluid rounded-4 w-100"
-                        style="height: 300px; object-fit: cover;">
-                </div>
+                <div class="d-flex gap-4 overflow-auto pb-3 rounded-4">
 
-                <div class="col-md-4">
-                    <img src="assets/images/background2.png" class="img-fluid rounded-4 w-100"
-                        style="height: 300px; object-fit: cover;">
+                    <div class="text-center" style="min-width: 450px;">
+                        <img src="assets/images/background2.png" class="img-fluid rounded-4 w-100"
+                            style="height: 300px; object-fit: cover;">
+                    </div>
+
+                    <div class="text-center" style="min-width: 450px;">
+                        <img src="assets/images/background2.png" class="img-fluid rounded-4 w-100"
+                            style="height: 300px; object-fit: cover;">
+                    </div>
+
+                    <div class="text-center" style="min-width: 450px;">
+                        <img src="assets/images/background2.png" class="img-fluid rounded-4 w-100"
+                            style="height: 300px; object-fit: cover;">
+                    </div>
+                    <div class="text-center" style="min-width: 450px;">
+                        <img src="assets/images/background2.png" class="img-fluid rounded-4 w-100"
+                            style="height: 300px; object-fit: cover;">
+                    </div>
+
+                    <div class="text-center" style="min-width: 450px;">
+                        <img src="assets/images/background2.png" class="img-fluid rounded-4 w-100"
+                            style="height: 300px; object-fit: cover;">
+                    </div>
+
+                    <div class="text-center" style="min-width: 450px;">
+                        <img src="assets/images/background2.png" class="img-fluid rounded-4 w-100"
+                            style="height: 300px; object-fit: cover;">
+                    </div>
+                    <div class="text-center" style="min-width: 450px;">
+                        <img src="assets/images/background2.png" class="img-fluid rounded-4 w-100"
+                            style="height: 300px; object-fit: cover;">
+                    </div>
+
+                    <div class="text-center" style="min-width: 450px;">
+                        <img src="assets/images/background2.png" class="img-fluid rounded-4 w-100"
+                            style="height: 300px; object-fit: cover;">
+                    </div>
+
+                    <div class="text-center" style="min-width: 450px;">
+                        <img src="assets/images/background2.png" class="img-fluid rounded-4 w-100"
+                            style="height: 300px; object-fit: cover;">
+                    </div>
                 </div>
             </div>
         </div>

@@ -17,22 +17,25 @@
                             </h5>
                             <p class="text-muted mb-3">Periode 2025–2030</p>
 
-                            <div class="info-box mb-3">
-                                <p class="mb-1"><strong>Jenis Dokumen :</strong> Anggaran Dasar</p>
-                                <p class="mb-1"><strong>Periode Berlaku :</strong> Ketua Takmir</p>
-                                <p class="mb-1"><strong>Tanggal Penetapan :</strong> 15 Januari 2026</p>
-                                <p class="mb-0"><strong>Status Dokumen :</strong> Aktif</p>
+                            <div class="infoContainer">
+                                <div class="info-box mb-3">
+                                    <p class="mb-1"><strong>Jenis Dokumen :</strong> Anggaran Dasar</p>
+                                    <p class="mb-1"><strong>Periode Berlaku :</strong> Ketua Takmir</p>
+                                    <p class="mb-1"><strong>Tanggal Penetapan :</strong> 15 Januari 2026</p>
+                                    <p class="mb-0"><strong>Status Dokumen :</strong> Aktif</p>
+                                </div>
+    
+                                <div class="note-box mb-4">
+                                    Dokumen ini merupakan turunan dari Anggaran Dasar
+                                    Masjid Baitussalam
+                                </div>
+    
+                                <button class="btn btn-download w-100">
+                                    <i class="bi bi-download me-2"></i>
+                                    Unduh Laporan AD (Excel)
+                                </button>
                             </div>
 
-                            <div class="note-box mb-4">
-                                Dokumen ini merupakan turunan dari Anggaran Dasar
-                                Masjid Baitussalam
-                            </div>
-
-                            <button class="btn btn-download w-100">
-                                <i class="bi bi-download me-2"></i>
-                                Unduh Laporan AD (Excel)
-                            </button>
 
                         </div>
                     </div>
@@ -47,22 +50,24 @@
                             </h5>
                             <p class="text-muted mb-3">Periode 2025–2030</p>
 
-                            <div class="info-box mb-3">
-                                <p class="mb-1"><strong>Jenis Dokumen :</strong> Anggaran Dasar</p>
-                                <p class="mb-1"><strong>Periode Berlaku :</strong> Ketua Takmir</p>
-                                <p class="mb-1"><strong>Tanggal Penetapan :</strong> 15 Januari 2026</p>
-                                <p class="mb-0"><strong>Status Dokumen :</strong> Aktif</p>
+                            <div class="infoContainer">
+                                <div class="info-box mb-3">
+                                    <p class="mb-1"><strong>Jenis Dokumen :</strong> Anggaran Dasar</p>
+                                    <p class="mb-1"><strong>Periode Berlaku :</strong> Ketua Takmir</p>
+                                    <p class="mb-1"><strong>Tanggal Penetapan :</strong> 15 Januari 2026</p>
+                                    <p class="mb-0"><strong>Status Dokumen :</strong> Aktif</p>
+                                </div>
+    
+                                <div class="note-box mb-4">
+                                    Dokumen ini merupakan turunan dari Anggaran
+                                    Dasar Masjid Baitussalam
+                                </div>
+    
+                                <button class="btn btn-download w-100">
+                                    <i class="bi bi-download me-2"></i>
+                                    Unduh Laporan ART (Excel)
+                                </button>
                             </div>
-
-                            <div class="note-box mb-4">
-                                Dokumen ini merupakan turunan dari Anggaran
-                                Dasar Masjid Baitussalam
-                            </div>
-
-                            <button class="btn btn-download w-100">
-                                <i class="bi bi-download me-2"></i>
-                                Unduh Laporan ART (Excel)
-                            </button>
 
                         </div>
                     </div>

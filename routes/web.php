@@ -27,4 +27,7 @@ Route::get('/galeri/imarah', fn () => view('imarahPage'))->name('galeriimarah');
 Route::get('/dokumen/laporankeuangan', fn () => view('laporan keuangan/laporankeuanganPage'))->name('laporankeuangan');
 Route::get('/dokumen/laporankeuangan/lihat', fn () => view('laporan keuangan/lihatPage'))->name('lihatlaporankeuangan');
 Route::get('/dokumen/laporankeuangan/unggah', fn () => view('laporan keuangan/unggahPage'))->name('unggahlaporankeuangan');
+Route::get('/dokumen/laporankegiatan', fn () => view('laporan kegiatan/laporankegiatanPage'))->name('laporankegiatan');
+Route::get('/dokumen/laporankegiatan/lihat', fn () => view('laporan kegiatan/lihatPage'))->name('lihatlaporankegiatan');
+Route::get('/dokumen/laporankegiatan/unggah', fn () => view('laporan kegiatan/unggahPage'))->name('unggahlaporankegiatan');
 Route::get('/dokumen/adart', fn () => view('adartPage'))->name('adartlaporan');

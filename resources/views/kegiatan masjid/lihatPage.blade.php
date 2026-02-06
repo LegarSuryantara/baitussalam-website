@@ -1,6 +1,6 @@
 <x-layout title="lihat | Baitussalam">
     <div>
-        <div class="container my-4">
+        <div class="container my-4 px-4">
 
             <a href="{{ route('kegiatan') }}" class="text-decoration-none text-dark mb-3 d-inline-block">
                 <i class="bi bi-arrow-left"></i> Kembali
