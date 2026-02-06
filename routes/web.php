@@ -1,30 +1,173 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\ScheduleItemController;
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\Facades\Route;
 
+/*
+|--------------------------------------------------------------------------
+| Beranda & Auth
+|--------------------------------------------------------------------------
+*/
+Route::get('/', fn() => view('berandaPage'))->name('beranda');
 
-Route::get('/', fn () => view('berandaPage'))->name('beranda');
-Route::get('/profile', fn () => view('profilePage'))->name('profile');
-Route::get('/organisasi', fn () => view('organisasiPage'))->name('organisasi');
-Route::get('/galeri', fn () => view('galeriPage'))->name('galeri');
-Route::get('/kontak', fn () => view('kontakPage'))->name('kontak');
-Route::get('/zakatinfaq', fn () => view('zakatPage'))->name('zakatinfaq');
-Route::get('/literasikeagamaan', fn () => view('literasiPage'))->name('leterasikeagamaan');
-Route::get('/peminjamanfasilitas', fn () => view('peminjamanPage'))->name('peminjamanfasilitas');
-Route::get('/kegiatan', fn () => view('kegiatan masjid/kegiatanPage'))->name('kegiatan');
-Route::get('/kegiatan/lihat', fn () => view('kegiatan masjid/lihatPage'))->name('lihatkegiatan');
-Route::get('/kegiatan/lihat/edit', fn () => view('kegiatan masjid/editPage'))->name('editkegiatan');
-Route::get('/donasi', fn () => view('donasiPage'))->name('donasi');
-Route::get('/dokumen', fn () => view('dokumenPage'))->name('dokumen');
-Route::get('/penjadwalan', fn () => view('penjadwalanPage'))->name('penjadwalan');
-Route::get('/penjadwalan/edit', fn () => view('editPenjadwalanPage'))->name('editPenjadwalan');
-Route::get('/organisasi/remajamasjid', fn () => view('remajaMasjidPage'))->name('remajamasjid');
-Route::get('/organisasi/pengajianannisa', fn () => view('pengajianannisaPage'))->name('pengajianannisa');
-Route::get('/organisasi/pengajianbapak', fn () => view('pengajianbapakPage'))->name('pengajianbapak');
-Route::get('/galeri/idaroh', fn () => view('idarohPage'))->name('galeriidaroh');
-Route::get('/galeri/riayah', fn () => view('riayahPage'))->name('galeririayah');
-Route::get('/galeri/imarah', fn () => view('imarahPage'))->name('galeriimarah');
-Route::get('/dokumen/laporankeuangan', fn () => view('laporan keuangan/laporankeuanganPage'))->name('laporankeuangan');
-Route::get('/dokumen/laporankeuangan/lihat', fn () => view('laporan keuangan/lihatPage'))->name('lihatlaporankeuangan');
-Route::get('/dokumen/laporankeuangan/unggah', fn () => view('laporan keuangan/unggahPage'))->name('unggahlaporankeuangan');
-Route::get('/dokumen/adart', fn () => view('adartPage'))->name('adartlaporan');
+Route::post('/login',  [AuthController::class, 'login'])->name('login');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/profile', fn() => view('profilePage'))->name('profile');
+Route::get('/kontak',  fn() => view('kontakPage'))->name('kontak');
+
+
+/*
+|--------------------------------------------------------------------------
+| Layanan Masjid
+|--------------------------------------------------------------------------
+*/
+Route::prefix('layanan Masjid')->group(function () {
+
+  Route::get('/zakatinfaq', fn() => view('layanan_masjid/zakatPage'))
+    ->name('zakatinfaq');
+
+  Route::get('/literasikeagamaan', fn() => view('layanan_masjid/literasiPage'))
+    ->name('literasikeagamaan');
+
+  Route::get('/peminjamanfasilitas', fn() => view('layanan_masjid/peminjamanPage'))
+    ->name('peminjamanfasilitas');
+});
+
+/*
+|--------------------------------------------------------------------------
+| Penjadwalan Masjid
+|--------------------------------------------------------------------------
+*/
+Route::prefix('penjadwalan')->group(function () {
+  Route::get('/', [ScheduleController::class, 'calendarPage'])->name('penjadwalan');
+  Route::get('/events', [ScheduleController::class, 'getEvents']);
+  Route::get('/agenda', [ScheduleController::class, 'agendaByDate']);
+  Route::get('/lihat/{id}', [ScheduleController::class, 'show'])->name('penjadwalan.show');
+});
+
+Route::middleware('auth')->prefix('penjadwalan')
+->group(function () {
+
+    Route::get('/create', [ScheduleController::class, 'formKalender'])
+      ->name('penjadwalan.create');
+
+    Route::get('/edit/{id}', [ScheduleController::class, 'formKalender'])
+      ->name('penjadwalan.edit');
+
+    Route::post('/save', [ScheduleController::class, 'store'])
+      ->name('penjadwalan.store');
+
+    Route::put('/save/{id}', [ScheduleController::class, 'update'])
+      ->name('penjadwalan.update');
+
+    Route::delete('/delete/{id}', [ScheduleController::class, 'destroy'])
+      ->name('penjadwalan.destroy');
+  });
+
+/*
+|--------------------------------------------------------------------------
+| Kegiatan Masjid
+|--------------------------------------------------------------------------
+*/
+Route::prefix('kegiatan')->group(function () {
+
+  Route::get('/', [ScheduleController::class, 'kegiatanPage'])
+    ->name('kegiatan');
+
+  Route::get('/{id}', [ScheduleController::class, 'show'])
+    ->name('lihatkegiatan');
+});
+
+Route::middleware('auth')->prefix('kegiatan')
+->group(function(){
+  
+  Route::get('/{id}/edit', [ScheduleController::class, 'formKegiatan'])
+    ->name('editkegiatan');
+
+  Route::put('/{id}', [ScheduleController::class, 'update'])
+    ->name('updatekegiatan');
+});
+
+
+Route::post('/kegiatan/{id}/items', [ScheduleItemController::class, 'store'])
+  ->name('kegiatan.items.store');
+
+Route::delete('/kegiatan/items/{id}', [ScheduleItemController::class, 'destroy'])
+  ->name('kegiatan.items.destroy');
+
+/*
+|--------------------------------------------------------------------------
+| Donasi
+|--------------------------------------------------------------------------
+*/
+Route::get('/donasi', fn() => view('donasiPage'))->name('donasi');
+
+/*
+|--------------------------------------------------------------------------
+| Organisasi Masjid
+|--------------------------------------------------------------------------
+*/
+Route::prefix('organisasi')->group(function () {
+
+  Route::get('/', fn() => view('organisasi_masjid/organisasiPage'))
+    ->name('organisasi');
+
+  Route::get('/remajamasjid', fn() => view('organisasi_masjid/remajaMasjidPage'))
+    ->name('remajamasjid');
+
+  Route::get('/pengajianannisa', fn() => view('organisasi_masjid/pengajianannisaPage'))
+    ->name('pengajianannisa');
+
+  Route::get('/pengajianbapak', fn() => view('organisasi_masjid/pengajianbapakPage'))
+    ->name('pengajianbapak');
+});
+
+/*
+|--------------------------------------------------------------------------
+| Galeri Masjid
+|--------------------------------------------------------------------------
+*/
+Route::prefix('galeri')->group(function () {
+
+  Route::get('/', fn() => view('galeri_masjid/galeriPage'))
+    ->name('galeri');
+
+  Route::get('/idaroh', fn() => view('galeri_masjid/idarohPage'))
+    ->name('galeriidaroh');
+
+  Route::get('/riayah', fn() => view('galeri_masjid/riayahPage'))
+    ->name('galeririayah');
+
+  Route::get('/imarah', fn() => view('galeri_masjid/imarahPage'))
+    ->name('galeriimarah');
+});
+
+/*
+|--------------------------------------------------------------------------
+| Dokumen Masjid
+|--------------------------------------------------------------------------
+*/
+Route::prefix('dokumen')->group(function () {
+
+  Route::get('/', fn() => view('dokumen_masjid/dokumenPage'))
+    ->name('dokumen');
+
+  Route::get('/adart', fn() => view('dokumen_masjid/adartPage'))
+    ->name('adartlaporan');
+
+  Route::prefix('laporankeuangan')->group(function () {
+
+    Route::get('/', fn() => view('dokumen_masjid/laporan_keuangan/laporankeuanganPage'))
+      ->name('laporankeuangan');
+
+    Route::get('/lihat', fn() => view('dokumen_masjid/laporan_keuangan/lihatPage'))
+      ->name('lihatlaporankeuangan');
+
+    Route::get('/unggah', fn() => view('dokumen_masjid/laporan_keuangan/unggahPage'))
+      ->name('unggahlaporankeuangan');
+  });
+});

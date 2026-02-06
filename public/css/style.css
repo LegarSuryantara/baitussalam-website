@@ -18,6 +18,11 @@
     flex-direction: column;
 }
 
+.fc-event,
+.fc-daygrid-event {
+    pointer-events: none !important;
+}
+
 .herosectionProfile .deskripsiHero{
     font-weight: lighter;
     font-size: 20px;
