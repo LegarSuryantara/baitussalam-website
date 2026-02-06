@@ -3,7 +3,7 @@
 
         <h3 class="fw-bold mb-3">Penjadwalan Masjid</h3>
 
-        <div class="card shadow-sm border-0 p-4">
+        <div class="card cardJadwal shadow-sm border-0 p-4">
 
             <div class="row g-4">
 

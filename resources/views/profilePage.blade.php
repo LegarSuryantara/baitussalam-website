@@ -4,23 +4,19 @@
         <span class="deskripsiHero">Informasi lengkap tentang masjid kami</span>
         <img src="/assets/images/ornamenGaris.png" alt="ornamenGaris" class="ornamenGaris">
     </div>
-    <div class="profileContent">
+    <div class="container profileContent px-4">
         <div class="profileSejarah">
             <span>SEJARAH MASJID</span>
-            <p>Secara etimologis, "masjid" berasal dari bahasa Arab yang berarti "tempat sujud", dan secara umum merujuk
-                pada bangunan atau rumah ibadah bagi umat Islam. Namun, dalam sejarah dan peradaban Islam, definisi
-                masjid melampaui sekadar tempat salat; ia merupakan pusat multifungsi yang vital, berperan sebagai pusat
-                pendidikan, tempat musyawarah masyarakat, pusat kegiatan sosial, serta markas besar untuk dakwah dan
-                pemberdayaan umat.
+            <p>Secara etimologis, "masjid" berasal dari bahasa Arab yang berarti "tempat sujud", dan secara umum merujuk pada bangunan atau rumah ibadah bagi umat Islam.
             </p>
         </div>
-        <div class="profileVisiMisi">
-            <div class="visi">
+        <div class="container profileVisiMisi">
+            <div class="visi p-3">
                 <span>VISI</span>
                 <p>Menjadi masjid yang kokoh dalam beribadah, rukun dalam
                     berumah tangga, dan berdaya dalam berbangsa</p>
             </div>
-            <div class="misi">
+            <div class="misi p-3">
                 <span>MISI</span>
                 <ol>
                     <li>Membangun masjid yang nyaman dan representatif</li>
