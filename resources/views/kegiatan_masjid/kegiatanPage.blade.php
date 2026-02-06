@@ -7,35 +7,44 @@
                     <a href="{{ route('beranda') }}" class="text-decoration-none text-dark">←<span class="fw-bold ms-2">Kembali</span>
                     </a>
                 </div>
-                <a href="{{ route('editkegiatan') }}" class="btn btn-outline-secondary btn-sm">
-                    <i class="bi bi-pencil"></i> Edit
-                </a>
             </div>
 
             <div class="mb-4" id="fiterKegiatan">
                 <div class="btn-group fiterKegiatanMenu rounded-pill p-2">
-                    <a href="#" class="btn rounded-pill btn-sm px-3">
+
+                    <a href="{{ route('kegiatan') }}"
+                        class="btn rounded-pill btn-sm px-3 {{ request('category') == null ? 'btn-dark text-white' : '' }}">
                         Semua
                     </a>
-                    <a href="#" class="btn rounded-pill btn-sm px-3">
+
+                    <a href="{{ route('kegiatan', ['category' => 'Rutin']) }}"
+                        class="btn rounded-pill btn-sm px-3 {{ request('category') == 'Rutin' ? 'btn-dark text-white' : '' }}">
                         Rutin
                     </a>
-                    <a href="#" class="btn rounded-pill btn-sm px-3">
+
+                    <a href="{{ route('kegiatan', ['category' => 'Kajian']) }}"
+                        class="btn rounded-pill btn-sm px-3 {{ request('category') == 'Kajian' ? 'btn-dark text-white' : '' }}">
                         Kajian
                     </a>
-                    <a href="#" class="btn rounded-pill btn-sm px-3">
+
+                    <a href="{{ route('kegiatan', ['category' => 'Acara Besar']) }}"
+                        class="btn rounded-pill btn-sm px-3 {{ request('category') == 'Acara Besar' ? 'btn-dark text-white' : '' }}">
                         Acara Besar
                     </a>
-                    </a>
-                    <a href="#" class="btn rounded-pill btn-sm px-3">
+
+                    <a href="{{ route('kegiatan', ['category' => 'Pelatihan']) }}"
+                        class="btn rounded-pill btn-sm px-3 {{ request('category') == 'Pelatihan' ? 'btn-dark text-white' : '' }}">
                         Pelatihan
                     </a>
-                    </a>
-                    <a href="#" class="btn rounded-pill btn-sm px-3">
+
+                    <a href="{{ route('kegiatan', ['category' => 'Kegiatan Sosial']) }}"
+                        class="btn rounded-pill btn-sm px-3 {{ request('category') == 'Kegiatan Sosial' ? 'btn-dark text-white' : '' }}">
                         Kegiatan Sosial
                     </a>
+
                 </div>
             </div>
+
 
 
             <div class="row g-4">
@@ -57,31 +66,38 @@
                             <div class="d-flex gap-3">
                                 <img src="assets/images/fotoProfile.jpg" class="rounded-3" width="60" height="60"
                                     style="object-fit:cover">
+
                                 <div>
                                     <h6 class="fw-bold mb-1">{{ $k->title }}</h6>
 
-                                    @if($k->pemateri)
+                                    {{-- Pemateri --}}
                                     <small class="text-muted d-block">
-                                        <i class="bi bi-person"></i> {{ $k->pemateri }}
+                                        <i class="bi bi-person me-2"></i>
+                                        {{ $k->pemateri ?? '-' }}
                                     </small>
-                                    @endif
 
+                                    {{-- Tanggal --}}
                                     <small class="text-muted d-block">
                                         <i class="bi bi-calendar"></i> {{ $k->date_label }}
                                     </small>
 
+                                    {{-- Waktu --}}
                                     <small class="text-muted d-block">
                                         <i class="bi bi-clock"></i>
                                         {{ $k->start_time }} - {{ $k->end_time }} WIB
                                     </small>
 
-                                    <small class="text-muted">
-                                        <i class="bi bi-geo-alt"></i> {{ $k->location }}
+                                    {{-- Lokasi --}}
+                                    <small class="text-muted d-block">
+                                        <i class="bi bi-geo-alt"></i>
+                                        {{ $k->location ?? '-' }}
                                     </small>
                                 </div>
                             </div>
 
-                            <div class="mt-3">
+
+                            <div class="mt-3 d-flex gap-2">
+
                                 <a href="{{ route('lihatkegiatan', $k->id) }}"
                                     class="btn detailButtonKegiatan w-100 rounded-pill">
                                     Lihat Detail

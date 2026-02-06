@@ -5,41 +5,45 @@ namespace App\Http\Controllers;
 use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ScheduleController extends Controller
 {
-    // HALAMAN KALENDER
+    /* =========================================================
+     * HALAMAN
+     * ========================================================= */
     public function calendarPage()
     {
-        return view('penjadwalan_masjid.penjadwalanPage');  
+        return view('penjadwalan_masjid.penjadwalanPage');
     }
-    public function kegiatanPage()
+
+    public function kegiatanPage(Request $request)
     {
         $today = now()->toDateString();
-
-        $kegiatans = Schedule::orderByRaw("
-                CASE 
-                    WHEN end_date >= ? THEN 0
-                    ELSE 1
-                END
-            ", [$today])
+        $category = $request->category;
+        $query = Schedule::query();
+        if ($category) {
+            $query->where('category', $category);
+        }
+        $kegiatans = $query
+            ->orderByRaw("CASE WHEN end_date >= ? THEN 0 ELSE 1 END", [$today])
             ->orderBy('date', 'asc')
             ->get();
-
         return view('kegiatan_masjid.kegiatanPage', compact('kegiatans'));
     }
 
-
-    // EVENTS UNTUK FULLCALENDAR
+    /* =========================================================
+     * FULLCALENDAR
+     * ========================================================= */
     public function getEvents()
     {
         return Schedule::all()->map(function ($s) {
-
             $startDate = Carbon::parse($s->date);
             $endDate = $s->end_date
                 ? Carbon::parse($s->end_date)->addDay()
                 : $startDate->copy()->addDay();
-
             return [
                 'id' => $s->id,
                 'title' => $s->title,
@@ -52,7 +56,9 @@ class ScheduleController extends Controller
         });
     }
 
-    // AGENDA PER TANGGAL (KANAN)
+    /* =========================================================
+     * AGENDA PER TANGGAL
+     * ========================================================= */
     public function agendaByDate(Request $request)
     {
         return Schedule::where('date', '<=', $request->date)
@@ -75,131 +81,149 @@ class ScheduleController extends Controller
             });
     }
 
-
-
-    // FORM TAMBAH / EDIT
-    public function form(Request $request, $id = null)
+    /* =========================================================
+     * FORM
+     * ========================================================= */
+    public function formKalender(Request $request, $id = null)
     {
         $schedule = $id ? Schedule::findOrFail($id) : new Schedule();
-
-        // AUTO ISI DATE DARI KALENDER
         if (!$id && $request->has('date')) {
             $schedule->date = $request->date;
         }
-
         return view('penjadwalan_masjid.edit', compact('schedule'));
     }
+    public function formKegiatan($id)
+    {
+        $schedule = Schedule::findOrFail($id);
+        return view('kegiatan_masjid.editPage', compact('schedule'));
+    }
 
-    // SIMPAN (CREATE & UPDATE)
+    /* =========================================================
+     * STORE
+     * ========================================================= */
     public function store(Request $request)
     {
-        $request->validate([
-            'title'      => 'required|max:25',
-            'category'   => 'required',
-            'date'       => 'required|date',
-            'end_date'   => 'nullable|date|after_or_equal:date',
-            'start_time' => 'required',
-            'end_time'   => 'required',
-            'location'   => 'nullable|max:150',
-            'description' => 'nullable|max:255',
-        ]);
-
-        if (Carbon::parse($request->date . ' ' . $request->end_time)
-            ->lte(Carbon::parse($request->date . ' ' . $request->start_time))
-        ) {
-            return back()
-                ->withErrors(['end_time' => 'Waktu selesai harus setelah waktu mulai'])
-                ->withInput();
+        $data = $this->validateData($request);
+        [$startDate, $endDate, $start, $end] = $this->buildDateTime($request);
+        if ($end->lte($start)) {
+            return back()->withErrors([
+                'end_time' => 'Waktu selesai harus setelah waktu mulai'
+            ])->withInput();
         }
-
-        $startDate = Carbon::parse($request->date);
-        $endDate   = $request->end_date
-            ? Carbon::parse($request->end_date)
-            : Carbon::parse($request->date);
-
-        $start = Carbon::parse($startDate->toDateString() . ' ' . $request->start_time);
-        $end   = Carbon::parse($endDate->toDateString() . ' ' . $request->end_time);
-
+        $imageName = null;
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $imageName = Str::uuid() . '.' . $file->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('gambar_kegiatan', $file, $imageName);
+        }
         Schedule::create([
-            'title'    => $request->title,
-            'category' => $request->category,
-            'date'     => $startDate->toDateString(),
-            'end_date' => $endDate->toDateString(),
-            'start'    => $start,
-            'end'      => $end,
+            ...$data,
+            'date' => $startDate,
+            'end_date' => $endDate,
+            'start' => $start,
+            'end' => $end,
+            'image' => $imageName,
             'location' => $request->location ?? 'Masjid Baitussalam',
-            'description' => $request->description,
+            'created_by' => Auth::check() ? Auth::user()->name : 'Takmir',
         ]);
-
-        return redirect()->route('penjadwalan')
+        return redirect()
+            ->route('penjadwalan')
             ->with('success', 'Agenda berhasil ditambahkan');
     }
 
-
+    /* =========================================================
+     * UPDATE
+     * ========================================================= */
     public function update(Request $request, $id)
     {
         $schedule = Schedule::findOrFail($id);
 
-        $request->validate([
-            'title'      => 'required|max:25',
-            'category'   => 'required',
-            'date'       => 'required|date',
-            'end_date'   => 'nullable|date|after_or_equal:date',
-            'start_time' => 'required',
-            'end_time'   => 'required',
-            'location'   => 'nullable|max:150',
-            'description' => 'nullable|max:255',
-        ]);
-        
-        if (Carbon::parse($request->date . ' ' . $request->end_time)
-            ->lte(Carbon::parse($request->date . ' ' . $request->start_time))
-        ) {
+        $data = $this->validateData($request, true);
+        [$startDate, $endDate, $start, $end] = $this->buildDateTime($request);
 
-            return back()
-                ->withErrors(['end_time' => 'Waktu selesai harus setelah waktu mulai'])
-                ->withInput();
+        if ($end->lte($start)) {
+            return back()->withErrors([
+                'end_time' => 'Waktu selesai harus setelah waktu mulai'
+            ])->withInput();
         }
-
-        $startDate = Carbon::parse($request->date);
-        $endDate   = $request->end_date
-            ? Carbon::parse($request->end_date)
-            : Carbon::parse($request->date);
-
-        $start = Carbon::parse($startDate->toDateString() . ' ' . $request->start_time);
-        $end   = Carbon::parse($endDate->toDateString() . ' ' . $request->end_time);
-
+        if ($request->hasFile('image')) {
+            if ($schedule->image && Storage::disk('public')->exists('gambar_kegiatan/' . $schedule->image)) {
+                Storage::disk('public')->delete('gambar_kegiatan/' . $schedule->image);
+            }
+            $file = $request->file('image');
+            $filename = Str::uuid() . '.' . $file->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('gambar_kegiatan', $file, $filename);
+            $data['image'] = $filename;
+        }
         $schedule->update([
-            'title'    => $request->title,
-            'category' => $request->category,
-            'date'     => $startDate->toDateString(),
+            ...$data,
+            'date' => $startDate->toDateString(),
             'end_date' => $endDate->toDateString(),
-            'start'    => $start,
-            'end'      => $end,
-            'location' => $request->location,
-            'description' => $request->description,
+            'start' => $start,
+            'end' => $end,
         ]);
-
-        return redirect()->route('penjadwalan')
+        return redirect()
+            ->route('lihatkegiatan', $schedule->id)
             ->with('success', 'Agenda berhasil diupdate');
     }
 
-    // HAPUS
+
+    /* =========================================================
+     * DELETE
+     * ========================================================= */
     public function destroy($id)
     {
-        Schedule::findOrFail($id)->delete();
-
-        return response()->json(['message' => 'Agenda dihapus']);
+        $schedule = Schedule::findOrFail($id);
+        if ($schedule->image && Storage::disk('public')->exists('gambar_kegiatan/' . $schedule->image)) {
+            Storage::disk('public')->delete('gambar_kegiatan/' . $schedule->image);
+        }
+        $schedule->delete();
+        return redirect()
+            ->route('agenda')
+            ->with('success', 'Agenda dihapus');
     }
 
-    // DETAIL (sementara pakai form yang sama)
+    /* =========================================================
+     * DETAIL
+     * ========================================================= */
     public function show($id)
     {
-        $schedule = Schedule::findOrFail($id);
+        $schedule = Schedule::with('items')->findOrFail($id);
 
         return view('kegiatan_masjid.lihatPage', compact('schedule'));
     }
+    /* =========================================================
+     * HELPERS
+     * ========================================================= */
+    private function validateData($request, $isUpdate = false)
+    {
+        return $request->validate([
+            'title' => 'required|max:25',
+            'category' => 'required',
+            'date' => 'required|date',
+            'end_date' => 'nullable|date|after_or_equal:date',
+            'start_time' => 'required|date_format:H:i',
+            'end_time' => 'required|date_format:H:i',
+            'location' => 'nullable|max:150',
+            'pemateri' => 'nullable|max:100',
+            'description' => 'nullable|max:255',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
+        ]);
+    }
+    private function buildDateTime($request)
+    {
+        $startDate = Carbon::createFromFormat('Y-m-d', $request->date);
+        $endDate = $request->end_date
+            ? Carbon::createFromFormat('Y-m-d', $request->end_date)
+            : $startDate->copy();
+        $start = Carbon::createFromFormat(
+            'Y-m-d H:i',
+            $startDate->format('Y-m-d') . ' ' . $request->start_time
+        );
+        $end = Carbon::createFromFormat(
+            'Y-m-d H:i',
+            $endDate->format('Y-m-d') . ' ' . $request->end_time
+        );
+        return [$startDate, $endDate, $start, $end];
+    }
 }
-
-
-
-

@@ -63,26 +63,29 @@ class User extends Authenticatable
     /**
      * Generic role checker
      */
-    public function hasRole(UserRole $role): bool
+    public function hasAnyRole(array $roles): bool
     {
-        return $this->role === $role;
+        return in_array($this->role, $roles, true);
     }
 
     /**
      * Helper shortcuts
      */
-    public function isSuperAdmin(): bool
+    public function canManagePenjadwalan(): bool
     {
-        return $this->hasRole(UserRole::SUPER_ADMIN);
+        return $this->hasAnyRole([
+            UserRole::SUPER_ADMIN,
+            UserRole::TAKMIR_ADMIN,
+            UserRole::TAKMIR,
+        ]);
     }
 
-    public function isTakmirAdmin(): bool
+    public function canManageKegiatan(): bool
     {
-        return $this->hasRole(UserRole::TAKMIR_ADMIN);
-    }
-
-    public function isTakmir(): bool
-    {
-        return $this->hasRole(UserRole::TAKMIR);
+        return $this->hasAnyRole([
+            UserRole::SUPER_ADMIN,
+            UserRole::TAKMIR_ADMIN,
+            UserRole::TAKMIR,
+        ]);
     }
 }

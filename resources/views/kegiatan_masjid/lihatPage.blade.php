@@ -1,4 +1,5 @@
-<x-layout title="lihat | Baitussalam">
+@php use Illuminate\Support\Facades\Storage; @endphp
+<x-layout title="lihat Detail | Baitussalam">
     <div>
         <div class="container my-4">
 
@@ -7,7 +8,7 @@
             </a>
 
             <h4 class="fw-bold mb-2">
-                Kajian Subuh : Keutamaan shalat Berjamaah
+                {{ ($schedule->title) }}
             </h4>
 
             <div class="mb-3">
@@ -21,16 +22,62 @@
 
                     <div class="card shadow-soft p-3">
 
-                        <img src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae" class="event-img mb-3">
+                        @php
+                        $img = $schedule->image && Storage::disk('public')->exists('gambar_kegiatan/'.$schedule->image)
+                        ? asset('storage/gambar_kegiatan/'.$schedule->image)
+                        : 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae';
+                        @endphp
+
+                        <img src="{{ $img }}" class="img-fluid">
 
                         <h6 class="fw-bold">Deskripsi Kegiatan</h6>
                         <p>
-                            Kajian Subuh rutin yang membahas pentingnya shalat berjamaah
-                            dalam kehidupan sehari-hari.
+                            {{ $schedule->description ?: 'Tidak ada Deskripsi' }}
                         </p>
 
-                        <h6 class="fw-bold mt-4">Rangkaian Acara</h6>
+                        @auth
+                        @if(auth()->user()->canManageKegiatan())
+                        <hr>
+                        <h6 class="fw-bold">Tambah Rangkaian Acara</h6>
+                        <form method="POST" action="{{ route('kegiatan.items.store', $schedule->id) }}">
+                            @csrf
 
+                            <div class="row g-2">
+                                <div class="col-3">
+                                    <input type="time"
+                                        name="time"
+                                        class="form-control"
+                                        min="{{ \Carbon\Carbon::parse($schedule->start)->format('H:i') }}"
+                                        max="{{ \Carbon\Carbon::parse($schedule->end)->format('H:i') }}"
+                                        required>
+                                </div>
+
+                                <div class="col-4">
+                                    <input type="text"
+                                        name="title"
+                                        class="form-control"
+                                        placeholder="Agenda"
+                                        required>
+                                </div>
+
+                                <div class="col-4">
+                                    <input type="text"
+                                        name="description"
+                                        class="form-control"
+                                        placeholder="Keterangan">
+                                </div>
+
+                                <div class="col-1">
+                                    <button class="btn btn-success w-100">
+                                        <i class="bi bi-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        @endif
+                        @endauth
+
+                        <h6 class="fw-bold mt-4">Rangkaian Acara</h6>
                         <div class="table-responsive">
                             <table class="table table-bordered align-middle text-center">
                                 <thead class="table-light">
@@ -41,21 +88,43 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+
+                                    @forelse($schedule->items as $item)
                                     <tr>
-                                        <td>04.30</td>
-                                        <td>Shalat Subuh</td>
-                                        <td>Shalat berjamaah</td>
+                                        <td>
+                                            {{ \Carbon\Carbon::parse($item->time)->format('H:i') }}
+                                        </td>
+
+                                        <td>
+                                            {{ $item->title }}
+                                        </td>
+
+                                        <td class="d-flex justify-content-between align-items-center text-start">
+                                            <span>{{ $item->description ?: '-' }}</span>
+
+                                            @auth
+                                            <form method="POST"
+                                                action="{{ route('kegiatan.items.destroy', $item->id) }}"
+                                                onsubmit="return confirm('Hapus rangkaian acara ini?')">
+
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button class="btn btn-sm btn-danger ms-2">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </form>
+                                            @endauth
+                                        </td>
                                     </tr>
+                                    @empty
                                     <tr>
-                                        <td>04.40</td>
-                                        <td>Kajian</td>
-                                        <td>Kajian oleh Ust. Ahmad Fauzi</td>
+                                        <td colspan="3" class="text-muted">
+                                            Belum ada rangkaian acara
+                                        </td>
                                     </tr>
-                                    <tr>
-                                        <td>06.00</td>
-                                        <td>Penutup</td>
-                                        <td>Penutup acara</td>
-                                    </tr>
+                                    @endforelse
+
                                 </tbody>
                             </table>
                         </div>
@@ -69,31 +138,83 @@
 
                         <h6 class="fw-bold mb-3">Informasi Kegiatan</h6>
 
-                        <p><i class="bi bi-calendar-event me-2"></i> Selasa, 12 Januari 2026</p>
-                        <p><i class="bi bi-clock me-2"></i> 05.00 - 05.15 WIB</p>
-                        <p><i class="bi bi-geo-alt me-2"></i> Masjid Baitussalam</p>
-                        <p><i class="bi bi-person me-2"></i> Pemateri : Ust. Ahmad Fauzi</p>
+                        {{-- Tanggal --}}
+                        <p>
+                            <i class="bi bi-calendar-event me-2"></i>
+
+                            @php
+                            $start = \Carbon\Carbon::parse($schedule->date);
+                            $end = $schedule->end_date ? \Carbon\Carbon::parse($schedule->end_date) : null;
+                            @endphp
+
+                            @if(!$end || $start->isSameDay($end))
+                            {{ $start->translatedFormat('l, d F Y') }}
+                            @else
+                            {{ $start->translatedFormat('d F Y') }}
+                            -
+                            {{ $end->translatedFormat('d F Y') }}
+                            @endif
+                        </p>
+
+
+                        {{-- Waktu --}}
+                        <p>
+                            <i class="bi bi-clock me-2"></i>
+                            {{ $schedule->start_time ?? '-' }} - {{ $schedule->end_time ?? '-' }} WIB
+                        </p>
+
+                        {{-- Lokasi --}}
+                        <p>
+                            <i class="bi bi-geo-alt me-2"></i>
+                            {{ $schedule->location ?? '-' }}
+
+                        </p>
+
+                        {{-- Pemateri --}}
+                        <p>
+                            <i class="bi bi-person me-2"></i>
+                            Pemateri : {{ $schedule->pemateri ?: '-' }}
+                        </p>
 
                         <hr>
 
+                        {{-- Kategori --}}
                         <p>
                             <i class="bi bi-tag me-2"></i>
                             Kategori :
-                            <span class="badge badge-soft">Kajian</span>
+                            <span class="badge badge-soft">
+                                {{ $schedule->category ?? '-' }}
+                            </span>
                         </p>
 
-                        <p><i class="bi bi-person-check me-2"></i> Dibuat Oleh : Takmir Masjid</p>
-                        <p><i class="bi bi-pencil me-2"></i> Terakhir Diubah : 10 Januari 2026</p>
+                        {{-- Dibuat oleh --}}
+                        <p>
+                            <i class="bi bi-person-check me-2"></i>
+                            Dibuat Oleh : {{ $schedule->created_by ?: '-' }}
+                        </p>
 
-                        <a href="{{ route('penjadwalan' )}}" class="btn btn-success w-100 mb-2">
+                        {{-- Terakhir diubah --}}
+                        <p>
+                            <i class="bi bi-pencil me-2"></i>
+                            Terakhir Diubah :
+                            {{ $schedule->updated_at ? $schedule->updated_at->translatedFormat('d F Y') : '-' }}
+                        </p>
+
+                        <a href="{{ route('penjadwalan') }}" class="btn btn-success w-100 mb-2">
                             <i class="bi bi-calendar3 me-2"></i>Lihat Jadwal
                         </a>
 
-                        <a href="{{ route('editkegiatan') }}" class="btn btn-outline-success w-100">
+                        @auth
+                        @if(auth()->user()->canManageKegiatan())
+                        <a href="{{ route('editkegiatan', $schedule->id) }}"
+                            class="btn btn-outline-success w-100">
                             <i class="bi bi-pencil me-2"></i>Edit
                         </a>
+                        @endif
+                        @endauth
 
                     </div>
+
 
                     <div class="card shadow-soft p-3">
 

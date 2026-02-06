@@ -9,9 +9,7 @@
                     <img src="{{ asset('assets/images/logobaitussalam.png') }}" alt="BaitussalamLogo" width="120" height="96">
                 </a>
             </div>
-            {{-- <div class="input-group mx-auto w-50" id="searchBarDesktop">
-                <x-SearchBar></x-SearchBar>
-            </div> --}}
+
             <div class="ms-auto">
                 <div id="signInContainer">
 
@@ -44,7 +42,7 @@
                     {{-- Kalau belum login --}}
                     <button class="btn btn-signin d-flex align-items-center gap-2"
                         data-bs-toggle="modal"
-                        data-bs-target="#signinModal">
+                        data-bs-target="#signin">
                         <span class="fw-semibold">SIGN IN</span>
                         <span class="icon-circle">
                             <i class="bi bi-arrow-right"></i>

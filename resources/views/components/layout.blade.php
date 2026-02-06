@@ -40,8 +40,7 @@
     </main>
 
     <x-Footer></x-Footer>
-    <x-signin-form />
-
+    @include('auth.login')
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

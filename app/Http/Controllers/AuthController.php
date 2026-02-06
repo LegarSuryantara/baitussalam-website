@@ -10,14 +10,6 @@ use App\Models\User;
 class AuthController extends Controller
 {
     // ======================
-    // Show Forms
-    // ======================
-    public function showLogin()
-    {
-        return view('components.signIn');
-    }
-
-    // ======================
     // Actions
     // ======================
     public function login(Request $request)
@@ -32,13 +24,14 @@ class AuthController extends Controller
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/');
+            return redirect()->back();
         }
 
         return back()->withErrors([
             'email' => 'Email atau password salah.',
         ])->withInput();
     }
+
     public function logout(Request $request)
     {
         Auth::logout();

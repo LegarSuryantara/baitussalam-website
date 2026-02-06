@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\ScheduleItemController;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\Facades\Route;
 
@@ -10,7 +11,6 @@ use Illuminate\Support\Facades\Route;
 | Beranda & Auth
 |--------------------------------------------------------------------------
 */
-
 Route::get('/', fn() => view('berandaPage'))->name('beranda');
 
 Route::post('/login',  [AuthController::class, 'login'])->name('login');
@@ -25,8 +25,7 @@ Route::get('/kontak',  fn() => view('kontakPage'))->name('kontak');
 | Layanan Masjid
 |--------------------------------------------------------------------------
 */
-
-Route::prefix('')->group(function () {
+Route::prefix('layanan Masjid')->group(function () {
 
   Route::get('/zakatinfaq', fn() => view('layanan_masjid/zakatPage'))
     ->name('zakatinfaq');
@@ -43,91 +42,75 @@ Route::prefix('')->group(function () {
 | Penjadwalan Masjid
 |--------------------------------------------------------------------------
 */
-
-Route::middleware('auth')->prefix('penjadwalan')->group(function () {
-
-  Route::get('/calendar', [ScheduleController::class, 'index'])
-    ->name('index-penjadwalan');
-
-  Route::post('/create', [ScheduleController::class, 'store'])
-    ->name('schedule.store');
-
-  Route::get('/events', [ScheduleController::class, 'getEvents'])
-    ->name('schedule.events');
-
-  Route::post('/update/{id}', [ScheduleController::class, 'update'])
-    ->name('schedule.update');
-
-  Route::delete('/delete/{id}', [ScheduleController::class, 'deleteEvent'])
-    ->name('schedule.delete');
-
-  Route::get('/search', [ScheduleController::class, 'search'])
-    ->name('schedule.search');
-
+Route::prefix('penjadwalan')->group(function () {
+  Route::get('/', [ScheduleController::class, 'calendarPage'])->name('penjadwalan');
+  Route::get('/events', [ScheduleController::class, 'getEvents']);
+  Route::get('/agenda', [ScheduleController::class, 'agendaByDate']);
+  Route::get('/lihat/{id}', [ScheduleController::class, 'show'])->name('penjadwalan.show');
 });
 
+Route::middleware('auth')->prefix('penjadwalan')
+->group(function () {
 
-Route::get('/penjadwalan', [ScheduleController::class, 'calendarPage'])
-  ->name('penjadwalan');
+    Route::get('/create', [ScheduleController::class, 'formKalender'])
+      ->name('penjadwalan.create');
 
-Route::get('/penjadwalan/events', [ScheduleController::class, 'getEvents']);
+    Route::get('/edit/{id}', [ScheduleController::class, 'formKalender'])
+      ->name('penjadwalan.edit');
 
-Route::get('/penjadwalan/agenda', [ScheduleController::class, 'agendaByDate']);
+    Route::post('/save', [ScheduleController::class, 'store'])
+      ->name('penjadwalan.store');
 
-Route::get('/penjadwalan/create', [ScheduleController::class, 'form'])
-  ->name('penjadwalan.create');
+    Route::put('/save/{id}', [ScheduleController::class, 'update'])
+      ->name('penjadwalan.update');
 
-Route::get('/penjadwalan/edit/{id}', [ScheduleController::class, 'form'])
-  ->name('penjadwalan.edit');
-
-Route::post('/penjadwalan/save', [ScheduleController::class, 'store'])
-  ->name('penjadwalan.store');
-
-Route::put('/penjadwalan/save/{id}', [ScheduleController::class, 'update'])
-  ->name('penjadwalan.update');
-
-Route::delete('/penjadwalan/delete/{id}', [ScheduleController::class, 'destroy'])
-  ->name('penjadwalan.destroy');
-
-Route::get('/penjadwalan/lihat/{id}', [ScheduleController::class, 'show'])
-  ->name('penjadwalan.show');
+    Route::delete('/delete/{id}', [ScheduleController::class, 'destroy'])
+      ->name('penjadwalan.destroy');
+  });
 
 /*
 |--------------------------------------------------------------------------
 | Kegiatan Masjid
 |--------------------------------------------------------------------------
 */
-
 Route::prefix('kegiatan')->group(function () {
 
   Route::get('/', [ScheduleController::class, 'kegiatanPage'])
     ->name('kegiatan');
 
-  Route::get('/lihat', fn() => view('kegiatan_masjid/lihatPage'))
+  Route::get('/{id}', [ScheduleController::class, 'show'])
     ->name('lihatkegiatan');
-
-  Route::get('/lihat/edit', fn() => view('kegiatan_masjid/editPage'))
-    ->name('editkegiatan');
 });
 
+Route::middleware('auth')->prefix('kegiatan')
+->group(function(){
+  
+  Route::get('/{id}/edit', [ScheduleController::class, 'formKegiatan'])
+    ->name('editkegiatan');
+
+  Route::put('/{id}', [ScheduleController::class, 'update'])
+    ->name('updatekegiatan');
+});
+
+
+Route::post('/kegiatan/{id}/items', [ScheduleItemController::class, 'store'])
+  ->name('kegiatan.items.store');
+
+Route::delete('/kegiatan/items/{id}', [ScheduleItemController::class, 'destroy'])
+  ->name('kegiatan.items.destroy');
 
 /*
 |--------------------------------------------------------------------------
 | Donasi
 |--------------------------------------------------------------------------
 */
-
 Route::get('/donasi', fn() => view('donasiPage'))->name('donasi');
-
-
-
 
 /*
 |--------------------------------------------------------------------------
 | Organisasi Masjid
 |--------------------------------------------------------------------------
 */
-
 Route::prefix('organisasi')->group(function () {
 
   Route::get('/', fn() => view('organisasi_masjid/organisasiPage'))
@@ -143,13 +126,11 @@ Route::prefix('organisasi')->group(function () {
     ->name('pengajianbapak');
 });
 
-
 /*
 |--------------------------------------------------------------------------
 | Galeri Masjid
 |--------------------------------------------------------------------------
 */
-
 Route::prefix('galeri')->group(function () {
 
   Route::get('/', fn() => view('galeri_masjid/galeriPage'))
@@ -165,13 +146,11 @@ Route::prefix('galeri')->group(function () {
     ->name('galeriimarah');
 });
 
-
 /*
 |--------------------------------------------------------------------------
 | Dokumen Masjid
 |--------------------------------------------------------------------------
 */
-
 Route::prefix('dokumen')->group(function () {
 
   Route::get('/', fn() => view('dokumen_masjid/dokumenPage'))

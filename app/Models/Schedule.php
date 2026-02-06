@@ -18,7 +18,11 @@ class Schedule extends Model
         'date',
         'end_date',
         'location',
+        'pemateri',
         'description',
+        'created_by',
+        'updated_by',
+        'image'
     ];
 
     protected $casts = [
@@ -70,14 +74,20 @@ class Schedule extends Model
             ? Carbon::parse($this->end_date)
             : $start;
 
-        // Kalau 1 hari
+        // 1 hari
         if ($start->equalTo($end)) {
             return $start->translatedFormat('d F Y');
         }
 
-        // Kalau multi-day
+        // multi-day
         return $start->translatedFormat('d F Y')
             . ' - ' .
             $end->translatedFormat('d F Y');
     }
+    public function items()
+    {
+        return $this->hasMany(ScheduleItem::class)->orderBy('time');
+    }
+
+    
 }

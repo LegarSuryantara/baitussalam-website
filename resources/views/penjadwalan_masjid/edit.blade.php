@@ -1,4 +1,6 @@
 <x-layout title="Edit Penjadwalan | Baitussalam">
+    @auth
+    @if(auth()->user()->canManagePenjadwalan())
     <div class="container my-4">
 
         <a href="{{ route('penjadwalan') }}" class="text-decoration-none text-dark mb-3 d-inline-block">
@@ -43,7 +45,7 @@
                             </select>
                         </div>
 
-                        <input type="hidden" name="date" value="{{ $schedule->date }}">
+                        <input type="hidden" name="date" value="{{ $schedule->date->format('Y-m-d') }}">
                         <div class="mb-3">
                             <label class="form-label">Tanggal</label>
                             <input type="text" class="form-control"
@@ -55,9 +57,9 @@
                             <label class="form-label">Tanggal Berakhir (Opsional)</label>
                             <input type="date" name="end_date"
                                 class="form-control"
-                                value="{{ old('end_date', $schedule->end_date) }}">
+                                value="{{ old('end_date', $schedule->end_date?->format('Y-m-d')) }}">
                             <small class="text-muted">
-                                Kosongkan jika acara hanya 1 hari
+                                Ubah jika acara lebih dari 1 hari
                             </small>
                         </div>
 
@@ -134,5 +136,6 @@
         }
     </script>
     @endif
-
+@endif
+@endauth
 </x-layout>

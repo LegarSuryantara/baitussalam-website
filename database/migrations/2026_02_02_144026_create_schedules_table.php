@@ -19,10 +19,15 @@ return new class extends Migration
             $table->dateTime('end');
             $table->date('date');
             $table->date('end_date')->nullable();
-            $table->string('pemateri', 30)->nullable();
-            $table->string('created_by')->nullable();
-            $table->string('location', 30)->default('Masjid Baitussalam');
+            $table->string('pemateri', 100)->nullable();
+            $table->string('location', 150)->default('Masjid Baitussalam');
             $table->text('description')->nullable();
+
+            $table->string('image')->nullable();
+
+
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->timestamps();
         });
     }
