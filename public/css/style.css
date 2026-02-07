@@ -378,7 +378,7 @@ a.nav-link:hover{
 
 .tabsLiterasi{
     background-color: #C8E6C9;
-    width: 45%;
+    width: 475px;
     display: flex;
     justify-content: center;
     padding: 5px 0;
@@ -386,8 +386,13 @@ a.nav-link:hover{
 
 }
 
+.tabsLiterasi .nav-item a{
+    color: black;
+}
+
 .tabsLiterasi .nav-item a:hover{
-    background-color: #619A90;
+    background-color: #388E3C;
+    color: white;
 }
 
 .downloadLiterasi .cardHeaderLiterasi {
@@ -764,6 +769,10 @@ button.btnDokumen{
 .container div.cardEditJadwal form div.row .col-12 button.btnJadwalBatal{
     color: black;
     font-weight: normal;
+}
+
+.deskripsiOrganisasi{
+    text-align: justify;
 }
 
 
@@ -1252,6 +1261,68 @@ div.cardQris{
     font-size: 12px;
 }
 
+.herosectionIbu {
+    height: 190px ;
+    width: 90%;
+    margin-top: 20px;
+    justify-self: center;
+    border-radius: 10px;
+    background-size: cover;
+    position: relative;
+}
+
+.herosectionIbu .ornamenGaris{
+    font-size: 12px;
+    padding: 10px;
+    text-align: center;
+    position: absolute;
+    top: 245px;
+    width: 50%;
+}
+
+.pengajianIbuContainer .container section.mb-5 {
+    padding-top: 60px;
+}
+
+.herosectionBapak {
+    height: 190px ;
+    width: 90%;
+    margin-top: 20px;
+    justify-self: center;
+    border-radius: 10px;
+    background-size: cover;
+    position: relative;
+}
+
+.herosectionBapak .ornamenGaris{
+    font-size: 12px;
+    padding: 10px;
+    text-align: center;
+    position: absolute;
+    top: 245px;
+    width: 50%;
+}
+
+.herosectionRemaja {
+    height: 190px ;
+    width: 90%;
+    margin-top: 20px;
+    justify-self: center;
+    border-radius: 10px;
+    background-size: cover;
+    position: relative;
+}
+
+.herosectionRemaja .ornamenGaris{
+    font-size: 12px;
+    padding: 10px;
+    text-align: center;
+    position: absolute;
+    top: 245px;
+    width: 50%;
+}
+
+
 
 
 }
@@ -1289,5 +1360,117 @@ div.cardQris{
         padding: 12px;
         font-size: 10px;
     }
+
+    .cardGaleriContainer div.row{
+        padding: 10px 30px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .cardGaleriContainer div.row .col-md-3{
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+  .carousel-inner .row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start !important;
+  }
+
+  .carousel-inner .col-12 {
+    flex: 0 0 auto;
+    width: 160px; 
+  }
+
+  .profile-card-remaja {
+    padding: 10px;
+  }
+
+  .profile-card-remaja img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .carousel-inner .row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .galeriAnnisa .row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+
+  }
+
+  .galeriAnnisa .row > .col-md-4 {
+    flex: 0 0 auto;
+    width: 220px; 
+  }
+
+
+  .galeriAnnisa .row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .galeriAnnisa .row {
+    scroll-behavior: smooth;
+  }
+
+.galeriBapak .row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+
+  }
+
+  .galeriBapak .row > .col-md-4 {
+    flex: 0 0 auto;
+    width: 220px; 
+  }
+
+
+  .galeriBapak .row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .galeriBapak .row {
+    scroll-behavior: smooth;
+  }
+
+  .galeriRemaja .row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+
+  }
+
+  .galeriRemaja .row > .col-md-4 {
+    flex: 0 0 auto;
+    width: 220px; 
+  }
+
+
+  .galeriRemaja .row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .galeriRemaja .row {
+    scroll-behavior: smooth;
+  }
+  
+
+
+
+}
+
+@media (max-width: 415px) {
+    .tabsLiterasi{
+        width: 100%;
+        font-size: 11px;
+    }
+
+    .literasiContainer div.row div.col-md-6 div.card div.card-body a{
+        font-size: 10px;
+        width: 50%;
+    }
+
 
 }
