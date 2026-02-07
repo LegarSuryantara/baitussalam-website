@@ -38,47 +38,20 @@
                                     <ul>
                                         <li>Pengajian rutin</li>
                                         <li>Pengajian tematik</li>
+                                        <li>Pembinaan akhlak dan ibadah</li>
                                     </ul>
                                 </div>
                                 <div class="col-md-6">
-                                    <ul>
-                                        <li>Kajian tematik</li>
-                                        <li>Pembinaan akhlak dan ibadah</li>
-                                    </ul>
+                                    <div class="d-flex justify-content-center justify-content-md-end mt-4">
+                                        <button class="btn btn-success rounded-pill px-4">
+                                            Lihat Galeri Pembinaan <i class="bi bi-arrow-right ms-2"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="accordion-item mb-3">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#itemTwo">
-                            <i class="bi bi-megaphone-fill me-2"></i> Pendidikan dan Dakwah
-                        </button>
-                    </h2>
-                    <div id="itemTwo" class="accordion-collapse collapse">
-                        <div class="accordion-body small text-muted">
-                            Kegiatan dakwah, ceramah, dan pendidikan keislaman bagi masyarakat.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item mb-3">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                            data-bs-target="#itemThree">
-                            <i class="bi bi-moon-stars-fill me-2"></i> Kegiatan Hari Besar Islam
-                        </button>
-                    </h2>
-                    <div id="itemThree" class="accordion-collapse collapse">
-                        <div class="accordion-body small text-muted">
-                            Penyelenggaraan peringatan hari besar Islam seperti Maulid Nabi,
-                            Isra Mi’raj, dan Ramadhan.
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
             <h6 class="fw-semibold mb-3">Galeri Foto</h6>
@@ -180,7 +153,7 @@
                 </li>
             </ul>
 
-            <div class="d-flex justify-content-end mt-4">
+            <div class="d-flex justify-content-center justify-content-md-end mt-4">
                 <button class="btn btn-success rounded-pill px-4">
                     <i class="bi bi-plus-circle me-1"></i> Unggah Gambar
                 </button>

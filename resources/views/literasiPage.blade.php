@@ -1,6 +1,6 @@
 <x-layout title="Literasi Keagamaan | Baitussalam">
     <div>
-        <div class="container my-4">
+        <div class="container literasiContainer my-4 px-4">
 
             <h4 class="fw-bold">Literasi Keagamaan</h4>
             <p class="text-muted mb-4">
@@ -9,13 +9,13 @@
 
             <ul class="nav mb-4 gap-2 tabsLiterasi">
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">Ayat dan Hadits</a>
+                    <a class="nav-link " href="#">Ayat dan Hadits</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">Artikel Islam</a>
+                    <a class="nav-link " href="#">Artikel Islam</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="#">Download Materi</a>
+                    <a class="nav-link " href="#">Download Materi</a>
                 </li>
             </ul>
 
