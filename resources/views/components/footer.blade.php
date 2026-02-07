@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="footerDisclaimerContainer">
-        <div class="footerCopyright">© 2024 Baitussalam. All rights reserved.</div>
+        <div class="footerCopyright">© 2026 Baitussalam. All rights reserved.</div>
         <div class="footerSosialContainer">
             <div class="footerSosial">
                 <a href="#"><i class="fab fa-twitter"></i></a>
