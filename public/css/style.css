@@ -1522,6 +1522,8 @@ body {
     font-size: 14px;
     padding: 14px 0;
     border-radius: 12px;
+}
+
 .herosectionIbu {
     height: 190px ;
     width: 90%;
@@ -1543,6 +1545,8 @@ body {
 
 .pengajianIbuContainer .container section.mb-5 {
     padding-top: 60px;
+}
+
 }
 
 @media (max-width: 767px) {
@@ -1581,6 +1585,8 @@ body {
 
 .buttonPeminjaman a.btn {
     font-size: 13px;
+}
+
 .herosectionBapak {
     height: 190px ;
     width: 90%;
