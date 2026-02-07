@@ -14,52 +14,6 @@
                 dan pengaturan program-program masjid Baitussalam.
             </p>
 
-            <div class="section-divider"></div>
-
-            <div class="accordion mt-4 d-md-none" id="idarohAccordion">
-
-                <div class="accordion-item mb-3">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#itemOne">
-                            <i class="bi bi-file-earmark-text-fill me-2"></i> Administrasi & Perencanaan
-                        </button>
-                    </h2>
-                    <div id="itemOne" class="accordion-collapse collapse show">
-                        <div class="accordion-body">
-                            <p class="small text-muted">
-                                Fokus pada pengelolaan tata usaha, surat-menyurat, serta perencanaan program jangka
-                                pendek dan panjang.
-                            </p>
-                            <div class="row mt-2 small">
-                                <div class="col-md-6">
-                                    <ul class="mb-0">
-                                        <li>Mengelola administrasi dan keuangan</li>
-                                        <li>Menyusun rencana program tahunan</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item mb-3">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#itemTwo">
-                            <i class="bi bi-people-fill me-2"></i> Pembinaan & Logistik
-                        </button>
-                    </h2>
-                    <div id="itemTwo" class="accordion-collapse collapse">
-                        <div class="accordion-body small text-muted">
-                            <ul class="mb-0">
-                                <li>Pembinaan dan pelatihan bagi pengurus masjid</li>
-                                <li>Mengatur inventaris dan logistik masjid</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
             <h6 class="fw-semibold mb-3">Galeri Foto</h6>
 
             <div class="row g-4">
