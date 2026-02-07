@@ -1,4 +1,4 @@
-<x-Layout title="Beranda | Baitussalam">
+<x-layout title="Beranda | Baitussalam">
     <div class="herosectionBeranda d-flex justify-content-center align-items-center">
         <span class="titleHero">Baitussalam Kalirejo Permai
         </span>
@@ -207,4 +207,4 @@
             </div>
         </div>
     </div>
-</x-Layout>
+</x-layout>

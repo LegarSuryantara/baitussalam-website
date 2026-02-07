@@ -25,16 +25,16 @@
 <body>
 
     {{-- header --}}
-    <x-Header></x-Header>
+    <x-header></x-header>
     {{-- Konten halaman --}}
     <main>
         {{ $slot }}
     </main>
 
-    <x-Footer></x-Footer>
+    <x-footer></x-footer>
     <x-signin-form />
     <x-forgot-password />
-    
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
