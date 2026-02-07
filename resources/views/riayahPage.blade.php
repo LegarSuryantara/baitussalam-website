@@ -117,7 +117,7 @@
                 </li>
             </ul>
 
-            <div class="d-flex justify-content-end mt-4">
+            <div class="d-flex justify-content-center justify-content-md-end mt-4">
                 <button class="btn btn-success rounded-pill px-4">
                     <i class="bi bi-plus-circle me-1"></i> Unggah Gambar
                 </button>
