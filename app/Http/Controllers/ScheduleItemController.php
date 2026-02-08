@@ -6,6 +6,7 @@ use App\Models\Schedule;
 use App\Models\ScheduleItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Validation\Rule;
 
 class ScheduleItemController extends Controller
 {
@@ -16,7 +17,7 @@ class ScheduleItemController extends Controller
     {
         $schedule = Schedule::findOrFail($scheduleId);
 
-        $data = $this->validateData($request);
+        $data = $this->validateData($request, $schedule);
 
         $this->validateTimeRange($schedule, $data['time']);
 
@@ -45,24 +46,44 @@ class ScheduleItemController extends Controller
      * HELPERS (KHUSUS ITEM)
      * ========================================================= */
 
-    private function validateData(Request $request)
+    private function validateData(Request $request, Schedule $schedule)
     {
         return $request->validate([
-            'time' => 'required|date_format:H:i|unique:schedule_items,time',
-            'title' => 'required|max:100|unique:schedule_items,title',
-            'description' => 'nullable|max:255',
-        ]);
+            'time' => [
+                'required',
+                'date_format:H:i',
+
+                Rule::unique('schedule_items', 'time')
+                    ->where('schedule_id', $schedule->id),
+            ],
+
+            'title' => ['required', 'string', 'max:150'],
+
+            'description' => ['nullable', 'string', 'max:255'],
+        ], 
+[
+            'time.unique' => 'Jam ini sudah digunakan di rangkaian acara.',
+            'time.required' => 'Waktu wajib diisi.',
+            'title.required' => 'Agenda wajib diisi.',
+            'title.max' => 'Agenda maksimal 150 karakter.',
+            'description.max' => 'Keterangan maksimal 255 karakter.',
+        ]
+        
+        );
     }
 
     private function validateTimeRange(Schedule $schedule, string $time)
     {
-        $itemTime = Carbon::createFromFormat('H:i', $time);
-
-        $start = Carbon::parse($schedule->start)->format('H:i');
-        $end   = Carbon::parse($schedule->end)->format('H:i');
+        $start = Carbon::parse($schedule->start_time)->format('H:i');
+        $end   = Carbon::parse($schedule->end_time)->format('H:i');
 
         if ($time < $start || $time > $end) {
-            abort(422, 'Jam harus di antara ' . $start . ' - ' . $end);
+            return back()
+                ->withErrors([
+                    'time' => 'Jam harus di antara ' . $start . ' - ' . $end
+                ])
+                ->withInput()
+                ->throwResponse();
         }
     }
 }

@@ -7,27 +7,27 @@
                     <h6 class="fw-semibold text-uppercase">
                         IDAROH <span class="fw-normal">(Manajemen dan Administrasi)</span>
                     </h6>
-                    <a href="{{ route('galeriidaroh') }}" class="text-decoration-none small text-black">
+                    <a href="{{ route('galeri.section', 'idaroh') }}" class="text-decoration-none small text-black">
                         Selengkapnya →
                     </a>
                 </div>
 
                 <div class="row g-3">
+                    @forelse($idaroh as $img)
                     <div class="col-md-4">
                         <div class="img-card cardGaleri">
-                            <img src="assets/images/gambarMasjid.png" class="img-fluid">
+                            <img
+                                src="{{ asset('storage/'.$img->image_path) }}"
+                                class="img-fluid"
+                                loading="lazy"
+                                alt="{{ $img->caption }}">
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="img-card cardGaleri">
-                            <img src="assets/images/gambarMasjid.png" class="img-fluid">
-                        </div>
+                    @empty
+                    <div class="col-12 text-muted small">
+                        Belum ada foto.
                     </div>
-                    <div class="col-md-4">
-                        <div class="img-card cardGaleri">
-                            <img src="assets/images/gambarMasjid.png" class="img-fluid">
-                        </div>
-                    </div>
+                    @endforelse
                 </div>
             </div>
 
@@ -36,27 +36,27 @@
                     <h6 class="fw-semibold text-uppercase">
                         RI’AYAH <span class="fw-normal">(Perawatan dan Pemeliharaan Masjid)</span>
                     </h6>
-                    <a href="{{ route('galeririayah') }}" class="text-decoration-none small text-black">
+                    <a href="{{ route('galeri.section', 'riayah') }}" class="text-decoration-none small text-black">
                         Selengkapnya →
                     </a>
                 </div>
 
                 <div class="row g-3">
+                    @forelse($riayah as $img)
                     <div class="col-md-4">
                         <div class="img-card cardGaleri">
-                            <img src="assets/images/gambarMasjid.png" class="img-fluid">
+                            <img
+                                src="{{ asset('storage/'.$img->image_path) }}"
+                                class="img-fluid"
+                                loading="lazy"
+                                alt="{{ $img->caption }}">
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="img-card cardGaleri">
-                            <img src="assets/images/gambarMasjid.png" class="img-fluid">
-                        </div>
+                    @empty
+                    <div class="col-12 text-muted small">
+                        Belum ada foto.
                     </div>
-                    <div class="col-md-4">
-                        <div class="img-card cardGaleri">
-                            <img src="assets/images/gambarMasjid.png" class="img-fluid">
-                        </div>
-                    </div>
+                    @endforelse
                 </div>
             </div>
 
@@ -65,31 +65,30 @@
                     <h6 class="fw-semibold text-uppercase">
                         IMARAH <span class="fw-normal">(Kegiatan Keagamaan)</span>
                     </h6>
-                    <a href="{{ route('galeriimarah') }}" class="text-decoration-none small text-black">
+                    <a href="{{ route('galeri.section', 'imarah') }}" class="text-decoration-none small text-black">
                         Selengkapnya →
                     </a>
                 </div>
 
                 <div class="row g-3">
+                    @forelse($imarah as $img)
                     <div class="col-md-4">
                         <div class="img-card cardGaleri">
-                            <img src="assets/images/gambarMasjid.png" class="img-fluid">
+                            <img
+                                src="{{ asset('storage/'.$img->image_path) }}"
+                                class="img-fluid"
+                                loading="lazy"
+                                alt="{{ $img->caption }}">
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="img-card cardGaleri">
-                            <img src="assets/images/gambarMasjid.png" class="img-fluid">
-                        </div>
+                    @empty
+                    <div class="col-12 text-muted small">
+                        Belum ada foto.
                     </div>
-                    <div class="col-md-4">
-                        <div class="img-card cardGaleri">
-                            <img src="assets/images/gambarMasjid.png" class="img-fluid">
-                        </div>
-                    </div>
+                    @endforelse
                 </div>
             </div>
 
         </div>
-
     </div>
 </x-layout>

@@ -45,13 +45,11 @@
                 </div>
             </div>
 
-
-
             <div class="row g-4">
 
                 @forelse($kegiatans as $k)
                 <div class="col-lg-4 col-md-6">
-                    <div class="card cardKegiatan h-100 shadow-sm border-0 rounded-4">
+                    <div class="card cardKegiatan h-100 border rounded-4">
                         <div class="card-body">
 
                             <div class="d-flex justify-content-between mb-2">
@@ -64,7 +62,7 @@
                             </div>
 
                             <div class="d-flex gap-3">
-                                <img src="assets/images/fotoProfile.jpg" class="rounded-3" width="60" height="60"
+                                <img src="{{ asset('assets/images/logobaitussalam.png') }}" class="rounded-3 shadow-sm" width="60" height="60"
                                     style="object-fit:cover">
 
                                 <div>

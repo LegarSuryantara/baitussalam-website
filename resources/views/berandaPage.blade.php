@@ -1,4 +1,3 @@
-
 <x-Layout title="Beranda | Baitussalam">
     <div class="herosectionBeranda d-flex justify-content-center align-items-center">
         <span class="titleHero">Baitussalam Kalirejo Permai
@@ -139,21 +138,31 @@
             </p>
 
             <div class="row g-4">
+                @foreach(['idaroh' => 'IDAROH', 'riayah' => 'RI’AYAH', 'imarah' => 'IMARAH'] as $section => $title)
+                @php $img = $galeri[$section] ?? null; @endphp
                 <div class="col-md-4">
-                    <img src="assets/images/background2.png" class="img-fluid rounded-4 w-100"
-                        style="height: 300px; object-fit: cover;">
+                    <div class="img-card cardGaleri">
+                        @if($img)
+                        <a href="{{ route('galeri.section', $section) }}">
+                            <img
+                                src="{{ asset('storage/' . $img->image_path) }}"
+                                class="img-fluid"
+                                loading="lazy"
+                                alt="{{ $img->caption }}">
+                        </a>
+                        @else
+                        <img
+                            src="assets/images/background2.png"
+                            class="img-fluid"
+                            loading="lazy"
+                            alt="Belum ada foto">
+                        @endif
+                    </div>
+                    <h6 class="fw-semibold mt-2 text-center">{{ $title }}</h6>
                 </div>
-
-                <div class="col-md-4">
-                    <img src="assets/images/background2.png" class="img-fluid rounded-4 w-100"
-                        style="height: 300px; object-fit: cover;">
-                </div>
-
-                <div class="col-md-4">
-                    <img src="assets/images/background2.png" class="img-fluid rounded-4 w-100"
-                        style="height: 300px; object-fit: cover;">
-                </div>
+                @endforeach
             </div>
+
         </div>
     </div>
 </x-Layout>

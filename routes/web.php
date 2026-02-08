@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FinancialReportController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\ScheduleItemController;
-use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -11,9 +12,13 @@ use Illuminate\Support\Facades\Route;
 | Beranda & Auth
 |--------------------------------------------------------------------------
 */
-Route::get('/', fn() => view('berandaPage'))->name('beranda');
 
-Route::post('/login',  [AuthController::class, 'login'])->name('login');
+Route::get('/', [GalleryController::class, 'berandaGaleri'])->name('beranda');
+
+Route::post('/login', [AuthController::class, 'login'])
+  ->middleware('throttle:5,1')
+  ->name('login');
+
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/profile', fn() => view('profilePage'))->name('profile');
@@ -90,14 +95,14 @@ Route::middleware('auth')->prefix('kegiatan')
 
   Route::put('/{id}', [ScheduleController::class, 'update'])
     ->name('updatekegiatan');
+    
+  Route::post('/kegiatan/{id}/items', [ScheduleItemController::class, 'store'])
+    ->name('kegiatan.items.store');
+  
+  Route::delete('/kegiatan/items/{id}', [ScheduleItemController::class, 'destroy'])
+    ->name('kegiatan.items.destroy');
 });
 
-
-Route::post('/kegiatan/{id}/items', [ScheduleItemController::class, 'store'])
-  ->name('kegiatan.items.store');
-
-Route::delete('/kegiatan/items/{id}', [ScheduleItemController::class, 'destroy'])
-  ->name('kegiatan.items.destroy');
 
 /*
 |--------------------------------------------------------------------------
@@ -131,20 +136,23 @@ Route::prefix('organisasi')->group(function () {
 | Galeri Masjid
 |--------------------------------------------------------------------------
 */
+
 Route::prefix('galeri')->group(function () {
 
-  Route::get('/', fn() => view('galeri_masjid/galeriPage'))
+  Route::get('/', [GalleryController::class, 'index'])
     ->name('galeri');
 
-  Route::get('/idaroh', fn() => view('galeri_masjid/idarohPage'))
-    ->name('galeriidaroh');
-
-  Route::get('/riayah', fn() => view('galeri_masjid/riayahPage'))
-    ->name('galeririayah');
-
-  Route::get('/imarah', fn() => view('galeri_masjid/imarahPage'))
-    ->name('galeriimarah');
+  Route::get('/{section}', [GalleryController::class, 'show'])
+    ->whereIn('section', ['idaroh', 'imarah', 'riayah'])
+    ->name('galeri.section');
 });
+
+Route::middleware('auth')->prefix('galeri')->group(function () {
+
+  Route::post('/upload', [GalleryController::class, 'store'])
+    ->name('galeri.upload');
+});
+
 
 /*
 |--------------------------------------------------------------------------
@@ -153,21 +161,28 @@ Route::prefix('galeri')->group(function () {
 */
 Route::prefix('dokumen')->group(function () {
 
-  Route::get('/', fn() => view('dokumen_masjid/dokumenPage'))
-    ->name('dokumen');
+  Route::get('/', fn() => view('dokumen_masjid.dokumenPage'))->name('dokumen');
 
-  Route::get('/adart', fn() => view('dokumen_masjid/adartPage'))
-    ->name('adartlaporan');
+  Route::get('/adart',fn() =>view('dokumen_masjid.adartPage'))->name('adartlaporan');
 
   Route::prefix('laporankeuangan')->group(function () {
 
-    Route::get('/', fn() => view('dokumen_masjid/laporan_keuangan/laporankeuanganPage'))
+    Route::get('/', [FinancialReportController::class, 'index'])
       ->name('laporankeuangan');
 
-    Route::get('/lihat', fn() => view('dokumen_masjid/laporan_keuangan/lihatPage'))
-      ->name('lihatlaporankeuangan');
+    Route::middleware('auth')->group(function () {
 
-    Route::get('/unggah', fn() => view('dokumen_masjid/laporan_keuangan/unggahPage'))
-      ->name('unggahlaporankeuangan');
+      Route::get('/unggah',fn() =>view('dokumen_masjid.laporan_keuangan.unggahPage'))->name('unggahlaporankeuangan');
+
+      Route::post('/unggah', [FinancialReportController::class, 'store'])
+        ->name('storelaporankeuangan');
+
+      Route::delete('/hapus/{id}', [FinancialReportController::class, 'destroy'])
+        ->name('hapuslaporankeuangan');
+    });
+
+    // TARUH PALING BAWAH
+    Route::get('/{id}', [FinancialReportController::class, 'show'])
+      ->name('lihatlaporankeuangan');
   });
 });

@@ -51,6 +51,12 @@ class User extends Authenticatable
         ];
     }
 
+    public function gallery()
+    {
+        return $this->hasMany(GalleryImage::class)->orderBy('id');
+    }
+
+
     public function initials(): string
     {
         return Str::of($this->name)
@@ -81,6 +87,23 @@ class User extends Authenticatable
     }
 
     public function canManageKegiatan(): bool
+    {
+        return $this->hasAnyRole([
+            UserRole::SUPER_ADMIN,
+            UserRole::TAKMIR_ADMIN,
+            UserRole::TAKMIR,
+        ]);
+    }
+
+    public function canManageGallery(): bool
+    {
+        return $this->hasAnyRole([
+            UserRole::SUPER_ADMIN,
+            UserRole::TAKMIR_ADMIN,
+            UserRole::TAKMIR,
+        ]);
+    }
+    public function canManageDokumen(): bool
     {
         return $this->hasAnyRole([
             UserRole::SUPER_ADMIN,

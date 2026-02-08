@@ -43,35 +43,53 @@
                             @csrf
 
                             <div class="row g-2">
+
+                                {{-- Waktu --}}
                                 <div class="col-3">
                                     <input type="time"
                                         name="time"
-                                        class="form-control"
-                                        min="{{ \Carbon\Carbon::parse($schedule->start)->format('H:i') }}"
-                                        max="{{ \Carbon\Carbon::parse($schedule->end)->format('H:i') }}"
+                                        class="form-control @error('time') is-invalid @enderror"
+                                        min="{{ \Carbon\Carbon::parse($schedule->start_time)->format('H:i') }}"
+                                        max="{{ \Carbon\Carbon::parse($schedule->end_time)->format('H:i') }}"
+                                        value="{{ old('time') }}"
                                         required>
+
+                                    @error('time')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="col-4">
                                     <input type="text"
                                         name="title"
-                                        class="form-control"
+                                        class="form-control @error('title') is-invalid @enderror"
                                         placeholder="Agenda"
+                                        value="{{ old('title') }}"
                                         required>
+
+                                    @error('title')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="col-4">
                                     <input type="text"
                                         name="description"
-                                        class="form-control"
-                                        placeholder="Keterangan">
+                                        class="form-control @error('description') is-invalid @enderror"
+                                        placeholder="Keterangan"
+                                        value="{{ old('description') }}">
+
+                                    @error('description')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="col-1">
-                                    <button class="btn btn-success w-100">
+                                    <button class="btn btn-success w-100" type="submit">
                                         <i class="bi bi-plus"></i>
                                     </button>
                                 </div>
+
                             </div>
                         </form>
                         @endif

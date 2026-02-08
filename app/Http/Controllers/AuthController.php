@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
@@ -14,22 +16,33 @@ class AuthController extends Controller
     // ======================
     public function login(Request $request)
     {
-        $credentials = $request->validate([
+        $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
-        $remember = $request->boolean('remember');
+        $throttleKey = Str::lower($request->email) . '|' . $request->ip();
 
-        if (Auth::attempt($credentials, $remember)) {
-            $request->session()->regenerate();
-
-            return redirect()->back();
+        if (RateLimiter::tooManyAttempts($throttleKey, 5)) {
+            return back()->withErrors([
+                'email' => 'Terlalu banyak percobaan login.',
+            ], 'login');
         }
 
-        return back()->withErrors([
-            'email' => 'Email atau password salah.',
-        ])->withInput();
+        if (Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
+            RateLimiter::clear($throttleKey);
+            $request->session()->regenerate();
+
+            return redirect()->intended('/');
+        }
+
+        RateLimiter::hit($throttleKey, 60);
+
+        return back()
+            ->withErrors([
+                'email' => 'Email atau password salah.',
+            ], 'login')
+            ->withInput();
     }
 
     public function logout(Request $request)

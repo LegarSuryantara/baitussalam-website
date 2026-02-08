@@ -39,8 +39,14 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label">Nama Kegiatan</label>
-                            <input type="text" name="title" class="form-control"
+                            <input type="text" name="title"
+                                class="form-control @error('title') is-invalid @enderror"
                                 value="{{ old('title', $schedule->title) }}">
+
+                            @error('title')
+                            <small class="text-danger">{{ $message }}</small>
+                            @enderror
+
                         </div>
 
                         <div class="mb-3">
@@ -67,8 +73,14 @@
 
                         <div class="mb-3">
                             <label class="form-label">Lokasi</label>
-                            <input type="text" name="location" class="form-control"
+                            <input type="text" name="location"
+                                class="form-control @error('location') is-invalid @enderror"
                                 value="{{ old('location', $schedule->location) }}">
+
+                            @error('location')
+                            <small class="text-danger">{{ $message }}</small>
+                            @enderror
+
                         </div>
                     </div>
 
@@ -76,22 +88,20 @@
                     <div class="col-md-6">
                         <div class="border rounded p-3 text-center">
 
-                            <div id="previewWrapper" class="mb-3">
-                                <div id="preview"
-                                    class="d-flex align-items-center justify-content-center border rounded"
-                                    style="height:220px;cursor:pointer;background:#f8f9fa;">
+                            <div id="preview"
+                                class="d-flex align-items-center justify-content-center border rounded"
+                                style="height:220px;cursor:pointer;background:#f8f9fa;"
+                                onclick="document.getElementById('imageInput').click()">
 
-                                    <div class="text-center text-muted">
-                                        <div style="font-size:40px;">＋</div>
-                                        <small>Upload gambar (Opsional)</small>
-                                    </div>
+                                <div class="text-center text-muted">
+                                    <div style="font-size:40px;">＋</div>
+                                    <small>Upload gambar (Opsional)</small>
                                 </div>
                             </div>
-                            <input type="file" name="image" class="form-control @error('image') 
-                            is-invalid
-                            @enderror">
+                                <br>
+                            <input type="file" id="imageInput" name="image" class="form-control @error('image') is-invalid @enderror">
                             @error('image')
-                            <small class="text-danger">{{ $message }}</small>
+                                <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                     </div>

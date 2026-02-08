@@ -14,31 +14,57 @@
                     </p>
                 </div>
 
+                @auth
+                @if(auth()->user()->canManageDokumen())
                 <a href="{{ route('unggahlaporankeuangan') }}" class="btn btn-success rounded-pill px-4">
                     <i class="bi bi-plus-circle me-1"></i> Unggah Dokumen
                 </a>
+                @endif
+                @endauth
+
             </div>
 
             <div class="card shadow-sm rounded-card p-4">
 
-                <div class="d-flex flex-row mb-4 justify-content-between">
+                <form method="GET" action="{{ route('laporankeuangan') }}"
+                    class="d-flex flex-wrap mb-4 justify-content-between w-100 gap-3">
 
+                    {{-- SEARCH --}}
+                    <div class="input-group search-box" style="max-width:300px;">
+                        <input type="text"
+                            name="search"
+                            value="{{ request('search') }}"
+                            class="form-control"
+                            placeholder="Judul laporan...">
 
-                    <div class="input-group search-box">
-                        <input type="text" class="form-control " placeholder="Judul Laporan...">
-                        <span class="input-group-search input-group-text bg-white">
+                        <button type="submit" class="input-group-text bg-white">
                             <i class="bi bi-search"></i>
-                        </span>
+                        </button>
+
+                        @if(request('search') || request('tahun'))
+                        <a href="{{ route('laporankeuangan') }}"
+                            class="btn btn-outline-secondary">
+                            Reset
+                        </a>
+                        @endif
                     </div>
 
-                    <div>
-                        <select class="form-select w-auto">
-                            <option selected>2025</option>
-                            <option>2026</option>
-                            <option>2024</option>
-                        </select>
-                    </div>
-                </div>
+                    {{-- FILTER TAHUN --}}
+                    <select name="tahun"
+                        class="form-select w-auto"
+                        onchange="this.form.submit()">
+
+                        <option value="">Semua Tahun</option>
+
+                        @for ($y = date('Y'); $y >= 2020; $y--)
+                        <option value="{{ $y }}"
+                            {{ request('tahun') == $y ? 'selected' : '' }}>
+                            {{ $y }}
+                        </option>
+                        @endfor
+                    </select>
+
+                </form>
 
                 <hr>
                 <div class="table-responsive">
@@ -53,52 +79,66 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @forelse ($laporans as $laporan)
                             <tr>
                                 <td>
-                                    <strong>Laporan Rekap Keuangan Bulanan</strong><br>
-                                    <small class="text-muted">12 Januari 2026</small>
+                                    <strong>{{ $laporan->title }}</strong><br>
+                                    <small class="text-muted">
+                                        {{ \Carbon\Carbon::parse($laporan->created_at)->translatedFormat('d F Y') }}
+                                    </small>
                                 </td>
-                                <td>Januari 2026</td>
-                                <td>2 Januari 2026</td>
-                                <td>Sekretaris</td>
+
+                                <td>
+                                    {{ \Carbon\Carbon::create()->month($laporan->periode_bulan)->translatedFormat('F') }}
+                                    {{ $laporan->periode_tahun }}
+                                </td>
+
+                                <td>
+                                    {{ \Carbon\Carbon::parse($laporan->created_at)->format('d M Y') }}
+                                </td>
+
+                                <td>{{ $laporan->uploaded_by }}</td>
+
                                 <td class="text-center">
-                                    <a href="{{ route('lihatlaporankeuangan') }}" class="btn btn-success btn-sm rounded-pill px-4">
+
+                                    <!-- LIHAT -->
+                                    <a target="_blank"
+                                        href="{{ route('lihatlaporankeuangan', $laporan->id) }}"
+                                        class="btn btn-success btn-sm rounded-pill px-3">
                                         Lihat
                                     </a>
-                                </td>
-                            </tr>
 
-                            <tr>
-                                <td>
-                                    <strong>Laporan Keuangan Bulan Januari</strong><br>
-                                    <small class="text-muted">28 Januari 2026</small>
-                                </td>
-                                <td>Januari 2026</td>
-                                <td>2 Januari 2026</td>
-                                <td>Sekretaris</td>
-                                <td class="text-center">
-                                    <button class="btn btn-success btn-sm rounded-pill px-4">
-                                        Lihat
-                                    </button>
-                                </td>
-                            </tr>
+                                    @auth
+                                    @if(auth()->user()->canManageDokumen())
+                                    <!-- HAPUS -->
+                                    <form action="{{ route('hapuslaporankeuangan', $laporan->id) }}"
+                                        method="POST"
+                                        style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger btn-sm rounded-pill px-3"
+                                            onclick="return confirm('Hapus laporan?')">
+                                            Hapus
+                                        </button>
+                                    </form>
+                                    @endif
+                                    @endauth
 
-                            <tr>
-                                <td>
-                                    <strong>Laporan Tahunan 2025</strong><br>
-                                    <small class="text-muted">2025</small>
-                                </td>
-                                <td>2025</td>
-                                <td>2 Januari 2026</td>
-                                <td>Ketua Takmir</td>
-                                <td class="text-center">
-                                    <button class="btn btn-success btn-sm rounded-pill px-4">
-                                        Lihat
-                                    </button>
                                 </td>
                             </tr>
+                            @empty
+                            <tr>
+                                <td colspan="5" class="text-center text-muted">
+                                    Belum ada laporan
+                                </td>
+                            </tr>
+                            @endforelse
                         </tbody>
+
                     </table>
+                    <div class="mt-3">
+                        {{ $laporans->links() }}
+                    </div>
                 </div>
 
             </div>

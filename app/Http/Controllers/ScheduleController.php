@@ -113,7 +113,11 @@ class ScheduleController extends Controller
         $imageName = null;
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $imageName = Str::uuid() . '.' . $file->getClientOriginalExtension();
+            $tanggal = now()->format('Y-m-d');
+            $random = Str::lower(Str::random(3)) . substr(time(), -2);
+            $userId = Auth::id() ?? 'Takmir';
+            $ext = $file->getClientOriginalExtension();
+            $imageName = "{$tanggal}-{$random}-{$userId}.{$ext}";
             Storage::disk('public')->putFileAs('gambar_kegiatan', $file, $imageName);
         }
         Schedule::create([
@@ -151,8 +155,13 @@ class ScheduleController extends Controller
                 Storage::disk('public')->delete('gambar_kegiatan/' . $schedule->image);
             }
             $file = $request->file('image');
-            $filename = Str::uuid() . '.' . $file->getClientOriginalExtension();
+            $tanggal = now()->format('Y-m-d');
+            $random = Str::lower(Str::random(3)) . substr(time(), -2);
+            $userId = Auth::id() ?? 'Takmir';
+            $ext = $file->getClientOriginalExtension();
+            $filename = "{$tanggal}-{$random}-{$userId}.{$ext}";
             Storage::disk('public')->putFileAs('gambar_kegiatan', $file, $filename);
+
             $data['image'] = $filename;
         }
         $schedule->update([
@@ -161,6 +170,7 @@ class ScheduleController extends Controller
             'end_date' => $endDate->toDateString(),
             'start' => $start,
             'end' => $end,
+            'location' => $request->location ?: $schedule->location,
         ]);
         return redirect()
             ->route('lihatkegiatan', $schedule->id)
@@ -197,7 +207,8 @@ class ScheduleController extends Controller
      * ========================================================= */
     private function validateData($request, $isUpdate = false)
     {
-        return $request->validate([
+        return $request->validate(
+        [
             'title' => 'required|max:25',
             'category' => 'required',
             'date' => 'required|date',
@@ -208,7 +219,17 @@ class ScheduleController extends Controller
             'pemateri' => 'nullable|max:100',
             'description' => 'nullable|max:255',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
-        ]);
+        ],
+        [
+            'title.required' => 'Nama kegiatan wajib diisi',
+            'category.required' => 'Kategori wajib dipilih',
+            'date.required' => 'Tanggal wajib diisi',
+            'start_time.required' => 'Waktu mulai wajib diisi',
+            'end_time.required' => 'Waktu selesai wajib diisi',
+            'end_time.date_format' => 'Format waktu tidak valid',
+            'end_date.after_or_equal' => 'Tanggal berakhir tidak boleh sebelum tanggal mulai',
+        ]
+        );
     }
     private function buildDateTime($request)
     {

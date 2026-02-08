@@ -19,6 +19,16 @@
                     ? route('penjadwalan.update', $schedule->id) 
                     : route('penjadwalan.store') }}">
 
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+
                 @csrf
                 @if($schedule->id)
                 @method('PUT')
@@ -30,18 +40,23 @@
                         <div class="mb-3">
                             <label class="form-label">Nama Kegiatan</label>
                             <input type="text" name="title"
-                                class="form-control rounded-3"
+                                class="form-control rounded-3 @error('title') is-invalid @enderror"
                                 value="{{ old('title', $schedule->title) }}">
+
+                            @error('title')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Kategori</label>
                             <select name="category" class="form-select rounded-3">
-                                <option {{ $schedule->category == 'Kajian' ? 'selected' : '' }}>Kajian</option>
-                                <option {{ $schedule->category == 'Pelatihan' ? 'selected' : '' }}>Pelatihan</option>
-                                <option {{ $schedule->category == 'Kegiatan Sosial' ? 'selected' : '' }}>Kegiatan Sosial</option>
-                                <option {{ $schedule->category == 'Rutin' ? 'selected' : '' }}>Rutin</option>
-                                <option {{ $schedule->category == 'Acara Besar' ? 'selected' : '' }}>Acara Besar</option>
+                                @foreach(['Kajian','Pelatihan','Kegiatan Sosial','Rutin','Acara Besar'] as $cat)
+                                <option value="{{ $cat }}"
+                                    {{ old('category', $schedule->category) == $cat ? 'selected' : '' }}>
+                                    {{ $cat }}
+                                </option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -66,8 +81,11 @@
                         <div class="mb-3">
                             <label class="form-label">Lokasi</label>
                             <input type="text" name="location"
-                                class="form-control rounded-3"
+                                class="form-control rounded-3 @error('title') is-invalid @enderror"
                                 value="{{ old('location', $schedule->location) }}">
+                            @error('location')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
 
                     </div>
@@ -77,12 +95,13 @@
                         <label class="form-label">Waktu</label>
                         <div class="d-flex gap-3 mb-3">
                             <input type="time" name="start_time"
-                                class="form-control rounded-3"
+                                class="form-control rounded-3 @error('start_time') is-invalid @enderror"
                                 value="{{ old('start_time', $schedule->start_time) }}">
-                            <span class="align-self-center">-</span>
+
                             <input type="time" name="end_time"
-                                class="form-control rounded-3"
+                                class="form-control rounded-3 @error('end_time') is-invalid @enderror"
                                 value="{{ old('end_time', $schedule->end_time) }}">
+
                         </div>
 
 
@@ -136,6 +155,6 @@
         }
     </script>
     @endif
-@endif
-@endauth
+    @endif
+    @endauth
 </x-layout>

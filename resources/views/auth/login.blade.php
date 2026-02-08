@@ -24,11 +24,18 @@
             <input
               type="email"
               name="email"
-              class="form-control"
+              class="form-control @error('email') is-invalid @enderror"
               placeholder="Email"
               value="{{ old('email') }}"
-              required
-              autofocus>
+              autocomplete="email"
+              required>
+
+            @error('email', 'login')
+            <div class="invalid-feedback d-block">
+              {{ $message }}
+            </div>
+            @enderror
+
           </div>
 
           {{-- Password --}}
@@ -39,9 +46,17 @@
             <input
               type="password"
               name="password"
-              class="form-control"
+              class="form-control @error('password') is-invalid @enderror"
               placeholder="Password"
+              autocomplete="current-password"
               required>
+
+            @error('password', 'login')
+            <div class="invalid-feedback d-block">
+              {{ $message }}
+            </div>
+            @enderror
+
           </div>
 
           {{-- Remember --}}
@@ -65,14 +80,9 @@
             </div>
           </div>
 
-          {{-- Error message --}}
-          @if ($errors->any())
-          <div class="alert alert-danger small rounded-3">
-            {{ $errors->first() }}
-          </div>
-          @endif
-
-          <button type="submit" class="btn btn-success w-100 rounded-pill py-2 fw-semibold">
+          <button type="submit"
+            class="btn btn-success w-100 rounded-pill py-2 fw-semibold"
+            onclick="this.disabled=true; this.form.submit();">
             Sign In
           </button>
         </form>
@@ -80,5 +90,14 @@
       </div>
 
     </div>
+    @if ($errors->login->any())
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const modal = new bootstrap.Modal(document.getElementById('signin'));
+        modal.show();
+      });
+    </script>
+    @endif
+
   </div>
 </div>

@@ -9,7 +9,9 @@
             <div class="row g-4 align-items-start">
 
                 <div class="col-lg-7">
-                    <img src="assets/images/gambarMasjid.png" class="img-fluid rounded-4 shadow-sm w-100" alt="Masjid">
+                    <img src="{{ asset('assets/images/gambarMasjid.png') }}"
+                        class="img-fluid rounded-3 shadow-sm w-100"
+                        alt="Masjid">
                 </div>
 
                 <div class="col-lg-5">

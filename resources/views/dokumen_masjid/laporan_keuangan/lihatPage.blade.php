@@ -11,12 +11,11 @@
                 <div class="card-body">
 
                     <div class="text-center mb-4">
-                        <h5 class="fw-bold mb-1">LAPORAN KEUANGAN MASJID</h5>
-                        <small class="text-muted">PERIODE JANUARI 2026</small>
+                        <h5 class="fw-bold fs-2 mb-1">
+                            {{ strtoupper($laporan->title) }}
+                        </h5>
                     </div>
-
                     <hr>
-
                     <div class="d-flex align-items-center mb-3">
                         <i class="bi bi-receipt fs-3 me-3"></i>
                         <h6 class="fw-bold mb-0">LAPORAN KEUANGAN</h6>
@@ -25,24 +24,33 @@
                     <div class="border rounded p-3 mb-3">
                         <div class="row g-2">
                             <div class="col-md-6">
-                                <small class="text-muted">Jenis Dokumen</small>
-                                <div>Laporan Keuangan</div>
+                                <small class="text-muted">Jenis File</small>
+                                <div>
+                                    {{ strtoupper($ext) }}
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <small class="text-muted">Periode</small>
-                                <div>Januari 2026</div>
+                                <div>
+                                    {{ \Carbon\Carbon::create()->month($laporan->periode_bulan)->translatedFormat('F') }}
+                                    {{ $laporan->periode_tahun }}
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <small class="text-muted">Dibuat Oleh</small>
-                                <div>Bendahara</div>
+                                <div>{{ $laporan->uploaded_by }}</div>
+                            </div>
+                            <div class="col-md-6">
+                                <small class="text-muted">Ukuran File</small>
+                                <div>{{ $size }}</div>
+                            </div>
+                            <div class="col-md-6">
+                                <small class="text-muted">Tanggal Upload</small>
+                                <div>{{ $laporan->created_at->format('d M Y') }}</div>
                             </div>
                             <div class="col-md-6">
                                 <small class="text-muted">Status</small><br>
                                 <span class="badge badge-final statuslaporan">Final</span>
-                            </div>
-                            <div class="col-md-6">
-                                <small class="text-muted">Terakhir Diedit</small>
-                                <div>Bpk. Rohman</div>
                             </div>
                         </div>
                     </div>
@@ -50,17 +58,17 @@
                     <div class="border rounded p-3 mb-4">
                         <h6 class="fw-bold">Ringkasan Laporan</h6>
                         <p class="mb-0">
-                            Laporan ini berisi rekap pemasukan dan pengeluaran Masjid Baitussalam
-                            periode Januari 2026 yang telah disahkan oleh pengurus Takmir Masjid
-                            Baitussalam.
+                            {{ $laporan->description ?? '-' }}
                         </p>
                     </div>
 
                     <div class="text-center mb-3">
-                        <button class="btn btn-success px-4">
+                        <a target="_blank"
+                            href="{{ asset('storage/laporan_keuangan/'.$laporan->file) }}"
+                            class="btn btn-success px-4">
                             <i class="bi bi-download me-2"></i>
-                            Unduh Laporan Keuangan (Excel)
-                        </button>
+                            Unduh Laporan ({{ strtoupper($ext) }} • {{ $size }})
+                        </a>
                     </div>
 
                     <div class="text-muted small">
