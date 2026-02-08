@@ -5,7 +5,7 @@
                 <x-Navbar></x-Navbar>
             </div>
             <div class="Logo m-3">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     <img src="{{ asset('assets/images/logobaitussalam.png') }}" alt="BaitussalamLogo" width="120" height="96">
                 </a>
             </div>
