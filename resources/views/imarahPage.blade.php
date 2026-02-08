@@ -41,12 +41,70 @@
                                         <li>Pembinaan akhlak dan ibadah</li>
                                     </ul>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-divider"></div>
+
+            <div class="accordion mt-4" id="imarahAccordion2">
+
+                <div class="accordion-item mb-3">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#itemTwo">
+                            <i class="bi bi-book-half me-2"></i> Pendidikan dan Dakwah
+                        </button>
+                    </h2>
+                    <div id="itemTwo" class="accordion-collapse collapse" data-bs-parent="#imarahAccordion2">
+                        <div class="accordion-body">
+                            <p class="small text-muted">
+                                Program pendidikan dan dakwah yang bertujuan untuk mencetak generasi yang Qurani
+                                dan berakhlakul karimah melalui berbagai kegiatan pembelajaran dan syiar Islam.
+                            </p>
+
+                            <strong class="small">Contoh Kegiatan :</strong>
+                            <div class="row mt-2 small">
                                 <div class="col-md-6">
-                                    <div class="d-flex justify-content-center justify-content-md-end mt-4">
-                                        <button class="btn btn-success rounded-pill px-4">
-                                            Lihat Galeri Pembinaan <i class="bi bi-arrow-right ms-2"></i>
-                                        </button>
-                                    </div>
+                                    <ul>
+                                        <li>TPA / TPQ</li>
+                                        <li>Tahsin dan Tahfidz Al-Qur'an</li>
+                                        <li>Kajian Kitab Kuning</li>
+                                        <li>Pelatihan Muadzin dan Khatib</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-divider"></div>
+
+            <div class="accordion mt-4" id="imarahAccordion3">
+
+                <div class="accordion-item mb-3">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#itemThree">
+                            <i class="bi bi-calendar-event-fill me-2"></i> Kegiatan Hari Besar Islam
+                        </button>
+                    </h2>
+                    <div id="itemThree" class="accordion-collapse collapse" data-bs-parent="#imarahAccordion3">
+                        <div class="accordion-body">
+                            <p class="small text-muted">
+                                Peringatan hari-hari besar Islam sebagai syiar agama dan momentum untuk
+                                meningkatkan semangat ibadah serta ukhuwah islamiyah.
+                            </p>
+
+                            <strong class="small">Contoh Kegiatan :</strong>
+                            <div class="row mt-2 small">
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li>Sholat Idul Fitri & Idul Adha</li>
+                                        <li>Penyembelihan Hewan Qurban</li>
+                                        <li>Peringatan Maulid Nabi</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>

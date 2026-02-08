@@ -600,6 +600,8 @@ button.btnDokumen {
 /* Accordion style */
 
 #imarahAccordion .accordion-button,
+#imarahAccordion2 .accordion-button,
+#imarahAccordion3 .accordion-button,
 #idarohAccordion .accordion-button {
     background-color: #d8f0d8;
     font-weight: 600;
@@ -607,17 +609,23 @@ button.btnDokumen {
 }
 
 #imarahAccordion .accordion-button:not(.collapsed),
+#imarahAccordion2 .accordion-button:not(.collapsed),
+#imarahAccordion3 .accordion-button:not(.collapsed),
 #idarohAccordion .accordion-button:not(.collapsed) {
     background-color: #cceacb;
     box-shadow: none;
 }
 
 #imarahAccordion .accordion-button:focus,
+#imarahAccordion2 .accordion-button:focus,
+#imarahAccordion3 .accordion-button:focus,
 #idarohAccordion .accordion-button:focus {
     box-shadow: none;
 }
 
 #imarahAccordion .accordion-item,
+#imarahAccordion2 .accordion-item,
+#imarahAccordion3 .accordion-item,
 #idarohAccordion .accordion-item {
     border-radius: 8px;
     overflow: hidden;
