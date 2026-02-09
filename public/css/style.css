@@ -1324,16 +1324,24 @@ body {
 }
 
 /* =========================
-   KONTAK - FIGMA MOBILE
+   KONTAK - FIGMA MOBILE FIX
 
 /* Background halaman */
 body {
-    background-color: #e3ebe6;
+    background-color: #e6efe9;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* Container spacing */
+/* Container utama */
 .container {
-    padding: 20px;
+    padding: 16px;
+}
+
+/* Judul Section */
+.section-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
 }
 
 /* =========================
@@ -1341,7 +1349,7 @@ body {
    KONTAK - MOBILE FIX
 
 .kontakForm {
-    padding: 0;
+    margin-bottom: 20px;
 }
 
 /* Label */
@@ -1349,19 +1357,22 @@ body {
     font-size: 13px;
     font-weight: 500;
     margin-bottom: 6px;
+    display: block;
 }
 
 /* Input & Textarea */
 .kontakInputForm {
+    width: 100%;
     font-size: 13px;
-    padding: 12px 14px;
-    border-radius: 14px;
-    border: 1px solid #dcdcdc;
-    background: #f7f7f7;
+    padding: 12px 16px;
+    border-radius: 18px;
+    border: 1px solid #e0e0e0;
+    background: #f5f5f5;
+    margin-bottom: 10px;
 }
 
 .kontakInputForm:focus {
-    box-shadow: none;
+    outline: none;
     border-color: #2e7d32;
     background: #ffffff;
 }
@@ -1370,55 +1381,67 @@ body {
 .kontakForm button {
     width: 100%;
     background-color: #2e7d32;
-    border-radius: 10px;
+    border-radius: 14px;
     padding: 12px 0;
     font-size: 14px;
     font-weight: 500;
     border: none;
+    color: #fff;
+    margin-top: 5px;
 }
 
 /* =========================
-   HUBUNGI KAMI BUTTON
+   HUBUNGI KAMI - MOBILE ONLY
 ========================= */
 
 .hubungi-buttons {
     display: flex;
     gap: 12px;
-    margin-top: 10px;
+    margin: 15px 0;
 }
 
 .hubungi-buttons a {
     flex: 1;
-    text-align: center;
-    padding: 10px 0;
-    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 0;
+    border-radius: 14px;
     font-size: 13px;
     font-weight: 500;
+    text-decoration: none;
+    color: #fff;
+    transition: 0.2s ease;
 }
 
-/* Telepon */
 .btn-telepon {
     background-color: #2e7d32;
-    color: #fff;
 }
 
-/* WhatsApp */
 .btn-wa {
-    background-color: #2e7d32;
-    color: #fff;
+    background-color: #25D366;
 }
+
+.hubungi-buttons a:active {
+    transform: scale(0.97);
+}
+
 
 /* =========================
    INFO EMAIL & ALAMAT
 ========================= */
 
 .info-box {
-    background: #f7f7f7;
-    border: 1px solid #dcdcdc;
-    border-radius: 14px;
-    padding: 12px 14px;
+    background: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 18px;
+    padding: 12px 16px;
     font-size: 13px;
-    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 /* =========================
@@ -1427,22 +1450,35 @@ body {
 
 .map-box {
     margin-top: 12px;
-    border-radius: 16px;
+    border-radius: 18px;
     overflow: hidden;
 }
 
-.map-box img,
-.map-box iframe {
+.map-box iframe,
+.map-box img {
     width: 100%;
-    border-radius: 16px;
+    height: 180px;
+    border: none;
+    display: block;
 }
 
 /* Link Google Maps */
 .map-link {
     text-align: center;
     font-size: 12px;
-    margin-top: 6px;
+    margin-top: 8px;
     color: #2e7d32;
+    font-weight: 500;
+    text-decoration: none;
+    display: block;
+}
+
+/* =========================
+   FOOTER SPACING
+========================= */
+
+.footer {
+    margin-top: 30px;
 }
 
 /* =========================
@@ -1504,7 +1540,7 @@ body {
 .card .card-body ul {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px 12px;
+    gap: 5px 5px;
 }
 
 .card .card-body ul li {
