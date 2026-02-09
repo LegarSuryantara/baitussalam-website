@@ -1,21 +1,20 @@
 <x-layout title="Pengajian Ibu-ibu | Baitussalam">
-    <div>
+    <div class="pengajianIbuContainer">
         <div class="herosectionIbu d-flex justify-content-center align-items-center">
             <span class="titleHero">PENGAJIAN ANNISA IBU-IBU BAITUSALAM</span>
             <img src="/assets/images/ornamenGaris.png" alt="ornamenGaris" class="ornamenGaris">
         </div>
-        <div class="container py-5">
+        <div class="container py-5 px-4">
 
             <section class="mb-5">
                 <h4 class="fw-bold mb-3">Tentang Kami</h4>
-                <p class="text-muted">
+                <p class="text-muted deskripsiOrganisasi">
                     Pengajian Annisa adalah sebutan umum untuk kegiatan majelis taklim atau forum keagamaan yang
                     pesertanya didominasi oleh kaum ibu atau perempuan. Kegiatan ini berfungsi sebagai wadah
                     untuk menambah ilmu agama, memperkuat keimanan, dan mempererat tali silaturahmi di antara para ibu.
                 </p>
             </section>
-
-            <section class="mb-5">
+            <section class="mb-5 py-1">
                 <h4 class="fw-bold mb-4">Struktur Pengurus</h4>
 
                 <div id="pengurusCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -107,7 +106,7 @@
                 </a>
             </section>
 
-            <section>
+            <section class="galeriAnnisa">
                 <h4 class="fw-bold mb-4">Galeri Kegiatan</h4>
 
                 <div class="row g-4">
