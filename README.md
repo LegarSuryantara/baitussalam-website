@@ -7,54 +7,128 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+````markdown
+# Masjid Web - Laravel Project
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Halo! Ini adalah project website untuk Masjid Baitussalam.
+````
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 1. Clone repository
 
-## Learning Laravel
+Kalau ingin clone dari branch tertentu (misal `backend`), jalankan perintah ini:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+````bash
+git clone -b backend --single-branch https://github.com/LegarSuryantara/baitussalam-website.git masjid_web
+````
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+> Keterangan:
+>
+> * `-b backend` → memilih branch yang ingin diclone (ganti kalau mau branch lain).
+> * `masjid_web` → nama folder yang akan dibuat untuk project.
 
-## Laravel Sponsors
+Masuk ke folder project:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+cd masjid_web
+```
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 2. Install dependencies PHP
 
-## Contributing
+Laravel membutuhkan Composer untuk mengelola library PHP. Jalankan:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+composer install
+```
 
-## Code of Conduct
+> Pastikan Composer sudah terinstall.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## 3. Setup file environment
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+File `.env` berisi konfigurasi project, seperti database. Copy dulu file contoh:
 
-## License
+```bash
+cp .env.example .env
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Kemudian buka `.env` dan edit bagian database, contohnya:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nama_database
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+> Ganti `nama_database` sesuai database yang sudah kamu buat di MySQL/MariaDB.
+
+---
+
+## 4. Generate application key
+
+Laravel membutuhkan key untuk keamanan. Jalankan:
+
+```bash
+php artisan key:generate
+```
+
+---
+
+## 5. Setup database
+
+Jalankan migration dan seeding data (ini akan membuat tabel dan data awal):
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+> Pastikan database sudah dibuat sesuai nama di `.env`.
+
+---
+
+## 6. Install dan build Node.js dependencies
+
+Kalau project menggunakan frontend (Vite/Laravel Mix), jalankan:
+
+```bash
+npm install
+npm run build
+```
+
+> Pastikan Node.js dan npm sudah terinstall.
+> Untuk development, bisa juga pakai: `npm run dev` supaya otomatis reload saat ubah kode frontend.
+
+---
+
+## 7. Link storage
+
+Kalau project menyimpan file publik (misal upload gambar), jalankan:
+
+```bash
+php artisan storage:link
+```
+
+---
+
+## 8. Jalankan project
+
+Untuk menjalankan server lokal Laravel:
+
+```bash
+php artisan serve
+```
+
+Buka browser dan akses:
+
+```
+http://127.0.0.1:8000
+```
 
