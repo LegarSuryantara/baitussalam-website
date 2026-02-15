@@ -1,7 +1,7 @@
 <div class="containerFooter bg-success-subtle">
     <div class="footerLogoContainer ">
         <div class="footerLogo">
-            <img src="/assets/images/logobaitussalam.png" alt="logo" width="240" height="192">
+            <img src="/assets/images/logobaitussalam.png" alt="logo" width="120" height="96">
         </div>
     </div>
     <div class="footerDisclaimerContainer">
