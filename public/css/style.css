@@ -657,21 +657,25 @@ button.btnDokumen {
     border: 1px solid #c6e3c6;
 }
 
-.laporanKeuanganContainer .table thead th {
+.laporanKeuanganContainer .table thead th,
+.laporanKegiatanContainer .table thead th {
     font-weight: 600;
     background-color: #fff;
 }
 
-.laporanKeuanganContainer .search-box {
+.laporanKeuanganContainer .search-box,
+.laporanKegiatanContainer .search-box {
     max-width: 260px;
     border-radius: 10px;
 }
 
-.laporanKeuanganContainer .rounded-card {
+.laporanKeuanganContainer .rounded-card,
+.laporanKegiatanContainer .rounded-card {
     border-radius: 14px;
 }
 
-.laporanKeuanganContainer .form-select {
+.laporanKeuanganContainer .form-select,
+.laporanKegiatanContainer .form-select {
     border-radius: 10px;
 }
 

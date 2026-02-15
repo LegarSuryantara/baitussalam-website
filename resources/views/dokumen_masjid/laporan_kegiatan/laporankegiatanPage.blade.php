@@ -1,6 +1,6 @@
 <x-layout title="Laporan Kegiatan | Baitussalam">
     <div>
-        <div class="container laporanKeuanganContainer my-4">
+        <div class="container laporanKegiatanContainer my-4">
 
             <a href="{{ route('dokumen') }}" class="text-decoration-none text-dark mb-3 d-inline-block">
                 ← Kembali
