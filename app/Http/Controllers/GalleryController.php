@@ -59,6 +59,49 @@ class GalleryController extends Controller
         return back()->with('success', 'Gambar berhasil diupload.');
     }
 
+    public function update(Request $request, $id)
+    {
+        $image = GalleryImage::findOrFail($id);
+        $data = $this->validateData($request, true);
+
+        if ($request->hasFile('image')) {
+            // Delete old image
+            if ($image->image_path && \Illuminate\Support\Facades\Storage::disk('public')->exists($image->image_path)) {
+                \Illuminate\Support\Facades\Storage::disk('public')->delete($image->image_path);
+            }
+
+            $folder = 'galeri/' . $data['section'];
+            $file = $request->file('image');
+            $tanggal = now()->format('Y-m-d');
+            $random = Str::lower(Str::random(3)) . substr(time(), -2);
+            $userId = Auth::id();
+            $ext = $file->getClientOriginalExtension();
+            $namaFile = "{$tanggal}-{$random}-{$userId}.{$ext}";
+            
+            $path = $file->storeAs($folder, $namaFile, 'public');
+            $image->image_path = $path;
+        }
+
+        $image->caption = $data['caption'];
+        $image->section = $data['section'];
+        $image->save();
+
+        return back()->with('success', 'Gambar berhasil diupdate.');
+    }
+
+    public function destroy($id)
+    {
+        $image = GalleryImage::findOrFail($id);
+
+        if ($image->image_path && \Illuminate\Support\Facades\Storage::disk('public')->exists($image->image_path)) {
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($image->image_path);
+        }
+
+        $image->delete();
+
+        return back()->with('success', 'Gambar berhasil dihapus.');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | VALIDATION METHOD (Reusable)

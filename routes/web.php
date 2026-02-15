@@ -151,6 +151,12 @@ Route::middleware('auth')->prefix('galeri')->group(function () {
 
   Route::post('/upload', [GalleryController::class, 'store'])
     ->name('galeri.upload');
+
+  Route::put('/update/{id}', [GalleryController::class, 'update'])
+    ->name('galeri.update');
+
+  Route::delete('/delete/{id}', [GalleryController::class, 'destroy'])
+    ->name('galeri.destroy');
 });
 
 
