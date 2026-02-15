@@ -22,7 +22,8 @@
                 @foreach ($images as $img)
                     <div class="col-md-3 col-sm-6">
                         <div class="gallery-card">
-                            <img src="{{ asset('storage/' . $img->image_path) }}" class="w-100 gallery-img">
+                            <img src="{{ route('storage.access', ['path' => $img->image_path]) }}"
+                                class="w-100 gallery-img">
 
                             <p class="text-muted mb-0">
                                 {{ $img->caption }}
@@ -238,7 +239,7 @@
 
                     // Set data
                     document.getElementById('editCaption').value = data.caption;
-                    document.getElementById('editPreview').src = `/storage/${data.image_path}`;
+                    document.getElementById('editPreview').src = `{{ url('/storage-access') }}/${data.image_path}`;
 
                     const modal = new bootstrap.Modal(el);
                     modal.show();

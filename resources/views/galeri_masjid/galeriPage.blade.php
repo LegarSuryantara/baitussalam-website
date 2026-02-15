@@ -13,20 +13,17 @@
                 </div>
 
                 <div class="row g-3">
-                    @forelse($idaroh as $img)
-                    <div class="col-md-4">
-                        <div class="img-card cardGaleri">
-                            <img
-                                src="{{ asset('storage/'.$img->image_path) }}"
-                                class="img-fluid"
-                                loading="lazy"
-                                alt="{{ $img->caption }}">
+                    @forelse ($idaroh as $img)
+                        <div class="col-md-4">
+                            <div class="img-card cardGaleri">
+                                <img src="{{ route('storage.access', ['path' => $img->image_path]) }}" class="img-fluid"
+                                    loading="lazy" alt="{{ $img->caption }}">
+                            </div>
                         </div>
-                    </div>
                     @empty
-                    <div class="col-12 text-muted small">
-                        Belum ada foto.
-                    </div>
+                        <div class="col-12 text-muted small">
+                            Belum ada foto.
+                        </div>
                     @endforelse
                 </div>
             </div>
@@ -42,20 +39,17 @@
                 </div>
 
                 <div class="row g-3">
-                    @forelse($riayah as $img)
-                    <div class="col-md-4">
-                        <div class="img-card cardGaleri">
-                            <img
-                                src="{{ asset('storage/'.$img->image_path) }}"
-                                class="img-fluid"
-                                loading="lazy"
-                                alt="{{ $img->caption }}">
+                    @forelse ($riayah as $img)
+                        <div class="col-md-4">
+                            <div class="img-card cardGaleri">
+                                <img src="{{ route('storage.access', ['path' => $img->image_path]) }}" class="img-fluid"
+                                    loading="lazy" alt="{{ $img->caption }}">
+                            </div>
                         </div>
-                    </div>
                     @empty
-                    <div class="col-12 text-muted small">
-                        Belum ada foto.
-                    </div>
+                        <div class="col-12 text-muted small">
+                            Belum ada foto.
+                        </div>
                     @endforelse
                 </div>
             </div>
@@ -71,20 +65,17 @@
                 </div>
 
                 <div class="row g-3">
-                    @forelse($imarah as $img)
-                    <div class="col-md-4">
-                        <div class="img-card cardGaleri">
-                            <img
-                                src="{{ asset('storage/'.$img->image_path) }}"
-                                class="img-fluid"
-                                loading="lazy"
-                                alt="{{ $img->caption }}">
+                    @forelse ($imarah as $img)
+                        <div class="col-md-4">
+                            <div class="img-card cardGaleri">
+                                <img src="{{ route('storage.access', ['path' => $img->image_path]) }}" class="img-fluid"
+                                    loading="lazy" alt="{{ $img->caption }}">
+                            </div>
                         </div>
-                    </div>
                     @empty
-                    <div class="col-12 text-muted small">
-                        Belum ada foto.
-                    </div>
+                        <div class="col-12 text-muted small">
+                            Belum ada foto.
+                        </div>
                     @endforelse
                 </div>
             </div>

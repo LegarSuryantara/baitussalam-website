@@ -64,7 +64,8 @@
                     </div>
 
                     <div class="text-center mb-3">
-                        <a target="_blank" href="{{ asset('storage/laporan_kegiatan/' . $laporan->file) }}"
+                        <a target="_blank"
+                            href="{{ route('storage.access', ['path' => 'laporan_kegiatan/' . $laporan->file]) }}"
                             class="btn btn-success px-4">
                             <i class="bi bi-download me-2"></i>
                             Unduh Laporan ({{ strtoupper($ext) }} • {{ $size }})

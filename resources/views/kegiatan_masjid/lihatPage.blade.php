@@ -8,7 +8,7 @@
             </a>
 
             <h4 class="fw-bold mb-2">
-                {{ ($schedule->title) }}
+                {{ $schedule->title }}
             </h4>
 
             <div class="mb-3">
@@ -23,9 +23,11 @@
                     <div class="card shadow-soft p-3">
 
                         @php
-                        $img = $schedule->image && Storage::disk('public')->exists('gambar_kegiatan/'.$schedule->image)
-                        ? asset('storage/gambar_kegiatan/'.$schedule->image)
-                        : 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae';
+                            $img =
+                                $schedule->image &&
+                                Storage::disk('public')->exists('gambar_kegiatan/' . $schedule->image)
+                                    ? route('storage.access', ['path' => 'gambar_kegiatan/' . $schedule->image])
+                                    : 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae';
                         @endphp
 
                         <img src="{{ $img }}" class="img-fluid">
@@ -36,63 +38,56 @@
                         </p>
 
                         @auth
-                        @if(auth()->user()->canManageKegiatan())
-                        <hr>
-                        <h6 class="fw-bold">Tambah Rangkaian Acara</h6>
-                        <form method="POST" action="{{ route('kegiatan.items.store', $schedule->id) }}">
-                            @csrf
+                            @if (auth()->user()->canManageKegiatan())
+                                <hr>
+                                <h6 class="fw-bold">Tambah Rangkaian Acara</h6>
+                                <form method="POST" action="{{ route('kegiatan.items.store', $schedule->id) }}">
+                                    @csrf
 
-                            <div class="row g-2">
+                                    <div class="row g-2">
 
-                                {{-- Waktu --}}
-                                <div class="col-3">
-                                    <input type="time"
-                                        name="time"
-                                        class="form-control @error('time') is-invalid @enderror"
-                                        min="{{ \Carbon\Carbon::parse($schedule->start_time)->format('H:i') }}"
-                                        max="{{ \Carbon\Carbon::parse($schedule->end_time)->format('H:i') }}"
-                                        value="{{ old('time') }}"
-                                        required>
+                                        {{-- Waktu --}}
+                                        <div class="col-3">
+                                            <input type="time" name="time"
+                                                class="form-control @error('time') is-invalid @enderror"
+                                                min="{{ \Carbon\Carbon::parse($schedule->start_time)->format('H:i') }}"
+                                                max="{{ \Carbon\Carbon::parse($schedule->end_time)->format('H:i') }}"
+                                                value="{{ old('time') }}" required>
 
-                                    @error('time')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                                            @error('time')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
 
-                                <div class="col-4">
-                                    <input type="text"
-                                        name="title"
-                                        class="form-control @error('title') is-invalid @enderror"
-                                        placeholder="Agenda"
-                                        value="{{ old('title') }}"
-                                        required>
+                                        <div class="col-4">
+                                            <input type="text" name="title"
+                                                class="form-control @error('title') is-invalid @enderror"
+                                                placeholder="Agenda" value="{{ old('title') }}" required>
 
-                                    @error('title')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                                            @error('title')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
 
-                                <div class="col-4">
-                                    <input type="text"
-                                        name="description"
-                                        class="form-control @error('description') is-invalid @enderror"
-                                        placeholder="Keterangan"
-                                        value="{{ old('description') }}">
+                                        <div class="col-4">
+                                            <input type="text" name="description"
+                                                class="form-control @error('description') is-invalid @enderror"
+                                                placeholder="Keterangan" value="{{ old('description') }}">
 
-                                    @error('description')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                                            @error('description')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
 
-                                <div class="col-1">
-                                    <button class="btn btn-success w-100" type="submit">
-                                        <i class="bi bi-plus"></i>
-                                    </button>
-                                </div>
+                                        <div class="col-1">
+                                            <button class="btn btn-success w-100" type="submit">
+                                                <i class="bi bi-plus"></i>
+                                            </button>
+                                        </div>
 
-                            </div>
-                        </form>
-                        @endif
+                                    </div>
+                                </form>
+                            @endif
                         @endauth
 
                         <h6 class="fw-bold mt-4">Rangkaian Acara</h6>
@@ -108,39 +103,39 @@
                                 <tbody>
 
                                     @forelse($schedule->items as $item)
-                                    <tr>
-                                        <td>
-                                            {{ \Carbon\Carbon::parse($item->time)->format('H:i') }}
-                                        </td>
+                                        <tr>
+                                            <td>
+                                                {{ \Carbon\Carbon::parse($item->time)->format('H:i') }}
+                                            </td>
 
-                                        <td>
-                                            {{ $item->title }}
-                                        </td>
+                                            <td>
+                                                {{ $item->title }}
+                                            </td>
 
-                                        <td class="d-flex justify-content-between align-items-center text-start">
-                                            <span>{{ $item->description ?: '-' }}</span>
+                                            <td class="d-flex justify-content-between align-items-center text-start">
+                                                <span>{{ $item->description ?: '-' }}</span>
 
-                                            @auth
-                                            <form method="POST"
-                                                action="{{ route('kegiatan.items.destroy', $item->id) }}"
-                                                onsubmit="return confirm('Hapus rangkaian acara ini?')">
+                                                @auth
+                                                    <form method="POST"
+                                                        action="{{ route('kegiatan.items.destroy', $item->id) }}"
+                                                        onsubmit="return confirm('Hapus rangkaian acara ini?')">
 
-                                                @csrf
-                                                @method('DELETE')
+                                                        @csrf
+                                                        @method('DELETE')
 
-                                                <button class="btn btn-sm btn-danger ms-2">
-                                                    <i class="bi bi-trash"></i>
-                                                </button>
-                                            </form>
-                                            @endauth
-                                        </td>
-                                    </tr>
+                                                        <button class="btn btn-sm btn-danger ms-2">
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                @endauth
+                                            </td>
+                                        </tr>
                                     @empty
-                                    <tr>
-                                        <td colspan="3" class="text-muted">
-                                            Belum ada rangkaian acara
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td colspan="3" class="text-muted">
+                                                Belum ada rangkaian acara
+                                            </td>
+                                        </tr>
                                     @endforelse
 
                                 </tbody>
@@ -161,16 +156,16 @@
                             <i class="bi bi-calendar-event me-2"></i>
 
                             @php
-                            $start = \Carbon\Carbon::parse($schedule->date);
-                            $end = $schedule->end_date ? \Carbon\Carbon::parse($schedule->end_date) : null;
+                                $start = \Carbon\Carbon::parse($schedule->date);
+                                $end = $schedule->end_date ? \Carbon\Carbon::parse($schedule->end_date) : null;
                             @endphp
 
-                            @if(!$end || $start->isSameDay($end))
-                            {{ $start->translatedFormat('l, d F Y') }}
+                            @if (!$end || $start->isSameDay($end))
+                                {{ $start->translatedFormat('l, d F Y') }}
                             @else
-                            {{ $start->translatedFormat('d F Y') }}
-                            -
-                            {{ $end->translatedFormat('d F Y') }}
+                                {{ $start->translatedFormat('d F Y') }}
+                                -
+                                {{ $end->translatedFormat('d F Y') }}
                             @endif
                         </p>
 
@@ -223,12 +218,11 @@
                         </a>
 
                         @auth
-                        @if(auth()->user()->canManageKegiatan())
-                        <a href="{{ route('editkegiatan', $schedule->id) }}"
-                            class="btn btn-outline-success w-100">
-                            <i class="bi bi-pencil me-2"></i>Edit
-                        </a>
-                        @endif
+                            @if (auth()->user()->canManageKegiatan())
+                                <a href="{{ route('editkegiatan', $schedule->id) }}" class="btn btn-outline-success w-100">
+                                    <i class="bi bi-pencil me-2"></i>Edit
+                                </a>
+                            @endif
                         @endauth
 
                     </div>

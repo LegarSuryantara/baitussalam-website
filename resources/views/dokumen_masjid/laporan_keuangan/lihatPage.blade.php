@@ -2,7 +2,8 @@
     <div>
         <div class="container my-4">
 
-            <a href="{{ route('laporankeuangan')}}" class="text-decoration-none text-dark mb-3 d-inline-flex align-items-center">
+            <a href="{{ route('laporankeuangan') }}"
+                class="text-decoration-none text-dark mb-3 d-inline-flex align-items-center">
                 <i class="bi bi-arrow-left me-2"></i>
                 Kembali ke Laporan Keuangan
             </a>
@@ -64,7 +65,7 @@
 
                     <div class="text-center mb-3">
                         <a target="_blank"
-                            href="{{ asset('storage/laporan_keuangan/'.$laporan->file) }}"
+                            href="{{ route('storage.access', ['path' => 'laporan_keuangan/' . $laporan->file]) }}"
                             class="btn btn-success px-4">
                             <i class="bi bi-download me-2"></i>
                             Unduh Laporan ({{ strtoupper($ext) }} • {{ $size }})

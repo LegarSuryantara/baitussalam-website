@@ -7,6 +7,15 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\ScheduleItemController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\File;
+
+Route::get('/storage-access/{path}', function ($path) {
+    $fullPath = storage_path('app/public/' . $path);
+    if (!File::exists($fullPath)) {
+        abort(404);
+    }
+    return response()->file($fullPath);
+})->where('path', '.*')->name('storage.access');
 
 /*
 |--------------------------------------------------------------------------

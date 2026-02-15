@@ -133,7 +133,8 @@
             <h5 class="fw-bold text-uppercase">Galeri</h5>
 
             <p class="text-muted mb-4" style="max-width: 600px;">
-                "Dokumentasi berbagai kegiatan dan keindahan Masjid Baitussalam Kalirejo Permai dalam melayani umat."
+                "Dokumentasi berbagai kegiatan dan keindahan Masjid Baitussalam Kalirejo Permai dalam melayani
+                umat."
             </p>
 
             <div class="row g-4">
@@ -143,12 +144,14 @@
                         <div class="img-card cardGaleri">
                             @if ($img)
                                 <a href="{{ route('galeri.section', $section) }}">
-                                    <img src="{{ asset('storage/' . $img->image_path) }}" class="img-fluid"
-                                        loading="lazy" alt="{{ $img->caption }}">
+                                    <img src="{{ route('storage.access', ['path' => $img->image_path]) }}"
+                                        class="img-fluid" loading="lazy" alt="{{ $img->caption }}">
                                 </a>
                             @else
-                                <img src="assets/images/background2.png" class="img-fluid" loading="lazy"
-                                    alt="Belum ada foto">
+                                <div class="d-flex align-items-center justify-content-center h-100 bg-light text-muted small px-3 text-center"
+                                    style="min-height: 200px;">
+                                    Belum ada foto diunggah
+                                </div>
                             @endif
                         </div>
                         <h6 class="fw-semibold mt-2 text-center">{{ $title }}</h6>
