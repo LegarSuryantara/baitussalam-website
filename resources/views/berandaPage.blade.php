@@ -133,33 +133,26 @@
             <h5 class="fw-bold text-uppercase">Galeri</h5>
 
             <p class="text-muted mb-4" style="max-width: 600px;">
-                “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua”
+                "Dokumentasi berbagai kegiatan dan keindahan Masjid Baitussalam Kalirejo Permai dalam melayani umat."
             </p>
 
             <div class="row g-4">
-                @foreach(['idaroh' => 'IDAROH', 'riayah' => 'RI’AYAH', 'imarah' => 'IMARAH'] as $section => $title)
-                @php $img = $galeri[$section] ?? null; @endphp
-                <div class="col-md-4">
-                    <div class="img-card cardGaleri">
-                        @if($img)
-                        <a href="{{ route('galeri.section', $section) }}">
-                            <img
-                                src="{{ asset('storage/' . $img->image_path) }}"
-                                class="img-fluid"
-                                loading="lazy"
-                                alt="{{ $img->caption }}">
-                        </a>
-                        @else
-                        <img
-                            src="assets/images/background2.png"
-                            class="img-fluid"
-                            loading="lazy"
-                            alt="Belum ada foto">
-                        @endif
+                @foreach (['idaroh' => 'IDAROH', 'riayah' => 'RI’AYAH', 'imarah' => 'IMARAH'] as $section => $title)
+                    @php $img = $galeri[$section] ?? null; @endphp
+                    <div class="col-md-4">
+                        <div class="img-card cardGaleri">
+                            @if ($img)
+                                <a href="{{ route('galeri.section', $section) }}">
+                                    <img src="{{ asset('storage/' . $img->image_path) }}" class="img-fluid"
+                                        loading="lazy" alt="{{ $img->caption }}">
+                                </a>
+                            @else
+                                <img src="assets/images/background2.png" class="img-fluid" loading="lazy"
+                                    alt="Belum ada foto">
+                            @endif
+                        </div>
+                        <h6 class="fw-semibold mt-2 text-center">{{ $title }}</h6>
                     </div>
-                    <h6 class="fw-semibold mt-2 text-center">{{ $title }}</h6>
-                </div>
                 @endforeach
             </div>
 
