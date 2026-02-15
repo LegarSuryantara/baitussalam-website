@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FinancialReportController;
+use App\Http\Controllers\ActivityReportController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\ScheduleItemController;
@@ -190,5 +191,26 @@ Route::prefix('dokumen')->group(function () {
     // TARUH PALING BAWAH
     Route::get('/{id}', [FinancialReportController::class, 'show'])
       ->name('lihatlaporankeuangan');
+  });
+
+  // LAPORAN KEGIATAN
+  Route::prefix('laporankegiatan')->group(function () {
+    Route::get('/', [ActivityReportController::class, 'index'])
+      ->name('laporankegiatan');
+
+    Route::middleware('auth')->group(function () {
+      Route::get('/unggah', fn() => view('dokumen_masjid.laporan_kegiatan.unggahPage'))
+        ->name('unggahlaporankegiatan');
+
+      Route::post('/unggah', [ActivityReportController::class, 'store'])
+        ->name('storelaporankegiatan');
+
+      Route::delete('/hapus/{id}', [ActivityReportController::class, 'destroy'])
+        ->name('hapuslaporankegiatan');
+    });
+
+    // TARUH PALING BAWAH
+    Route::get('/{id}', [ActivityReportController::class, 'show'])
+      ->name('lihatlaporankegiatan');
   });
 });
