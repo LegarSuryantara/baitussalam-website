@@ -29,7 +29,7 @@
                             <h6 class="fw-bold">Laporan Kegiatan</h6>
                             <p>Dokumen laporan kegiatan masjid yang sudah diarsipkan dalam format PDF.</p>
                         </div>
-                        <a href="#" class="doc-action">
+                        <a href="{{ route('laporankegiatan') }}" class="doc-action">
                             <i class="fa-solid fa-chevron-right"></i>
                         </a>
                     </div>
