@@ -49,52 +49,6 @@
                 </div>
             </div>
 
-            <h5 class="fw-bold">Arsip Surat</h5>
-            <p class="text-muted mb-4">
-                Arsip surat masuk, surat keluar, dan <em>template</em> surat masjid.
-            </p>
-
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="doc-card">
-                        <i class="bi bi-envelope-fill doc-icon"></i>
-                        <div>
-                            <h6 class="fw-bold">Surat Masuk</h6>
-                            <p>Daftar surat yang diterima oleh masjid</p>
-                        </div>
-                        <a href="#" class="doc-action">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="doc-card">
-                        <i class="bi bi-send-fill doc-icon"></i>
-                        <div>
-                            <h6 class="fw-bold">Surat Keluar</h6>
-                            <p>Daftar surat yang dikirim oleh masjid</p>
-                        </div>
-                        <a href="#" class="doc-action">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="doc-card">
-                        <i class="bi bi-file-earmark-text-fill doc-icon"></i>
-                        <div>
-                            <h6 class="fw-bold">Template Surat</h6>
-                            <p>Template surat resmi untuk berbagai keperluan</p>
-                        </div>
-                        <a href="#" class="doc-action">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
             <hr>
 
         </div>

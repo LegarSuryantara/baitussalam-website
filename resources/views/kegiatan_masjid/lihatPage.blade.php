@@ -116,14 +116,14 @@
                                                 <span>{{ $item->description ?: '-' }}</span>
 
                                                 @auth
-                                                    <form method="POST"
-                                                        action="{{ route('kegiatan.items.destroy', $item->id) }}"
-                                                        onsubmit="return confirm('Hapus rangkaian acara ini?')">
+                                                    <form id="delete-item-{{ $item->id }}" method="POST"
+                                                        action="{{ route('kegiatan.items.destroy', $item->id) }}">
 
                                                         @csrf
                                                         @method('DELETE')
 
-                                                        <button class="btn btn-sm btn-danger ms-2">
+                                                        <button type="button" class="btn btn-sm btn-danger ms-2"
+                                                            onclick="confirmDelete('Hapus Acara?', 'Rangkaian acara ini akan dihapus.').then((result) => { if(result.isConfirmed) document.getElementById('delete-item-{{ $item->id }}').submit(); })">
                                                             <i class="bi bi-trash"></i>
                                                         </button>
                                                     </form>

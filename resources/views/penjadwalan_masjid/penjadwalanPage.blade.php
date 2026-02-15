@@ -20,13 +20,12 @@
                                 <h5 class="fw-bold mb-0">Agenda Masjid</h5>
 
                                 @auth
-                                @if(auth()->user()->canManagePenjadwalan())
-                                <a href="javascript:void(0)"
-                                    onclick="goToCreateAgenda()"
-                                    class="btn btn-success btn-sm rounded-pill px-3">
-                                    + Tambah Agenda
-                                </a>
-                                @endif
+                                    @if (auth()->user()->canManagePenjadwalan())
+                                        <a href="javascript:void(0)" onclick="goToCreateAgenda()"
+                                            class="btn btn-success btn-sm rounded-pill px-3">
+                                            + Tambah Agenda
+                                        </a>
+                                    @endif
                                 @endauth
                             </div>
                             <p class="text-muted small mb-3">
@@ -113,7 +112,7 @@
                     return `
                         <div class="agenda-item mb-3 border-bottom pb-3">
                         @auth
-                        @if(auth()->user()->canManagePenjadwalan())
+                        @if (auth()->user()->canManagePenjadwalan())
                             <div class="d-flex justify-content-between align-items-start mb-1">
                                 <h6 class="fw-semibold mb-0">${a.title}</h6>
                                 <div>
@@ -177,19 +176,21 @@
 
         <script>
             function deleteAgenda(id) {
-                if (!confirm('Yakin hapus agenda ini?')) return;
-
-                fetch(`/penjadwalan/delete/${id}`, {
-                        method: 'DELETE',
-                        headers: {
-                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                        }
-                    })
-                    .then(res => res.json())
-                    .then(() => {
-                        const currentDate = document.getElementById('agendaDateLabel').innerText;
-                        location.reload();
-                    });
+                confirmDelete('Hapus Agenda?', 'Agenda ini akan dihapus secara permanen.').then((result) => {
+                    if (result.isConfirmed) {
+                        fetch(`/penjadwalan/delete/${id}`, {
+                                method: 'DELETE',
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+                                        'content')
+                                }
+                            })
+                            .then(res => res.json())
+                            .then(() => {
+                                location.reload();
+                            });
+                    }
+                });
             }
         </script>
 

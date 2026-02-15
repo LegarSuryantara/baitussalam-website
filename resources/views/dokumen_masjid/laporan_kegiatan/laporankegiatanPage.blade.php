@@ -103,12 +103,13 @@
                                         @auth
                                             @if (auth()->user()->canManageDokumen())
                                                 <!-- HAPUS -->
-                                                <form action="{{ route('hapuslaporankegiatan', $laporan->id) }}"
+                                                <form id="delete-form-{{ $laporan->id }}"
+                                                    action="{{ route('hapuslaporankegiatan', $laporan->id) }}"
                                                     method="POST" style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button class="btn btn-danger btn-sm rounded-pill px-3"
-                                                        onclick="return confirm('Hapus laporan?')">
+                                                    <button type="button" class="btn btn-danger btn-sm rounded-pill px-3"
+                                                        onclick="confirmDelete('Hapus Laporan?', 'Laporan kegiatan ini akan dihapus secara permanen.').then((result) => { if(result.isConfirmed) document.getElementById('delete-form-{{ $laporan->id }}').submit(); })">
                                                         Hapus
                                                     </button>
                                                 </form>

@@ -106,11 +106,12 @@
                                                 onclick='openEditForm({!! json_encode($img) !!})'>
                                                 <i class="bi bi-pencil"></i>
                                             </button>
-                                            <form action="{{ route('galeri.destroy', $img->id) }}" method="POST"
-                                                onsubmit="return confirm('Yakin ingin menghapus gambar ini?')">
+                                            <form id="delete-form-{{ $img->id }}"
+                                                action="{{ route('galeri.destroy', $img->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-outline-danger border-0">
+                                                <button type="button" class="btn btn-sm btn-outline-danger border-0"
+                                                    onclick="confirmDelete('Hapus Gambar?', 'Gambar ini akan dihapus secara permanen.').then((result) => { if(result.isConfirmed) document.getElementById('delete-form-{{ $img->id }}').submit(); })">
                                                     <i class="bi bi-trash"></i>
                                                 </button>
                                             </form>

@@ -15,11 +15,11 @@
                 </div>
 
                 @auth
-                @if(auth()->user()->canManageDokumen())
-                <a href="{{ route('unggahlaporankeuangan') }}" class="btn btn-success rounded-pill px-4">
-                    <i class="bi bi-plus-circle me-1"></i> Unggah Dokumen
-                </a>
-                @endif
+                    @if (auth()->user()->canManageDokumen())
+                        <a href="{{ route('unggahlaporankeuangan') }}" class="btn btn-success rounded-pill px-4">
+                            <i class="bi bi-plus-circle me-1"></i> Unggah Dokumen
+                        </a>
+                    @endif
                 @endauth
 
             </div>
@@ -31,36 +31,29 @@
 
                     {{-- SEARCH --}}
                     <div class="input-group search-box" style="max-width:300px;">
-                        <input type="text"
-                            name="search"
-                            value="{{ request('search') }}"
-                            class="form-control"
+                        <input type="text" name="search" value="{{ request('search') }}" class="form-control"
                             placeholder="Judul laporan...">
 
                         <button type="submit" class="input-group-text bg-white">
                             <i class="bi bi-search"></i>
                         </button>
 
-                        @if(request('search') || request('tahun'))
-                        <a href="{{ route('laporankeuangan') }}"
-                            class="btn btn-outline-secondary">
-                            Reset
-                        </a>
+                        @if (request('search') || request('tahun'))
+                            <a href="{{ route('laporankeuangan') }}" class="btn btn-outline-secondary">
+                                Reset
+                            </a>
                         @endif
                     </div>
 
                     {{-- FILTER TAHUN --}}
-                    <select name="tahun"
-                        class="form-select w-auto"
-                        onchange="this.form.submit()">
+                    <select name="tahun" class="form-select w-auto" onchange="this.form.submit()">
 
                         <option value="">Semua Tahun</option>
 
                         @for ($y = date('Y'); $y >= 2020; $y--)
-                        <option value="{{ $y }}"
-                            {{ request('tahun') == $y ? 'selected' : '' }}>
-                            {{ $y }}
-                        </option>
+                            <option value="{{ $y }}" {{ request('tahun') == $y ? 'selected' : '' }}>
+                                {{ $y }}
+                            </option>
                         @endfor
                     </select>
 
@@ -80,58 +73,57 @@
                         </thead>
                         <tbody>
                             @forelse ($laporans as $laporan)
-                            <tr>
-                                <td>
-                                    <strong>{{ $laporan->title }}</strong><br>
-                                    <small class="text-muted">
-                                        {{ \Carbon\Carbon::parse($laporan->created_at)->translatedFormat('d F Y') }}
-                                    </small>
-                                </td>
+                                <tr>
+                                    <td>
+                                        <strong>{{ $laporan->title }}</strong><br>
+                                        <small class="text-muted">
+                                            {{ \Carbon\Carbon::parse($laporan->created_at)->translatedFormat('d F Y') }}
+                                        </small>
+                                    </td>
 
-                                <td>
-                                    {{ \Carbon\Carbon::create()->month($laporan->periode_bulan)->translatedFormat('F') }}
-                                    {{ $laporan->periode_tahun }}
-                                </td>
+                                    <td>
+                                        {{ \Carbon\Carbon::create()->month($laporan->periode_bulan)->translatedFormat('F') }}
+                                        {{ $laporan->periode_tahun }}
+                                    </td>
 
-                                <td>
-                                    {{ \Carbon\Carbon::parse($laporan->created_at)->format('d M Y') }}
-                                </td>
+                                    <td>
+                                        {{ \Carbon\Carbon::parse($laporan->created_at)->format('d M Y') }}
+                                    </td>
 
-                                <td>{{ $laporan->uploaded_by }}</td>
+                                    <td>{{ $laporan->uploaded_by }}</td>
 
-                                <td class="text-center">
+                                    <td class="text-center">
 
-                                    <!-- LIHAT -->
-                                    <a target="_blank"
-                                        href="{{ route('lihatlaporankeuangan', $laporan->id) }}"
-                                        class="btn btn-success btn-sm rounded-pill px-3">
-                                        Lihat
-                                    </a>
+                                        <!-- LIHAT -->
+                                        <a target="_blank" href="{{ route('lihatlaporankeuangan', $laporan->id) }}"
+                                            class="btn btn-success btn-sm rounded-pill px-3">
+                                            Lihat
+                                        </a>
 
-                                    @auth
-                                    @if(auth()->user()->canManageDokumen())
-                                    <!-- HAPUS -->
-                                    <form action="{{ route('hapuslaporankeuangan', $laporan->id) }}"
-                                        method="POST"
-                                        style="display:inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger btn-sm rounded-pill px-3"
-                                            onclick="return confirm('Hapus laporan?')">
-                                            Hapus
-                                        </button>
-                                    </form>
-                                    @endif
-                                    @endauth
+                                        @auth
+                                            @if (auth()->user()->canManageDokumen())
+                                                <!-- HAPUS -->
+                                                <form id="delete-form-{{ $laporan->id }}"
+                                                    action="{{ route('hapuslaporankeuangan', $laporan->id) }}"
+                                                    method="POST" style="display:inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="button" class="btn btn-danger btn-sm rounded-pill px-3"
+                                                        onclick="confirmDelete('Hapus Laporan?', 'Laporan keuangan ini akan dihapus secara permanen.').then((result) => { if(result.isConfirmed) document.getElementById('delete-form-{{ $laporan->id }}').submit(); })">
+                                                        Hapus
+                                                    </button>
+                                                </form>
+                                            @endif
+                                        @endauth
 
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
                             @empty
-                            <tr>
-                                <td colspan="5" class="text-center text-muted">
-                                    Belum ada laporan
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td colspan="5" class="text-center text-muted">
+                                        Belum ada laporan
+                                    </td>
+                                </tr>
                             @endforelse
                         </tbody>
 
