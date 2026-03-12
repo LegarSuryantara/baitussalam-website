@@ -14,6 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function ($middleware) {
         $middleware->alias([
             'takmir' => EnsureTakmir::class,
+            'no-cache' => \App\Http\Middleware\NoCache::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

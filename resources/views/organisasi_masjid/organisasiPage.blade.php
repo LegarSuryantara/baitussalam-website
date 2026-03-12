@@ -53,55 +53,136 @@
             <div class="d-flex gap-4 overflow-auto pb-3">
 
                 <div class="text-center" style="min-width: 180px;">
-                    <img src="assets/images/fotoProfile.jpg" class="rounded-4 mb-2"
-                        style="width: 160px; height: 200px; object-fit: cover;">
+                    <img src="assets/images/Foto TAKMIR/H. MATRAJI- PENASEHAT.jpeg" class="rounded-4 mb-2"
+                        style="width: 160px; height: 180px; object-fit: cover;">
+                    <p class="fw-semibold mb-0">Penasehat</p>
+                    <small class="text-muted">H. MATRAJI</small>
+                </div>
+
+                <div class="text-center" style="min-width: 180px;">
+                    <img src="assets/images/Foto TAKMIR/H. CHOIRUL USTADI Y-PENASEHAT.jpeg" class="rounded-4 mb-2"
+                        style="width: 160px; height: 180px; object-fit: cover;">
+                    <p class="fw-semibold mb-0">Penasehat</p>
+                    <small class="text-muted">H. CHOIRUL USTADI Y</small>
+                </div>
+
+                <div class="text-center" style="min-width: 180px;">
+                    <img src="assets/images/Foto TAKMIR/MUHAMMAD NORAWI-Ketua Takmir.jpeg" class="rounded-4 mb-2"
+                        style="width: 160px; height: 180px; object-fit: cover;">
                     <p class="fw-semibold mb-0">Ketua Takmir</p>
-                    <small class="text-muted">Bpk. Soleh</small>
+                    <small class="text-muted">MUHAMMAD NORAWI</small>
                 </div>
 
                 <div class="text-center" style="min-width: 180px;">
-                    <img src="assets/images/fotoProfile.jpg" class="rounded-4 mb-2"
-                        style="width: 160px; height: 200px; object-fit: cover;">
-                    <p class="fw-semibold mb-0">Wakil Takmir</p>
-                    <small class="text-muted">Bpk. Rohman</small>
+                    <img src="assets/images/Foto TAKMIR/SOEPRIJADI- WAKIL KETUA .jpeg" class="rounded-4 mb-2"
+                        style="width: 160px; height: 180px; object-fit: cover;">
+                    <p class="fw-semibold mb-0">Wakil Ketua</p>
+                    <small class="text-muted">SOEPRIJADI</small>
                 </div>
 
                 <div class="text-center" style="min-width: 180px;">
-                    <img src="assets/images/fotoProfile.jpg" class="rounded-4 mb-2"
-                        style="width: 160px; height: 200px; object-fit: cover;">
-                    <p class="fw-semibold mb-0">Sekretaris 1</p>
-                    <small class="text-muted">Bpk. Rohman</small>
+                    <img src="assets/images/Foto TAKMIR/JOKO SUPENO-SEKETARIS.jpeg" class="rounded-4 mb-2"
+                        style="width: 160px; height: 180px; object-fit: cover;">
+                    <p class="fw-semibold mb-0">Sekretaris</p>
+                    <small class="text-muted">JOKO SUPENO</small>
                 </div>
 
                 <div class="text-center" style="min-width: 180px;">
-                    <img src="assets/images/fotoProfile.jpg" class="rounded-4 mb-2"
-                        style="width: 160px; height: 200px; object-fit: cover;">
-                    <p class="fw-semibold mb-0">Bendahara</p>
-                    <small class="text-muted">Bpk. Rohman</small>
+                    <img src="assets/images/Foto TAKMIR/AGUNG SEDAYU-WAKIL SEKETARIS.jpeg" class="rounded-4 mb-2"
+                        style="width: 160px; height: 180px; object-fit: cover;">
+                    <p class="fw-semibold mb-0">Wakil Sekretaris</p>
+                    <small class="text-muted">AGUNG SEDAYU</small>
                 </div>
+
                 <div class="text-center" style="min-width: 180px;">
-                    <img src="assets/images/fotoProfile.jpg" class="rounded-4 mb-2"
-                        style="width: 160px; height: 200px; object-fit: cover;">
+                    <img src="assets/images/Foto TAKMIR/MOH. BUDIMAN-BENDAHARA.jpeg" class="rounded-4 mb-2"
+                        style="width: 160px; height: 180px; object-fit: cover;">
                     <p class="fw-semibold mb-0">Bendahara</p>
-                    <small class="text-muted">Bpk. Rohman</small>
+                    <small class="text-muted">MOH. BUDIMAN</small>
                 </div>
+
                 <div class="text-center" style="min-width: 180px;">
-                    <img src="assets/images/fotoProfile.jpg" class="rounded-4 mb-2"
-                        style="width: 160px; height: 200px; object-fit: cover;">
+                    <img src="assets/images/Foto TAKMIR/SLAMET SUROSO-BENDAHARA .jpeg" class="rounded-4 mb-2"
+                        style="width: 160px; height: 180px; object-fit: cover;">
                     <p class="fw-semibold mb-0">Bendahara</p>
-                    <small class="text-muted">Bpk. Rohman</small>
+                    <small class="text-muted">SLAMET SUROSO</small>
                 </div>
+
                 <div class="text-center" style="min-width: 180px;">
-                    <img src="assets/images/fotoProfile.jpg" class="rounded-4 mb-2"
-                        style="width: 160px; height: 200px; object-fit: cover;">
-                    <p class="fw-semibold mb-0">Bendahara</p>
-                    <small class="text-muted">Bpk. Rohman</small>
+                    <img src="assets/images/Foto TAKMIR/1._AHMAD SUHRI-Koordinator BIDANG IDAROH .jpeg"
+                        class="rounded-4 mb-2" style="width: 160px; height: 180px; object-fit: cover;">
+                    <p class="fw-semibold mb-0">Koordinator Bp. Idaroh</p>
+                    <small class="text-muted">AHMAD SUHRI</small>
                 </div>
+
                 <div class="text-center" style="min-width: 180px;">
-                    <img src="assets/images/fotoProfile.jpg" class="rounded-4 mb-2"
-                        style="width: 160px; height: 200px; object-fit: cover;">
-                    <p class="fw-semibold mb-0">Bendahara</p>
-                    <small class="text-muted">Bpk. Rohman</small>
+                    <img src="assets/images/Foto TAKMIR/1._UST. FATURAHMAN-Koordinator BIDANG IMAROH .jpeg"
+                        class="rounded-4 mb-2" style="width: 160px; height: 180px; object-fit: cover;">
+                    <p class="fw-semibold mb-0">Koordinator Bp. Imaroh</p>
+                    <small class="text-muted">UST. FATURAHMAN</small>
+                </div>
+
+                <div class="text-center" style="min-width: 180px;">
+                    <img src="assets/images/Foto TAKMIR/M. SHOLEH -Kordinator Bidang RI’AYAHjpeg.jpg"
+                        class="rounded-4 mb-2" style="width: 160px; height: 180px; object-fit: cover;">
+                    <p class="fw-semibold mb-0">Koordinator Bp. Ri'ayah</p>
+                    <small class="text-muted">M. SHOLEH</small>
+                </div>
+
+                <div class="text-center" style="min-width: 180px;">
+                    <img src="assets/images/Foto TAKMIR/2._SAMUGI - PERIBADATAN.jpeg" class="rounded-4 mb-2"
+                        style="width: 160px; height: 180px; object-fit: cover;">
+                    <p class="fw-semibold mb-0">Peribadatan</p>
+                    <small class="text-muted">SAMUGI</small>
+                </div>
+
+                <div class="text-center" style="min-width: 180px;">
+                    <img src="assets/images/Foto TAKMIR/3._UST. FATURROFIK- PERIBADATAN.jpeg" class="rounded-4 mb-2"
+                        style="width: 160px; height: 180px; object-fit: cover;">
+                    <p class="fw-semibold mb-0">Peribadatan</p>
+                    <small class="text-muted">UST. FATURROFIK</small>
+                </div>
+
+                <div class="text-center" style="min-width: 180px;">
+                    <img src="assets/images/Foto TAKMIR/5._WAHYUDIN-PENDIDIKAN.jpeg" class="rounded-4 mb-2"
+                        style="width: 160px; height: 180px; object-fit: cover;">
+                    <p class="fw-semibold mb-0">Pendidikan</p>
+                    <small class="text-muted">WAHYUDIN</small>
+                </div>
+
+                <div class="text-center" style="min-width: 180px;">
+                    <img src="assets/images/Foto TAKMIR/6._A HADI- PEMELIHARAAN.jpeg" class="rounded-4 mb-2"
+                        style="width: 160px; height: 180px; object-fit: cover;">
+                    <p class="fw-semibold mb-0">Pemeliharaan</p>
+                    <small class="text-muted">A HADI</small>
+                </div>
+
+                <div class="text-center" style="min-width: 180px;">
+                    <img src="assets/images/Foto TAKMIR/8._RUSIYANTO- TEKNIK .jpeg" class="rounded-4 mb-2"
+                        style="width: 160px; height: 180px; object-fit: cover;">
+                    <p class="fw-semibold mb-0">Teknik</p>
+                    <small class="text-muted">RUSIYANTO</small>
+                </div>
+
+                <div class="text-center" style="min-width: 180px;">
+                    <img src="assets/images/Foto TAKMIR/BOY KADARISMAN- PHBI .jpeg" class="rounded-4 mb-2"
+                        style="width: 160px; height: 180px; object-fit: cover;">
+                    <p class="fw-semibold mb-0">PHBI</p>
+                    <small class="text-muted">BOY KADARISMAN</small>
+                </div>
+
+                <div class="text-center" style="min-width: 180px;">
+                    <img src="assets/images/Foto TAKMIR/EDY PURWANTO - PEMBINA REMAJA MASJID.jpeg"
+                        class="rounded-4 mb-2" style="width: 160px; height: 180px; object-fit: cover;">
+                    <p class="fw-semibold mb-0">Pembina Remaja Masjid</p>
+                    <small class="text-muted">EDY PURWANTO</small>
+                </div>
+
+                <div class="text-center" style="min-width: 180px;">
+                    <img src="assets/images/Foto TAKMIR/YOPPY BAYU IRAWAN- PEMBANGUNAN jpeg.jpg"
+                        class="rounded-4 mb-2" style="width: 160px; height: 180px; object-fit: cover;">
+                    <p class="fw-semibold mb-0">Pembangunan</p>
+                    <small class="text-muted">YOPPY BAYU IRAWAN</small>
                 </div>
 
             </div>

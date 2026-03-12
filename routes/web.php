@@ -23,7 +23,7 @@ Route::get('/storage-access/{path}', function ($path) {
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', [GalleryController::class, 'berandaGaleri'])->name('beranda');
+Route::get('/', [GalleryController::class, 'berandaGaleri'])->middleware('no-cache')->name('beranda');
 
 Route::post('/login', [AuthController::class, 'login'])
   ->middleware('throttle:5,1')
@@ -64,7 +64,7 @@ Route::prefix('penjadwalan')->group(function () {
   Route::get('/lihat/{id}', [ScheduleController::class, 'show'])->name('penjadwalan.show');
 });
 
-Route::middleware('auth')->prefix('penjadwalan')
+Route::middleware(['auth', 'no-cache'])->prefix('penjadwalan')
 ->group(function () {
 
     Route::get('/create', [ScheduleController::class, 'formKalender'])
@@ -97,7 +97,7 @@ Route::prefix('kegiatan')->group(function () {
     ->name('lihatkegiatan');
 });
 
-Route::middleware('auth')->prefix('kegiatan')
+Route::middleware(['auth', 'no-cache'])->prefix('kegiatan')
 ->group(function(){
   
   Route::get('/{id}/edit', [ScheduleController::class, 'formKegiatan'])
@@ -157,7 +157,7 @@ Route::prefix('galeri')->group(function () {
     ->name('galeri.section');
 });
 
-Route::middleware('auth')->prefix('galeri')->group(function () {
+Route::middleware(['auth', 'no-cache'])->prefix('galeri')->group(function () {
 
   Route::post('/upload', [GalleryController::class, 'store'])
     ->name('galeri.upload');
@@ -186,7 +186,7 @@ Route::prefix('dokumen')->group(function () {
     Route::get('/', [FinancialReportController::class, 'index'])
       ->name('laporankeuangan');
 
-    Route::middleware('auth')->group(function () {
+    Route::middleware(['auth', 'no-cache'])->group(function () {
 
       Route::get('/unggah',fn() =>view('dokumen_masjid.laporan_keuangan.unggahPage'))->name('unggahlaporankeuangan');
 
@@ -207,7 +207,7 @@ Route::prefix('dokumen')->group(function () {
     Route::get('/', [ActivityReportController::class, 'index'])
       ->name('laporankegiatan');
 
-    Route::middleware('auth')->group(function () {
+    Route::middleware(['auth', 'no-cache'])->group(function () {
       Route::get('/unggah', fn() => view('dokumen_masjid.laporan_kegiatan.unggahPage'))
         ->name('unggahlaporankegiatan');
 
@@ -223,3 +223,5 @@ Route::prefix('dokumen')->group(function () {
       ->name('lihatlaporankegiatan');
   });
 });
+
+
