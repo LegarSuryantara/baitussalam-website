@@ -20,7 +20,10 @@
                                     <i class="bi bi-telephone text-success fs-3"></i>
                                     <div>
                                         <strong>Phone</strong>
-                                        <p class="mb-0">Ketua Umum : +62 891 0080 123</p>
+                                        <div class="small mt-1">
+                                            <div class="mb-1 text-muted">Joko supeno : +62 821-1935-1025</div>
+                                            <div class="text-muted">Soeprijadi : +62 852-3615-3555</div>
+                                        </div>
                                     </div>
                                 </div>
 

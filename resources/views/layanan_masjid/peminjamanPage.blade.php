@@ -9,8 +9,7 @@
             <div class="row g-4 align-items-start">
 
                 <div class="col-lg-7">
-                    <img src="{{ asset('assets/images/gambarMasjid.png') }}"
-                        class="img-fluid rounded-3 shadow-sm w-100"
+                    <img src="{{ asset('assets/images/gambarMasjid.png') }}" class="img-fluid rounded-3 shadow-sm w-100"
                         alt="Masjid">
                 </div>
 
@@ -53,7 +52,7 @@
                     </div>
 
                     <div class="buttonPeminjaman">
-                        <a href="https://wa.me/628xxxxxxxxxx" class="btn btn-success badge px-4 py-3 fw-normal">
+                        <a href="https://wa.me/6282119351025" class="btn btn-success badge px-4 py-3 fw-normal">
                             <i class="bi bi-whatsapp me-2"></i>
                             Hubungi Kami via WhatsApp
                         </a>

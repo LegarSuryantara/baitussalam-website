@@ -52,11 +52,15 @@
                                     <ul class="list-unstyled mb-0 small">
                                         <li class="mb-2">
                                             <i class="bi bi-bank me-2"></i>
-                                            <strong>Bank Syariah Indonesia</strong> / 343561
+                                            BRI / 612701018498530
                                         </li>
                                         <li class="mb-2">
                                             <i class="bi bi-person me-2"></i>
-                                            Ust. Ahmad / +62 891 0080 123
+                                            Joko supeno / +62 821-1935-1025
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="bi bi-person me-2"></i>
+                                            Soeprijadi / +62 852-3615-3555
                                         </li>
                                         <li>
                                             <i class="bi bi-geo-alt me-2"></i>
@@ -66,7 +70,8 @@
                                 </div>
 
                                 <div class="col-md-4 text-center">
-                                    <img src="/assets/images/qrcode.png" class="img-fluid rounded" alt="QR Code">
+                                    <img src="/assets/images/QRIS .jpg" class="img-fluid rounded"
+                                        alt="QRIS Masjid Baitussalam">
                                 </div>
                             </div>
                         </div>
@@ -86,10 +91,6 @@
                                     QRIS
                                 </li>
                             </ul>
-
-                            <a href="#" class="btn w-100 badge fw-light py-4 fs-3" role="button">
-                                Hubungi Kami
-                            </a>
                         </div>
                     </div>
 
