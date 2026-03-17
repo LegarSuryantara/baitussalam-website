@@ -1,7 +1,6 @@
 <x-Layout title="Beranda | Baitussalam">
     <div class="herosectionBeranda d-flex justify-content-center align-items-center">
-        <span class="titleHero">Masjid Baitussalam Perumahan Kalirejo Permai
-        </span>
+        <span class="titleHero text-center">Masjid Baitussalam<br>Perumahan Kalirejo Permai</span>
     </div>
     <div class="cardKegiatanContainer">
         <div class="container my-5">
