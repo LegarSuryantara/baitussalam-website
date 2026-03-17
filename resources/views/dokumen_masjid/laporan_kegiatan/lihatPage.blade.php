@@ -27,7 +27,7 @@
                             <div class="col-md-6">
                                 <small class="text-muted">Jenis File</small>
                                 <div>
-                                    {{ strtoupper($ext) }}
+                                    PDF
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -68,14 +68,13 @@
                             href="{{ route('storage.access', ['path' => 'laporan_kegiatan/' . $laporan->file]) }}"
                             class="btn btn-success px-4">
                             <i class="bi bi-download me-2"></i>
-                            Unduh Laporan ({{ strtoupper($ext) }} • {{ $size }})
+                            Unduh Laporan (PDF • {{ $size }})
                         </a>
                     </div>
 
                     <div class="text-muted small">
                         <strong>Catatan Admin:</strong>
-                        Perubahan isi laporan dilakukan di luar website dan diunggah kembali
-                        dalam bentuk file PDF/Excel/Word.
+                        Laporan otomatis dikonversi ke format PDF untuk kemudahan akses dan keamanan.
                     </div>
 
                 </div>

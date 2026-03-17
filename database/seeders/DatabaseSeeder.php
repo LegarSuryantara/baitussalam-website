@@ -26,18 +26,25 @@ class DatabaseSeeder extends Seeder
             'password' => 'dev123',
         ]);
         User::factory()->create([
-            'name' => 'Bpk.ketua',
-            'email' => 'admin@mail.com',
+            'name' => 'Ketua',
+            'email' => 'ketua@mail.com',
             'role' => UserRole::TAKMIR_ADMIN,
             'position' => 'ketua',
-            'password' => 'admin123',
+            'password' => 'ketua123',
         ]);
         User::factory()->create([
-            'name' => 'Bpk.wakil',
-            'email' => 'admin1@mail.com',
+            'name' => 'Sekretaris',
+            'email' => 'sekretaris@mail.com',
             'role' => UserRole::TAKMIR_ADMIN,
-            'position' => 'wakil_ketua',
-            'password' => 'admin123',
+            'position' => 'sekretaris',
+            'password' => 'sekretaris123',
+        ]);
+        User::factory()->create([
+            'name' => 'Bendahara',
+            'email' => 'bendahara@mail.com',
+            'role' => UserRole::TAKMIR_ADMIN,
+            'position' => 'bendahara',
+            'password' => 'bendahara123',
         ]);
     }
 }

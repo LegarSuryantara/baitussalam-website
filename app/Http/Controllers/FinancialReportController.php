@@ -7,6 +7,7 @@ use App\Models\FinancialReport;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use App\Services\DocumentConverter;
 
 class FinancialReportController extends Controller
 {
@@ -37,12 +38,25 @@ class FinancialReportController extends Controller
         $validated = $this->validateData($request);
 
         $file = $request->file('file');
+        $originalExtension = strtolower($file->getClientOriginalExtension());
+        $filename = now()->format('Y-m-d') . '-' . Str::random(5) . '.' . $originalExtension;
 
-        $filename = now()->format('Y-m-d') . '-' .
-            Str::random(5) . '.' .
-            $file->getClientOriginalExtension();
-
+        // Store original first
         $file->storeAs('laporan_keuangan', $filename, 'public');
+
+        if ($originalExtension !== 'pdf') {
+            $sourcePath = storage_path('app/public/laporan_keuangan/' . $filename);
+            $outputDir = storage_path('app/public/laporan_keuangan');
+            
+            $pdfPath = DocumentConverter::convertToPdf($sourcePath, $outputDir);
+
+            if ($pdfPath) {
+                // Delete original file
+                unlink($sourcePath);
+                // Update filename to the new PDF name
+                $filename = pathinfo($pdfPath, PATHINFO_BASENAME);
+            }
+        }
 
         FinancialReport::create([
             'title' => strip_tags($validated['title']),
@@ -55,7 +69,7 @@ class FinancialReportController extends Controller
 
         return redirect()
             ->route('laporankeuangan')
-            ->with('success', 'Laporan berhasil diupload');
+            ->with('success', 'Laporan berhasil diupload dan dikonversi ke PDF');
     }
 
 
@@ -66,13 +80,27 @@ class FinancialReportController extends Controller
         if ($request->hasFile('file')) {
             Storage::disk('public')->delete('laporan_keuangan/' . $report->file);
             $file = $request->file('file');
-            $filename = now()->format('Y-m-d') . '-' . Str::random(5) . '.' .
-                $file->getClientOriginalExtension();
+            $originalExtension = strtolower($file->getClientOriginalExtension());
+            $filename = now()->format('Y-m-d') . '-' . Str::random(5) . '.' . $originalExtension;
+            
             $file->storeAs('laporan_keuangan', $filename, 'public');
+
+            if ($originalExtension !== 'pdf') {
+                $sourcePath = storage_path('app/public/laporan_keuangan/' . $filename);
+                $outputDir = storage_path('app/public/laporan_keuangan');
+                
+                $pdfPath = DocumentConverter::convertToPdf($sourcePath, $outputDir);
+
+                if ($pdfPath) {
+                    unlink($sourcePath);
+                    $filename = pathinfo($pdfPath, PATHINFO_BASENAME);
+                }
+            }
+            
             $report->file = $filename;
         }
         $report->update($validated);
-        return back()->with('success', 'Laporan diupdate');
+        return back()->with('success', 'Laporan diupdate dan dikonversi ke PDF');
     }
 
     public function show($id)
@@ -118,7 +146,7 @@ class FinancialReportController extends Controller
                 'periode_bulan.required' => 'Pilih bulan laporan',
                 'periode_tahun.required' => 'Pilih tahun laporan',
                 'file.required' => 'File wajib diupload',
-                'file.mimes' => 'Format file harus PDF/Excel/Word',
+                'file.mimes' => 'Format file harus PDF, Excel, atau Word. Sistem akan otomatis mengubahnya menjadi PDF.',
                 'file.max' => 'Ukuran maksimal 10MB',
             ]
         );
