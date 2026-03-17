@@ -186,7 +186,7 @@
                 </div>
 
                 <div class="text-center" style="min-width: 180px;">
-                    <img src="assets/images/Foto TAKMIR/YOPPY BAYU IRAWAN- PEMBANGUNAN jpeg.jpg"
+                    <img src="assets/images/Foto TAKMIR/M. FATHUR ALIF C- Infokom IT.png"
                         class="rounded-4 mb-2" style="width: 160px; height: 180px; object-fit: cover;">
                     <p class="fw-semibold mb-0">Infokom IT</p>
                     <small class="text-muted">M. FATHUR ALIF C</small>
