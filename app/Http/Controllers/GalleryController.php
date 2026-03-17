@@ -34,9 +34,33 @@ class GalleryController extends Controller
         return view("galeri_masjid.{$section}Page", compact('images', 'section'));
     }
 
+    private function checkGalleryAccess($section)
+    {
+        $role = is_string(Auth::user()->role) ? Auth::user()->role : Auth::user()->role->value ?? null;
+        
+        if (in_array($role, [
+            \App\UserRole::SUPER_ADMIN->value,
+            \App\UserRole::TAKMIR_ADMIN->value,
+            \App\UserRole::SEKRETARIS->value
+        ])) {
+            return true;
+        }
+
+        if ($role === \App\UserRole::IMARAH->value && $section !== 'imarah') abort(403, 'Anda hanya bisa mengelola galeri Imarah.');
+        if ($role === \App\UserRole::IDAROH->value && $section !== 'idaroh') abort(403, 'Anda hanya bisa mengelola galeri Idaroh.');
+        if ($role === \App\UserRole::RIAYAH->value && $section !== 'riayah') abort(403, 'Anda hanya bisa mengelola galeri Riayah.');
+        
+        if (!in_array($role, [\App\UserRole::IMARAH->value, \App\UserRole::IDAROH->value, \App\UserRole::RIAYAH->value])) {
+             abort(403, 'Anda tidak memiliki akses ke galeri.');
+        }
+
+        return true;
+    }
+
     public function store(Request $request)
     {
         $data = $this->validateData($request);
+        $this->checkGalleryAccess($data['section']);
 
         $folder = 'galeri/' . $data['section'];
         $file = $data['image'];
@@ -63,6 +87,8 @@ class GalleryController extends Controller
     {
         $image = GalleryImage::findOrFail($id);
         $data = $this->validateData($request, true);
+        $this->checkGalleryAccess($data['section']);
+        $this->checkGalleryAccess($image->section);
 
         if ($request->hasFile('image')) {
             // Delete old image
@@ -92,6 +118,7 @@ class GalleryController extends Controller
     public function destroy($id)
     {
         $image = GalleryImage::findOrFail($id);
+        $this->checkGalleryAccess($image->section);
 
         if ($image->image_path && \Illuminate\Support\Facades\Storage::disk('public')->exists($image->image_path)) {
             \Illuminate\Support\Facades\Storage::disk('public')->delete($image->image_path);

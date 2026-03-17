@@ -82,7 +82,6 @@ class User extends Authenticatable
         return $this->hasAnyRole([
             UserRole::SUPER_ADMIN,
             UserRole::TAKMIR_ADMIN,
-            UserRole::TAKMIR,
         ]);
     }
 
@@ -91,7 +90,6 @@ class User extends Authenticatable
         return $this->hasAnyRole([
             UserRole::SUPER_ADMIN,
             UserRole::TAKMIR_ADMIN,
-            UserRole::TAKMIR,
         ]);
     }
 
@@ -100,7 +98,10 @@ class User extends Authenticatable
         return $this->hasAnyRole([
             UserRole::SUPER_ADMIN,
             UserRole::TAKMIR_ADMIN,
-            UserRole::TAKMIR,
+            UserRole::SEKRETARIS,
+            UserRole::IMARAH,
+            UserRole::IDAROH,
+            UserRole::RIAYAH,
         ]);
     }
     public function canManageDokumen(): bool
@@ -108,7 +109,7 @@ class User extends Authenticatable
         return $this->hasAnyRole([
             UserRole::SUPER_ADMIN,
             UserRole::TAKMIR_ADMIN,
-            UserRole::TAKMIR,
+            UserRole::BENDAHARA,
         ]);
     }
 }

@@ -20,7 +20,11 @@ class EnsureTakmir
         $allowedRoles = [
             UserRole::SUPER_ADMIN,
             UserRole::TAKMIR_ADMIN,
-            UserRole::TAKMIR,
+            UserRole::BENDAHARA,
+            UserRole::SEKRETARIS,
+            UserRole::IMARAH,
+            UserRole::IDAROH,
+            UserRole::RIAYAH,
         ];
 
         if (!in_array(Auth::user()->role, $allowedRoles, true)) {

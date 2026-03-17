@@ -64,7 +64,7 @@ Route::prefix('penjadwalan')->group(function () {
   Route::get('/lihat/{id}', [ScheduleController::class, 'show'])->name('penjadwalan.show');
 });
 
-Route::middleware(['auth', 'no-cache'])->prefix('penjadwalan')
+Route::middleware(['auth', 'no-cache', 'role:sekretaris'])->prefix('penjadwalan')
 ->group(function () {
 
     Route::get('/create', [ScheduleController::class, 'formKalender'])
@@ -97,7 +97,7 @@ Route::prefix('kegiatan')->group(function () {
     ->name('lihatkegiatan');
 });
 
-Route::middleware(['auth', 'no-cache'])->prefix('kegiatan')
+Route::middleware(['auth', 'no-cache', 'role:sekretaris'])->prefix('kegiatan')
 ->group(function(){
   
   Route::get('/{id}/edit', [ScheduleController::class, 'formKegiatan'])
@@ -186,7 +186,7 @@ Route::prefix('dokumen')->group(function () {
     Route::get('/', [FinancialReportController::class, 'index'])
       ->name('laporankeuangan');
 
-    Route::middleware(['auth', 'no-cache'])->group(function () {
+    Route::middleware(['auth', 'no-cache', 'role:bendahara'])->group(function () {
 
       Route::get('/unggah',fn() =>view('dokumen_masjid.laporan_keuangan.unggahPage'))->name('unggahlaporankeuangan');
 
@@ -207,7 +207,7 @@ Route::prefix('dokumen')->group(function () {
     Route::get('/', [ActivityReportController::class, 'index'])
       ->name('laporankegiatan');
 
-    Route::middleware(['auth', 'no-cache'])->group(function () {
+    Route::middleware(['auth', 'no-cache', 'role:sekretaris'])->group(function () {
       Route::get('/unggah', fn() => view('dokumen_masjid.laporan_kegiatan.unggahPage'))
         ->name('unggahlaporankegiatan');
 

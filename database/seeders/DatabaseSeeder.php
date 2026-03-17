@@ -42,9 +42,30 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Bendahara',
             'email' => 'bendahara@mail.com',
-            'role' => UserRole::TAKMIR_ADMIN,
+            'role' => UserRole::BENDAHARA,
             'position' => 'bendahara',
             'password' => 'bendahara123',
+        ]);
+        User::factory()->create([
+            'name' => 'Bidang Imarah',
+            'email' => 'imarah@mail.com',
+            'role' => UserRole::IMARAH,
+            'position' => 'imarah',
+            'password' => 'imarah123',
+        ]);
+        User::factory()->create([
+            'name' => 'Bidang Idaroh',
+            'email' => 'idaroh@mail.com',
+            'role' => UserRole::IDAROH,
+            'position' => 'idaroh',
+            'password' => 'idaroh123',
+        ]);
+        User::factory()->create([
+            'name' => 'Bidang Riayah',
+            'email' => 'riayah@mail.com',
+            'role' => UserRole::RIAYAH,
+            'position' => 'riayah',
+            'password' => 'riayah123',
         ]);
     }
 }

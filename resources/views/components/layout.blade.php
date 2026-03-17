@@ -43,9 +43,78 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet">
 
+    <style>
+        /* Modern aesthetic Page Loader */
+        #page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Modern Spinner - Double Ring */
+        .premium-spinner {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            padding: 6px;
+            background: conic-gradient(from 0deg, transparent 0%, #198754 100%);
+            -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #fff 0);
+            mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #fff 0);
+            animation: spin 1s linear infinite;
+        }
+
+        .loader-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            color: #198754;
+            animation: pulse-text 1.5s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse-text {
+            0%, 100% { opacity: 0.6; transform: scale(0.98); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        .fade-out {
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 
 <body>
+    {{-- Aesthetic Page Loader Overlay --}}
+    <div id="page-loader">
+        <div class="loader-content">
+            <div class="premium-spinner"></div>
+            <div class="loader-text">BAITUSSALAM</div>
+        </div>
+    </div>
 
 
     {{-- header --}}
@@ -69,6 +138,28 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
+        // Page Loader Logic
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('page-loader').classList.add('fade-out');
+            }, 300);
+        });
+
+        // Show loader on page navigation
+        window.addEventListener('beforeunload', function() {
+            document.getElementById('page-loader').classList.remove('fade-out');
+        });
+
+        // Optional: Intercept some link clicks specifically to show loader immediately
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href && !href.startsWith('#') && !href.startsWith('javascript') && this.target !== '_blank') {
+                    document.getElementById('page-loader').classList.remove('fade-out');
+                }
+            });
+        });
+
         // Global Confirmation Handler
         function confirmDelete(title, text, confirmButtonText = 'Ya, Hapus!') {
             return Swal.fire({
@@ -107,8 +198,9 @@
         @if (session('error'))
             Swal.fire({
                 icon: 'error',
-                title: 'Terjadi Kesalahan',
-                text: "{{ session('error') }}"
+                title: 'Akses Ditolak',
+                text: "{{ session('error') }}",
+                confirmButtonColor: '#198754'
             });
         @endif
     </script>

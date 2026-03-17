@@ -38,17 +38,17 @@
                 <div class="card-body d-flex align-items-center justify-content-between flex-wrap gap-3">
 
                     <div class="d-flex align-items-center gap-3">
-                        <img src="assets/images/logoBCA.png" width="40">
+                        <img src="assets/images/logoBRI.png" width="40" alt="Logo BRI">
                         <div>
-                            <div class="fw-semibold">BCA</div>
-                            <small class="text-muted">Samsudin</small>
+                            <div class="fw-semibold">BRI</div>
+                            <small class="text-muted">Masjid Baitussalam</small>
                         </div>
                     </div>
 
                     <div>
                         <small class="text-muted">Nomor Rekening</small>
-                        <div class="fw-bold">1234 5678 9012</div>
-                        <small class="text-muted">An. Masjid Mubarokah</small>
+                        <div class="fw-bold">612701018498530</div>
+                        <small class="text-muted">An. Masjid Baitussalam</small>
                     </div>
 
                     <button class="btn btnCopyDonasi badge py-3 px-3 fw-light">
