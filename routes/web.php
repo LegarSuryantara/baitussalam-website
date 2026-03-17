@@ -6,6 +6,7 @@ use App\Http\Controllers\ActivityReportController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\ScheduleItemController;
+use App\Http\Controllers\PrayerScheduleController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\File;
 
@@ -61,6 +62,7 @@ Route::prefix('penjadwalan')->group(function () {
   Route::get('/', [ScheduleController::class, 'calendarPage'])->name('penjadwalan');
   Route::get('/events', [ScheduleController::class, 'getEvents']);
   Route::get('/agenda', [ScheduleController::class, 'agendaByDate']);
+  Route::get('/prayer-schedules', [PrayerScheduleController::class, 'index']);
   Route::get('/lihat/{id}', [ScheduleController::class, 'show'])->name('penjadwalan.show');
 });
 
@@ -81,6 +83,13 @@ Route::middleware(['auth', 'no-cache', 'role:sekretaris'])->prefix('penjadwalan'
 
     Route::delete('/delete/{id}', [ScheduleController::class, 'destroy'])
       ->name('penjadwalan.destroy');
+
+    Route::post('/prayer-schedules', [PrayerScheduleController::class, 'store'])
+      ->name('prayer-schedules.store');
+    Route::put('/prayer-schedules/{id}', [PrayerScheduleController::class, 'update'])
+      ->name('prayer-schedules.update');
+    Route::delete('/prayer-schedules/{id}', [PrayerScheduleController::class, 'destroy'])
+      ->name('prayer-schedules.destroy');
   });
 
 /*

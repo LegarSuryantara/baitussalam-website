@@ -39,6 +39,99 @@
 
             </div>
 
+        <div class="card shadow-sm border-0 p-4 mt-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="fw-bold mb-0">Jadwal Jumat & Hari Raya</h5>
+                @auth
+                    @if (auth()->user()->canManagePenjadwalan())
+                        <button class="btn btn-success btn-sm rounded-pill px-3" data-bs-toggle="modal"
+                            data-bs-target="#prayerScheduleModal" onclick="resetPrayerForm()">
+                            + Tambah Jadwal
+                        </button>
+                    @endif
+                @endauth
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Tanggal</th>
+                            <th>Jenis</th>
+                            <th>Khotib / Penceramah</th>
+                            <th>Imam</th>
+                            <th>Bilal</th>
+                            @auth
+                                @if (auth()->user()->canManagePenjadwalan())
+                                    <th class="text-end">Aksi</th>
+                                @endif
+                            @endauth
+                        </tr>
+                    </thead>
+                    <tbody id="prayerScheduleList">
+                        <tr>
+                            <td colspan="6" class="text-center text-muted">Memuat jadwal...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        @auth
+            @if (auth()->user()->canManagePenjadwalan())
+                <!-- Modal Tambah/Edit Jadwal Ibadah -->
+                <div class="modal fade" id="prayerScheduleModal" tabindex="-1" aria-labelledby="prayerScheduleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form id="prayerScheduleForm" method="POST" action="/penjadwalan/prayer-schedules">
+                                @csrf
+                                <input type="hidden" name="_method" id="prayerMethod" value="POST">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="prayerScheduleModalLabel">Tambah Jadwal Ibadah</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Jenis Kegiatan</label>
+                                        <select name="type" id="prayerType" class="form-select" required>
+                                            <option value="jumat">Sholat Jumat</option>
+                                            <option value="idul_fitri">Sholat Idul Fitri</option>
+                                            <option value="idul_adha">Sholat Idul Adha</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Tanggal</label>
+                                        <input type="date" name="date" id="prayerDate" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Khotib / Penceramah</label>
+                                        <input type="text" name="khotib" id="prayerKhotib" class="form-control"
+                                            placeholder="Opsional">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Imam</label>
+                                        <input type="text" name="imam" id="prayerImam" class="form-control"
+                                            placeholder="Opsional">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Bilal</label>
+                                        <input type="text" name="bilal" id="prayerBilal" class="form-control"
+                                            placeholder="Opsional">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary rounded-pill px-3"
+                                        data-bs-dismiss="modal">Batal</button>
+                                    <button type="submit" class="btn btn-success rounded-pill px-3">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            @endif
+        @endauth
+
         </div>
 
         <script>
@@ -203,6 +296,122 @@
 
                 window.location.href = `/penjadwalan/create?date=${selectedDate}`;
             }
+        </script>
+
+        <script>
+            let prayerSchedulesData = [];
+
+            document.addEventListener('DOMContentLoaded', function() {
+                loadPrayerSchedules();
+            });
+
+            function loadPrayerSchedules() {
+                const list = document.getElementById('prayerScheduleList');
+                fetch('/penjadwalan/prayer-schedules')
+                    .then(res => res.json())
+                    .then(data => {
+                        prayerSchedulesData = data;
+                        list.innerHTML = '';
+                        if (data.length === 0) {
+                            list.innerHTML = `<tr><td colspan="6" class="text-center text-muted fst-italic py-4">Admin Belum Update Jadwal Bilal, Khotib dan Imam</td></tr>`;
+                            return;
+                        }
+
+                        const canManage = {{ auth()->check() && auth()->user()->canManagePenjadwalan() ? 'true' : 'false' }};
+
+                        data.forEach((item, index) => {
+                            let typeLabel = '';
+                            if (item.type === 'jumat') typeLabel = '<span class="badge bg-success">Jumat</span>';
+                            else if (item.type === 'idul_fitri') typeLabel = '<span class="badge bg-primary">Idul Fitri</span>';
+                            else if (item.type === 'idul_adha') typeLabel = '<span class="badge bg-info">Idul Adha</span>';
+
+                            const d = new Date(item.date);
+                            const dateFormatted = d.toLocaleDateString('id-ID', {
+                                day: 'numeric', month: 'long', year: 'numeric'
+                            });
+
+                            let actionHtml = '';
+                            if (canManage) {
+                                actionHtml = `
+                                    <td class="text-end">
+                                        <button class="btn btn-outline-success btn-sm rounded-pill px-3 me-1" 
+                                            onclick='editPrayerSchedule(${index})'>Edit</button>
+                                        <button class="btn btn-outline-danger btn-sm rounded-pill px-3" 
+                                            onclick="deletePrayerSchedule(${item.id})">Hapus</button>
+                                    </td>
+                                `;
+                            }
+
+                            list.innerHTML += `
+                                <tr>
+                                    <td>${dateFormatted}</td>
+                                    <td>${typeLabel}</td>
+                                    <td>${escapeHtml(item.khotib || '-')}</td>
+                                    <td>${escapeHtml(item.imam || '-')}</td>
+                                    <td>${escapeHtml(item.bilal || '-')}</td>
+                                    ${actionHtml}
+                                </tr>
+                            `;
+                        });
+                    });
+            }
+            
+            function escapeHtml(text) {
+                const map = {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#039;'
+                };
+                return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+            }
+
+            @auth
+            @if(auth()->user()->canManagePenjadwalan())
+            function resetPrayerForm() {
+                document.getElementById('prayerScheduleForm').reset();
+                document.getElementById('prayerScheduleForm').action = "/penjadwalan/prayer-schedules";
+                document.getElementById('prayerMethod').value = "POST";
+                document.getElementById('prayerScheduleModalLabel').innerText = "Tambah Jadwal Ibadah";
+            }
+
+            function editPrayerSchedule(index) {
+                const item = prayerSchedulesData[index];
+                resetPrayerForm();
+                document.getElementById('prayerScheduleModalLabel').innerText = "Edit Jadwal Ibadah";
+                document.getElementById('prayerScheduleForm').action = "/penjadwalan/prayer-schedules/" + item.id;
+                document.getElementById('prayerMethod').value = "PUT";
+                
+                document.getElementById('prayerType').value = item.type;
+                document.getElementById('prayerDate').value = item.date;
+                document.getElementById('prayerKhotib').value = item.khotib || '';
+                document.getElementById('prayerImam').value = item.imam || '';
+                document.getElementById('prayerBilal').value = item.bilal || '';
+
+                const modal = new bootstrap.Modal(document.getElementById('prayerScheduleModal'));
+                modal.show();
+            }
+
+            function deletePrayerSchedule(id) {
+                confirmDelete('Hapus Jadwal?', 'Jadwal ibadah ini akan dihapus secara permanen.').then((result) => {
+                    if (result.isConfirmed) {
+                        fetch('/penjadwalan/prayer-schedules/' + id, {
+                                method: 'DELETE',
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                                }
+                            })
+                            .then(res => {
+                                if(res.ok) {
+                                    location.reload();
+                                }
+                            });
+                    }
+                });
+            }
+            @endif
+            @endauth
         </script>
 
     </div>

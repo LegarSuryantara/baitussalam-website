@@ -21,7 +21,7 @@
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="{{ $title }} | Baitussalam">
     <meta property="og:description" content="Website Resmi Masjid Baitussalam Kalirejo Permai.">
-    <meta property="og:image" content="{{ asset('assets/images/logobaitussalam.png') }}">
+    <meta property="og:image" content="{{ asset('assets/images/logobaitussalam.png') }}?v={{ time() }}">
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 

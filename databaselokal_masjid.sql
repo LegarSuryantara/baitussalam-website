@@ -255,7 +255,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -272,8 +272,38 @@ INSERT INTO `migrations` VALUES
 (5,'2026_02_06_014806_create_schedule_items_table',1),
 (6,'2026_02_08_075819_create_gallery_images_table',1),
 (7,'2026_02_08_134618_create_financial_reports_table',1),
-(8,'2026_02_15_000000_create_activity_reports_table',1);
+(8,'2026_02_15_000000_create_activity_reports_table',1),
+(9,'2026_03_17_220248_create_prayer_schedules_table',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `prayer_schedules`
+--
+
+DROP TABLE IF EXISTS `prayer_schedules`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `prayer_schedules` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `type` enum('jumat','idul_fitri','idul_adha') NOT NULL,
+  `date` date NOT NULL,
+  `bilal` varchar(100) DEFAULT NULL,
+  `khotib` varchar(100) DEFAULT NULL,
+  `imam` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `prayer_schedules`
+--
+
+LOCK TABLES `prayer_schedules` WRITE;
+/*!40000 ALTER TABLE `prayer_schedules` DISABLE KEYS */;
+/*!40000 ALTER TABLE `prayer_schedules` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -401,13 +431,13 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` VALUES
-(1,'Dev','dev@mail.com','super_admin','developer','2026-03-17 06:21:26','$2y$12$w.1fIlHcJcHiLeJ1e4M7auJfE46w06CYozgUjlPyUk0zHliVhB.5y','Llr5kawtrQ','2026-03-17 06:21:27','2026-03-17 06:21:27'),
-(2,'Ketua','ketua@mail.com','takmir_admin','ketua','2026-03-17 06:21:27','$2y$12$FhvpWivPDrIGU9nc9K1Kku2IbBFNDwra71jn4SySmOqPnxHsOFazm','5l7Ca1r6Eq','2026-03-17 06:21:27','2026-03-17 06:21:27'),
-(3,'Sekretaris','sekretaris@mail.com','takmir_admin','sekretaris','2026-03-17 06:21:27','$2y$12$Jj8prSNNIDi3FBdfdVV3gOHfotq94MG4r7rAbrHjUm7NbQg.z91jm','7MMyqYadgc','2026-03-17 06:21:28','2026-03-17 06:21:28'),
-(4,'Bendahara','bendahara@mail.com','bendahara','bendahara','2026-03-17 06:21:28','$2y$12$1XJAvwC/OyZsJsTfwzxt0e2PRRKzNZ/7MdkkzKdwBMxK1rTVsuncO','i1BRwgD6sR','2026-03-17 06:21:28','2026-03-17 06:21:28'),
-(5,'Bidang Imarah','imarah@mail.com','imarah','imarah','2026-03-17 06:21:28','$2y$12$f6zeUzjnClrG1SNPZHN4f.VvoX7qkcGKXAB23PLePDQaXC/qV1P62','zmpPrQYOpW','2026-03-17 06:21:28','2026-03-17 06:21:28'),
-(6,'Bidang Idaroh','idaroh@mail.com','idaroh','idaroh','2026-03-17 06:21:28','$2y$12$USqYPqPINf6IhRN47q/U8uV23DdcNrKU.OaF7DHxsH4E58j1fzfh6','HalwNY5VUh','2026-03-17 06:21:29','2026-03-17 06:21:29'),
-(7,'Bidang Riayah','riayah@mail.com','riayah','riayah','2026-03-17 06:21:29','$2y$12$/kf.G3wvWFnXTQ1tK8Hi3.WOYAlBUGdM7qpPSM8nCldSxUvkbAWMS','FrUSbLQOJu','2026-03-17 06:21:29','2026-03-17 06:21:29');
+(1,'Dev','dev@mail.com','super_admin','developer','2026-03-17 15:41:56','$2y$12$4az6A0GoIIsFj2bUr1wUPuyOAWQMVaDX8Js6hq0egx84v7uoqUZbO','4vIvuhYj0B','2026-03-17 15:41:56','2026-03-17 15:41:56'),
+(2,'Ketua','ketua@mail.com','takmir_admin','ketua','2026-03-17 15:41:56','$2y$12$QYN7dpw5WJUheOshbjfYoOJX0oZnLd5V98Iw.B.NdXN0/N5ONLfaO','RDhaTTUj0t','2026-03-17 15:41:57','2026-03-17 15:41:57'),
+(3,'Sekretaris','sekretaris@mail.com','takmir_admin','sekretaris','2026-03-17 15:41:57','$2y$12$hXbiLpTzzaUQCM7Rmcc0huZrHjOdXKPIff9E3YGomES/U7nORyXGu','FqkGvi4p7B','2026-03-17 15:41:57','2026-03-17 15:41:57'),
+(4,'Bendahara','bendahara@mail.com','bendahara','bendahara','2026-03-17 15:41:57','$2y$12$FOvvyczqlvCFasKI.Yh04.mM8sW62iuna4aX56s0WLgMvhKfaSdBy','QQXOb6BueR','2026-03-17 15:41:57','2026-03-17 15:41:57'),
+(5,'Bidang Imarah','imarah@mail.com','imarah','imarah','2026-03-17 15:41:57','$2y$12$nk94SbXohX/XOQc5xZFZQuChHubTrWIj5W8MVHorJPQ7b.gZhIMyG','cGl37sZGNK','2026-03-17 15:41:58','2026-03-17 15:41:58'),
+(6,'Bidang Idaroh','idaroh@mail.com','idaroh','idaroh','2026-03-17 15:41:58','$2y$12$9t6xUYSfYxVSVdE9CHYfvep8IQWp85uR3SC/doCovtBuuB12h98nO','Q5rD7eWt2S','2026-03-17 15:41:58','2026-03-17 15:41:58'),
+(7,'Bidang Riayah','riayah@mail.com','riayah','riayah','2026-03-17 15:41:58','$2y$12$R4n.C7355UoYHoh6dwI9j.w6M0j4h5x3KOU3MTRJae8PnhmBVA5ve','qf5f98BFBH','2026-03-17 15:41:59','2026-03-17 15:41:59');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -420,4 +450,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-03-17 20:21:29
+-- Dump completed on 2026-03-18  5:42:32

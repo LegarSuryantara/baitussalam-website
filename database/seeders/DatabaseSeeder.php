@@ -23,49 +23,49 @@ class DatabaseSeeder extends Seeder
             'email' => 'dev@mail.com',
             'role' => UserRole::SUPER_ADMIN,
             'position' => 'developer',
-            'password' => 'dev123',
+            'password' => 'developer2026',
         ]);
         User::factory()->create([
             'name' => 'Ketua',
             'email' => 'ketua@mail.com',
             'role' => UserRole::TAKMIR_ADMIN,
             'position' => 'ketua',
-            'password' => 'ketua123',
+            'password' => 'ketua2026',
         ]);
         User::factory()->create([
             'name' => 'Sekretaris',
             'email' => 'sekretaris@mail.com',
             'role' => UserRole::TAKMIR_ADMIN,
             'position' => 'sekretaris',
-            'password' => 'sekretaris123',
+            'password' => 'sekretaris2026',
         ]);
         User::factory()->create([
             'name' => 'Bendahara',
             'email' => 'bendahara@mail.com',
             'role' => UserRole::BENDAHARA,
             'position' => 'bendahara',
-            'password' => 'bendahara123',
+            'password' => 'bendahara2026',
         ]);
         User::factory()->create([
             'name' => 'Bidang Imarah',
             'email' => 'imarah@mail.com',
             'role' => UserRole::IMARAH,
             'position' => 'imarah',
-            'password' => 'imarah123',
+            'password' => 'imarah2026',
         ]);
         User::factory()->create([
             'name' => 'Bidang Idaroh',
             'email' => 'idaroh@mail.com',
             'role' => UserRole::IDAROH,
             'position' => 'idaroh',
-            'password' => 'idaroh123',
+            'password' => 'idaroh2026',
         ]);
         User::factory()->create([
             'name' => 'Bidang Riayah',
             'email' => 'riayah@mail.com',
             'role' => UserRole::RIAYAH,
             'position' => 'riayah',
-            'password' => 'riayah123',
+            'password' => 'riayah2026',
         ]);
     }
 }

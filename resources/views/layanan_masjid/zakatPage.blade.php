@@ -70,7 +70,7 @@
                                 </div>
 
                                 <div class="col-md-4 text-center">
-                                    <img src="/assets/images/QRIS .jpg" class="img-fluid rounded"
+                                    <img src="/assets/images/QRIS.png" class="img-fluid rounded"
                                         alt="QRIS Masjid Baitussalam">
                                 </div>
                             </div>

@@ -62,7 +62,7 @@
                             </div>
 
                             <div class="d-flex gap-3">
-                                <img src="{{ asset('assets/images/logobaitussalam.png') }}" class="rounded-3 shadow-sm" width="60" height="60"
+                                <img src="{{ asset('assets/images/logobaitussalam.png') }}?v={{ time() }}" class="rounded-3 shadow-sm" width="60" height="60"
                                     style="object-fit:cover">
 
                                 <div>

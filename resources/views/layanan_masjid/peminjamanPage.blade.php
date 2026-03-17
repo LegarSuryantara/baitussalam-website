@@ -51,11 +51,23 @@
                         </div>
                     </div>
 
-                    <div class="buttonPeminjaman">
-                        <a href="https://wa.me/6282119351025" class="btn btn-success badge px-4 py-3 fw-normal">
-                            <i class="bi bi-whatsapp me-2"></i>
-                            Hubungi Kami via WhatsApp
-                        </a>
+                    <div class="card border-0 shadow-sm mb-4 zakatInformasi">
+                        <div class="card-header cardHeaderPeminjaman fw-normal rounded-top-4">
+                            <i class="bi bi-whatsapp me-2"></i> Kontak Peminjaman
+                        </div>
+                        <div class="card-body">
+                            <p class="small text-muted mb-3">Silakan hubungi pengurus berikut untuk konfirmasi peminjaman:</p>
+                            <ul class="list-unstyled mb-0 small">
+                                <li class="mb-2">
+                                    <i class="bi bi-person me-2"></i>
+                                    Joko supeno / +62 821-1935-1025
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-person me-2"></i>
+                                    Soeprijadi / +62 852-3615-3555
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
                 </div>

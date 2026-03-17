@@ -27,7 +27,7 @@
                             </a>
                         </div>
                         <div class="col-md-6 text-center mt-3 mt-md-0">
-                            <img src="assets/images/qris.png" class="img-fluid qrisImgDonasi">
+                            <img src="assets/images/QRIS.png" class="img-fluid qrisImgDonasi">
                         </div>
                     </div>
                 </div>
