@@ -22,7 +22,7 @@
                             <small class="text-muted d-block mb-3">
                                 Bisa dipakai semua e-wallet & m-banking
                             </small>
-                            <a href="#" class="btn btnDownloadQris badge py-3 px-3 fw-light">
+                            <a href="{{ asset('assets/images/QRIS.png') }}" download="QRIS_Masjid_Baitussalam.png" class="btn btnDownloadQris badge py-3 px-3 fw-light">
                                 Download QR
                             </a>
                         </div>
@@ -47,11 +47,11 @@
 
                     <div>
                         <small class="text-muted">Nomor Rekening</small>
-                        <div class="fw-bold">612701018498530</div>
+                        <div class="fw-bold" id="norekText">612701018498530</div>
                         <small class="text-muted">An. Masjid Baitussalam</small>
                     </div>
 
-                    <button class="btn btnCopyDonasi badge py-3 px-3 fw-light">
+                    <button class="btn btnCopyDonasi badge py-3 px-3 fw-light" onclick="copyNorek()">
                         Copy
                     </button>
 
@@ -67,4 +67,23 @@
 
         </div>
     </div>
+
+    <script>
+        function copyNorek() {
+            var norek = document.getElementById("norekText").innerText;
+            navigator.clipboard.writeText(norek).then(function() {
+                var copyBtn = document.querySelector('.btnCopyDonasi');
+                var originalText = copyBtn.innerText;
+                copyBtn.innerText = 'Copied!';
+                copyBtn.classList.add('bg-success', 'text-white');
+                setTimeout(function() {
+                    copyBtn.innerText = originalText;
+                    copyBtn.classList.remove('bg-success', 'text-white');
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Failed to copy: ', err);
+                alert('Gagal menyalin nomor rekening');
+            });
+        }
+    </script>
 </x-layout>
