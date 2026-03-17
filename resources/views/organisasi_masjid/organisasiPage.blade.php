@@ -13,7 +13,7 @@
             </div>
         </div>
 
-        <div class="container hero-card-wrapper">
+        {{-- <div class="container hero-card-wrapper">
             <div class="row justify-content-center g-4">
                 <div class="col-md-4 col-lg-3">
                     <a class="text-decoration-none text-dark" href="{{ route('remajamasjid') }}">
@@ -42,7 +42,7 @@
                             </p>
                         </div>
                     </a>
-                </div>
+                </div> --}}
 
             </div>
         </div>
