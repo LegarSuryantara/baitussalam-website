@@ -185,6 +185,13 @@
                     <small class="text-muted">YOPPY BAYU IRAWAN</small>
                 </div>
 
+                <div class="text-center" style="min-width: 180px;">
+                    <img src="assets/images/Foto TAKMIR/YOPPY BAYU IRAWAN- PEMBANGUNAN jpeg.jpg"
+                        class="rounded-4 mb-2" style="width: 160px; height: 180px; object-fit: cover;">
+                    <p class="fw-semibold mb-0">Infokom IT</p>
+                    <small class="text-muted">M. FATHUR ALIF C</small>
+                </div>
+
             </div>
         </div>
 
