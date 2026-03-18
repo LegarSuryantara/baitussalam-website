@@ -6,7 +6,7 @@
             </div>
             <div class="Logo m-3">
                 <a class="navbar-brand" href="/">
-                    <img src="{{ asset('assets/images/logobaitussalam.png') }}?v={{ time() }}" alt="BaitussalamLogo" width="80"
+                    <img src="{{ asset('assets/images/logobaitussalam.png') }}?v=1.2" alt="BaitussalamLogo" width="80"
                         height="64">
                 </a>
             </div>

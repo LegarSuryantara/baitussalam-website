@@ -23,27 +23,33 @@ class DocumentConverter
             return null;
         }
 
-        // soffice --headless --convert-to pdf --outdir [outputDir] [sourcePath]
-        $process = new Process([
-            'soffice',
-            '--headless',
-            '--convert-to',
-            'pdf',
-            '--outdir',
-            $outputDir,
-            $sourcePath
-        ]);
+        // Check if shell execution is likely disabled (InfinityFree etc)
+        if (!function_exists('proc_open')) {
+            Log::warning('PDF Conversion skipped: proc_open is disabled on this server.');
+            return null;
+        }
 
         try {
+            // soffice --headless --convert-to pdf --outdir [outputDir] [sourcePath]
+            $process = new Process([
+                'soffice',
+                '--headless',
+                '--convert-to',
+                'pdf',
+                '--outdir',
+                $outputDir,
+                $sourcePath
+            ]);
+
             $process->mustRun();
             
-            // The output filename will be the same as source but with .pdf extension
             $filename = pathinfo($sourcePath, PATHINFO_FILENAME);
             $pdfPath = $outputDir . '/' . $filename . '.pdf';
 
             return file_exists($pdfPath) ? $pdfPath : null;
         } catch (\Throwable $exception) {
-            Log::error('PDF Conversion failed: ' . $exception->getMessage());
+            // Catch error silently to allow fallback logic in controllers
+            Log::error('PDF Conversion failed/not supported: ' . $exception->getMessage());
             return null;
         }
     }

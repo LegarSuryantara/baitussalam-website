@@ -44,6 +44,7 @@ class FinancialReportController extends Controller
         // Store original first
         $file->storeAs('laporan_keuangan', $filename, 'public');
 
+        $isConverted = false;
         if ($originalExtension !== 'pdf') {
             $sourcePath = storage_path('app/public/laporan_keuangan/' . $filename);
             $outputDir = storage_path('app/public/laporan_keuangan');
@@ -52,9 +53,10 @@ class FinancialReportController extends Controller
 
             if ($pdfPath) {
                 // Delete original file
-                unlink($sourcePath);
+                if (file_exists($sourcePath)) unlink($sourcePath);
                 // Update filename to the new PDF name
                 $filename = pathinfo($pdfPath, PATHINFO_BASENAME);
+                $isConverted = true;
             }
         }
 
@@ -67,9 +69,13 @@ class FinancialReportController extends Controller
             'uploaded_by' => Auth::user()->name ?? 'Takmir',
         ]);
 
+        $message = $isConverted 
+            ? 'Laporan berhasil diupload dan dikonversi ke PDF' 
+            : 'Laporan berhasil diupload (Format Asli)';
+
         return redirect()
             ->route('laporankeuangan')
-            ->with('success', 'Laporan berhasil diupload dan dikonversi ke PDF');
+            ->with('success', $message);
     }
 
 
@@ -85,6 +91,7 @@ class FinancialReportController extends Controller
             
             $file->storeAs('laporan_keuangan', $filename, 'public');
 
+            $isConverted = false;
             if ($originalExtension !== 'pdf') {
                 $sourcePath = storage_path('app/public/laporan_keuangan/' . $filename);
                 $outputDir = storage_path('app/public/laporan_keuangan');
@@ -92,15 +99,21 @@ class FinancialReportController extends Controller
                 $pdfPath = DocumentConverter::convertToPdf($sourcePath, $outputDir);
 
                 if ($pdfPath) {
-                    unlink($sourcePath);
+                    if (file_exists($sourcePath)) unlink($sourcePath);
                     $filename = pathinfo($pdfPath, PATHINFO_BASENAME);
+                    $isConverted = true;
                 }
             }
             
             $report->file = $filename;
+            $message = $isConverted 
+                ? 'Laporan diupdate dan dikonversi ke PDF' 
+                : 'Laporan diupdate (Format Asli)';
+        } else {
+            $message = 'Laporan berhasil diupdate';
         }
         $report->update($validated);
-        return back()->with('success', 'Laporan diupdate dan dikonversi ke PDF');
+        return back()->with('success', $message);
     }
 
     public function show($id)

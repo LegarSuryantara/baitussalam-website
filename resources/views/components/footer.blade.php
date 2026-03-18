@@ -1,7 +1,7 @@
 <div class="containerFooter bg-success-subtle">
     <div class="footerLogoContainer ">
         <div class="footerLogo">
-            <img src="{{ asset('assets/images/logobaitussalam.png') }}?v={{ time() }}" alt="logo" width="120" height="96">
+            <img src="{{ asset('assets/images/logobaitussalam.png') }}?v=1.2" alt="logo" width="120" height="96">
         </div>
     </div>
     <div class="footerDisclaimerContainer">

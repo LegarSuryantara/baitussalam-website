@@ -12,10 +12,12 @@
                             <div class="icon-box">
                                 <i class="bi bi-moon-stars"></i>
                             </div>
-                            <h5 class="fw-semibold mt-3">Kegiatan</h5>
-                            <p class="text-muted small">
-                                Agenda & aktivitas masjid
-                            </p>
+                            <div class="content-box">
+                                <h5 class="fw-semibold">Kegiatan</h5>
+                                <p class="text-muted small">
+                                    Agenda & aktivitas masjid
+                                </p>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -26,10 +28,12 @@
                             <div class="icon-box">
                                 <i class="bi bi-currency-dollar"></i>
                             </div>
-                            <h5 class="fw-semibold mt-3">Donasi</h5>
-                            <p class="text-muted small">
-                                Infaq & sedekah online
-                            </p>
+                            <div class="content-box">
+                                <h5 class="fw-semibold">Donasi</h5>
+                                <p class="text-muted small">
+                                    Infaq & sedekah online
+                                </p>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -43,10 +47,12 @@
                             <div class="icon-box">
                                 <i class="bi bi-folder-check"></i>
                             </div>
-                            <h5 class="fw-semibold mt-3">Dokumen</h5>
-                            <p class="text-muted small">
-                                Laporan keuangan & arsip
-                            </p>
+                            <div class="content-box">
+                                <h5 class="fw-semibold">Dokumen</h5>
+                                <p class="text-muted small">
+                                    Laporan keuangan & arsip
+                                </p>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -57,10 +63,12 @@
                             <div class="icon-box">
                                 <i class="bi bi-calendar-check"></i>
                             </div>
-                            <h5 class="fw-semibold mt-3">Penjadwalan</h5>
-                            <p class="text-muted small">
-                                Waktu shalat & acara
-                            </p>
+                            <div class="content-box">
+                                <h5 class="fw-semibold">Penjadwalan</h5>
+                                <p class="text-muted small">
+                                    Waktu shalat & acara
+                                </p>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -74,7 +82,7 @@
                 <h5 class="fw-bold text-uppercase">Tentang Kami</h5>
                 <div class="col-lg-6">
 
-                    <img src="assets/images/gambarMasjid.png" class="img-fluid rounded-4 mb-4" alt="Tentang Kami">
+                    <img src="assets/images/gambarMasjid.png" class="img-fluid rounded-4 mb-4" alt="Tentang Kami" loading="lazy">
 
                     <h4 class="fw-semibold">Membantumu menjadi lebih baik</h4>
                     <p class="text-muted">
@@ -87,35 +95,35 @@
 
                         <div class="d-flex align-items-center gap-3">
                             <img src="assets/images/gambarMasjid.png" class="rounded-3" width="80" height="60"
-                                style="object-fit: cover;">
+                                style="object-fit: cover;" loading="lazy">
                             <p class="mb-0 small fw-medium">
                                 Sukses dalam Mengisi malam Lailatul Qadar
                             </p>
                         </div>
 
                         <div class="d-flex align-items-center gap-3">
-                            <img src="assets/images/gambarMasjid.png" class="rounded-3" width="80" height="60">
+                            <img src="assets/images/gambarMasjid.png" class="rounded-3" width="80" height="60" loading="lazy">
                             <p class="mb-0 small fw-medium">
                                 Sukses dalam Mengisi malam Lailatul Qadar
                             </p>
                         </div>
 
                         <div class="d-flex align-items-center gap-3">
-                            <img src="assets/images/gambarMasjid.png" class="rounded-3" width="80" height="60">
+                            <img src="assets/images/gambarMasjid.png" class="rounded-3" width="80" height="60" loading="lazy">
                             <p class="mb-0 small fw-medium">
                                 Tafsir Surah Ar-Rahman
                             </p>
                         </div>
 
                         <div class="d-flex align-items-center gap-3">
-                            <img src="assets/images/gambarMasjid.png" class="rounded-3" width="80" height="60">
+                            <img src="assets/images/gambarMasjid.png" class="rounded-3" width="80" height="60" loading="lazy">
                             <p class="mb-0 small fw-medium">
                                 Tafsir Surah Al-Mulk
                             </p>
                         </div>
 
                         <div class="d-flex align-items-center gap-3">
-                            <img src="assets/images/gambarMasjid.png" class="rounded-3" width="80" height="60">
+                            <img src="assets/images/gambarMasjid.png" class="rounded-3" width="80" height="60" loading="lazy">
                             <p class="mb-0 small fw-medium">
                                 Pentingnya menjaga Ukhuwah Islamiyah
                             </p>

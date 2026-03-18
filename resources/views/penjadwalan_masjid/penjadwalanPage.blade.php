@@ -1,36 +1,44 @@
 <x-layout title="Penjadwalan | Baitussalam">
+    @push('styles')
+        <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.css" rel="stylesheet">
+    @endpush
+    @push('scripts')
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.js"></script>
+    @endpush
     <div class="container my-5">
 
         <h3 class="fw-bold mb-3">Penjadwalan Masjid</h3>
 
-        <div class="card shadow-sm border-0 p-4">
-
+        <div class="agenda-box p-4">
             <div class="row g-4">
-
                 <div class="col-lg-7">
                     <div id="calendar" class="calendar-box"></div>
                 </div>
 
                 <div class="col-lg-5">
-                    <div class="card shadow-sm rounded-4">
-                        <div class="card-body">
+                    <div class="card border-0 bg-light rounded-4">
+                        <div class="card-body p-4">
 
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-
-                                <h5 class="fw-bold mb-0">Agenda Masjid</h5>
-
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h5 class="fw-bold mb-0">
+                                    <i class="bi bi-list-stars text-success me-2"></i>
+                                    Agenda Masjid
+                                </h5>
                                 @auth
                                     @if (auth()->user()->canManagePenjadwalan())
                                         <a href="javascript:void(0)" onclick="goToCreateAgenda()"
-                                            class="btn btn-success btn-sm rounded-pill px-3">
-                                            + Tambah Agenda
+                                            class="btn btn-success btn-sm rounded-pill px-3 fw-semibold">
+                                            <i class="bi bi-plus-lg me-1"></i> Tambah
                                         </a>
                                     @endif
                                 @endauth
                             </div>
-                            <p class="text-muted small mb-3">
-                                Tanggal: <strong id="agendaDateLabel">-</strong>
-                            </p>
+                            
+                            <div class="bg-white rounded-4 p-3 mb-4 shadow-sm border-start border-success border-4">
+                                <p class="text-muted small mb-1 uppercase fw-bold">Agenda Terpilih</p>
+                                <h6 class="fw-bold mb-0 text-dark" id="agendaDateLabel">-</h6>
+                            </div>
+
                             <div id="agendaList"></div>
 
                         </div>
@@ -38,38 +46,45 @@
                 </div>
 
             </div>
+        </div>
 
-        <div class="card shadow-sm border-0 p-4 mt-4">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h5 class="fw-bold mb-0">Jadwal Jumat & Hari Raya</h5>
+        <div class="agenda-box p-4 mt-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="fw-bold mb-0">
+                    <i class="bi bi-calendar-check-fill text-success me-2"></i>
+                    Jadwal Jumat & Hari Raya
+                </h5>
                 @auth
                     @if (auth()->user()->canManagePenjadwalan())
-                        <button class="btn btn-success btn-sm rounded-pill px-3" data-bs-toggle="modal"
+                        <button class="btn btn-success btn-sm rounded-pill px-4 fw-semibold" data-bs-toggle="modal"
                             data-bs-target="#prayerScheduleModal" onclick="resetPrayerForm()">
-                            + Tambah Jadwal
+                            <i class="bi bi-plus-lg me-1"></i> Tambah Jadwal
                         </button>
                     @endif
                 @endauth
             </div>
             <div class="table-responsive">
-                <table class="table table-hover align-middle">
-                    <thead class="table-light">
-                        <tr>
-                            <th>Tanggal</th>
-                            <th>Jenis</th>
-                            <th>Khotib / Penceramah</th>
-                            <th>Imam</th>
-                            <th>Bilal</th>
+                <table class="table table-hover align-middle border-0">
+                    <thead class="bg-light">
+                        <tr class="text-secondary small text-uppercase fw-bold">
+                            <th class="border-0 ps-3">Tanggal</th>
+                            <th class="border-0">Jenis</th>
+                            <th class="border-0">Khotib / Penceramah</th>
+                            <th class="border-0">Imam</th>
+                            <th class="border-0">Bilal</th>
                             @auth
                                 @if (auth()->user()->canManagePenjadwalan())
-                                    <th class="text-end">Aksi</th>
+                                    <th class="border-0 text-end pe-3">Aksi</th>
                                 @endif
                             @endauth
                         </tr>
                     </thead>
-                    <tbody id="prayerScheduleList">
+                    <tbody id="prayerScheduleList" class="border-0">
                         <tr>
-                            <td colspan="6" class="text-center text-muted">Memuat jadwal...</td>
+                            <td colspan="6" class="text-center text-muted py-5">
+                                <div class="spinner-border spinner-border-sm text-success me-2" role="status"></div>
+                                Memuat jadwal...
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -146,18 +161,37 @@
                     initialView: 'dayGridMonth',
                     selectable: true,
                     editable: false,
-
+                    height: 'auto',
+                    handleWindowResize: true,
+                    headerToolbar: window.matchMedia("(max-width: 991px)").matches ? {
+                        left: 'prev,next',
+                        center: 'title',
+                        right: 'today'
+                    } : {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'dayGridMonth,dayGridWeek'
+                    },
+                    buttonText: {
+                        today: 'Hari Ini',
+                        month: 'Bulan',
+                        week: 'Minggu'
+                    },
                     events: '/penjadwalan/events',
-
                     dateClick: function(info) {
                         selectedDate = info.dateStr;
 
                         loadAgendaByDate(info.dateStr);
                         updateAgendaTitle(info.dateStr);
+                        
+                        // Highlight selected date visually in calendar (FullCalendar handles selectable but we can add more)
                     }
                 });
 
-                calendar.render();
+                // Small delay to ensure CSS is fully loaded/applied before rendering
+                setTimeout(() => {
+                    calendar.render();
+                }, 100);
                 setInterval(() => {
                     loadAgendaByDate(selectedDate);
                 }, 1200000); // 120 detik
@@ -203,48 +237,52 @@
 
                 function agendaCardTemplate(a) {
                     return `
-                        <div class="agenda-item mb-3 border-bottom pb-3">
+                        <div class="agenda-item mb-4">
                         @auth
                         @if (auth()->user()->canManagePenjadwalan())
-                            <div class="d-flex justify-content-between align-items-start mb-1">
-                                <h6 class="fw-semibold mb-0">${a.title}</h6>
-                                <div>
-                                    <a class="btn btn-outline-success btn-sm rounded-pill px-3 me-1"
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h6 class="fw-bold mb-0">${a.title}</h6>
+                                <div class="btn-group">
+                                    <a class="btn btn-sm btn-outline-success rounded-start-pill px-3"
                                     href="/penjadwalan/edit/${a.id}">
-                                        Edit
+                                        <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <button class="btn btn-outline-danger btn-sm rounded-pill px-3"
+                                    <button class="btn btn-sm btn-outline-danger rounded-end-pill px-3"
                                             onclick="deleteAgenda(${a.id})">
-                                        Hapus
+                                        <i class="bi bi-trash"></i>
                                     </button>
                                 </div>
                             </div>
+                        @else
+                            <h6 class="fw-bold mb-2">${a.title}</h6>
                         @endif
+                        @else
+                            <h6 class="fw-bold mb-2">${a.title}</h6>
                         @endauth
                             <div class="agenda-info text-muted small">
-                                <div class="mb-1">
-                                    <i class="bi bi-clock me-1"></i>
-                                    ${a.start_time} - ${a.end_time}
+                                <div class="mb-2 d-flex align-items-center">
+                                    <i class="bi bi-clock-fill me-2"></i>
+                                    <span>${a.start_time} - ${a.end_time}</span>
                                 </div>
-                                <div class="mb-1">
-                                    <i class="bi bi-geo-alt me-1"></i>
-                                    ${a.location}
+                                <div class="mb-2 d-flex align-items-center">
+                                    <i class="bi bi-geo-alt-fill me-2"></i>
+                                    <span>${a.location}</span>
                                 </div>
-                                <div class="d-flex flex-wrap gap-2">
-                                    <span class="badge bg-success-subtle text-success px-3 rounded-pill">
+                                <div class="d-flex flex-wrap gap-2 mt-3 mb-3">
+                                    <span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill">
                                             ${a.category}
                                     </span>
 
-                                    <span class="badge ${getStatusBadgeClass(a.status)} px-3 rounded-pill">
+                                    <span class="badge ${getStatusBadgeClass(a.status)} px-3 py-2 rounded-pill">
                                             ${a.status}
                                     </span>
                                 </div>
                             </div>
 
-                            <div class="text-end mt-3">
+                            <div class="mt-2">
                                 <a href="/penjadwalan/lihat/${a.id}"
-                                class="btn btn-success btn-sm rounded-pill px-4">
-                                    Lihat Detail
+                                class="btn btn-success btn-sm w-100 rounded-pill py-2 fw-semibold">
+                                    Lihat Detail Kegiatan
                                 </a>
                             </div>
                         </div>

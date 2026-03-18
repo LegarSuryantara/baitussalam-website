@@ -9,8 +9,8 @@
                 </div>
             </div>
 
-            <div class="mb-4" id="fiterKegiatan">
-                <div class="btn-group fiterKegiatanMenu rounded-pill p-2">
+            <div class="mb-4 overflow-x-auto" id="fiterKegiatan">
+                <div class="btn-group fiterKegiatanMenu rounded-pill p-2 text-nowrap">
 
                     <a href="{{ route('kegiatan') }}"
                         class="btn rounded-pill btn-sm px-3 {{ request('category') == null ? 'btn-dark text-white' : '' }}">
