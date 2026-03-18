@@ -117,7 +117,7 @@
 
 
     {{-- header --}}
-    <x-Header></x-Header>
+    <x-header></x-header>
     {{-- Konten halaman --}}
     <main>
         {{ $slot }}

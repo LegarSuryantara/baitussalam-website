@@ -1,10 +1,10 @@
 <x-layout title="Donasi | Baitussalam">
     <div>
-        <div class="container my-5">
+        <div class="container my-5 px-4">
 
             <div class="row cardHeroDonasi align-items-center mb-4">
                 <div class="col-lg-6">
-                    <h2 class="fw-bold">Ayo Berdonasi<br>Untuk Masjid</h2>
+                    <h2 class="fw-bold">Ayo Berdonasi Untuk Masjid</h2>
                     <p class="text-muted">
                         Anda dapat berdonasi melalui QRIS atau transfer rekening resmi masjid.
                     </p>

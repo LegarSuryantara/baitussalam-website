@@ -694,6 +694,14 @@ body {
     color: #198754;
 }
 
+.agenda-card {
+    border: 1px solid #ddd;
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .08);
+}
+}
+
 .bg-success-subtle {
     background: #c8e6c9;
 }
@@ -1139,7 +1147,6 @@ body {
         font-weight: 700;
         padding: 10px;
         text-align: center;
-        /* absolute positioning removed to prevent overlap on mobile */
     }
     /* ====================
      FEATURE GRID (4 MENU)
@@ -1229,6 +1236,7 @@ body {
     /* ====================
      GALERI
   ===================== */
+<<<<<<< HEAD
     .galeriContainer .container {
         padding: 24px;
     }
@@ -1449,25 +1457,280 @@ body {
         font-weight: 500;
         box-shadow: none;
     }
+    .kontakForm {
+        margin-bottom: 20px;
+    }
+    /* Label */
+    .kontakForm label {
+        font-size: 13px;
+        font-weight: 500;
+        margin-bottom: 6px;
+        display: block;
+    }
+    /* Input & Textarea */
+    .kontakInputForm {
+        width: 100%;
+        font-size: 13px;
+        padding: 12px 16px;
+        border-radius: 18px;
+        border: 1px solid #e0e0e0;
+        background: #f5f5f5;
+        margin-bottom: 10px;
+    }
+    .kontakInputForm:focus {
+        outline: none;
+        border-color: #2e7d32;
+        background: #ffffff;
+    }
+    /* Button kirim */
+    .kontakForm button {
+        width: 100%;
+        background-color: #2e7d32;
+        border-radius: 14px;
+        padding: 12px 0;
+        font-size: 14px;
+        font-weight: 500;
+        border: none;
+        color: #fff;
+        margin-top: 5px;
+    }
     /* =========================
-   KONTAK - FIGMA MOBILE FIX
-
-/* Background halaman */
+   HUBUNGI KAMI - MOBILE ONLY
+========================= */
+    .hubungi-buttons {
+        display: flex;
+        gap: 12px;
+        margin: 15px 0;
+    }
+    .hubungi-buttons a {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 12px 0;
+        border-radius: 14px;
+        font-size: 13px;
+        font-weight: 500;
+        text-decoration: none;
+        color: #fff;
+        transition: 0.2s ease;
+    }
+    .btn-telepon {
+        background-color: #2e7d32;
+    }
+    .btn-wa {
+        background-color: #25D366;
+    }
+    .hubungi-buttons a:active {
+        transform: scale(0.97);
+    }
+    /* =========================
+   INFO EMAIL & ALAMAT
+========================= */
+    .info-box {
+        background: #f5f5f5;
+        border: 1px solid #e0e0e0;
+        border-radius: 18px;
+        padding: 12px 16px;
+        font-size: 13px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    /* =========================
+   MAP
+========================= */
+    .map-box {
+        margin-top: 12px;
+        border-radius: 18px;
+        overflow: hidden;
+    }
+    .map-box iframe,
+    .map-box img {
+        width: 100%;
+        height: 180px;
+        border: none;
+        display: block;
+    }
+    /* Link Google Maps */
+    .map-link {
+        text-align: center;
+        font-size: 12px;
+        margin-top: 8px;
+        color: #2e7d32;
+        font-weight: 500;
+        text-decoration: none;
+        display: block;
+    }
+    /* =========================
+   FOOTER SPACING
+========================= */
+    .footer {
+        margin-top: 30px;
+    }
+    /* =========================
+   PEMINJAMAN - MOBILE FIX
+*/
+    /* Background section */
     body {
-        background-color: #e6efe9;
-        font-family: 'Poppins', sans-serif;
+        background-color: #dfe8e2;
     }
-    /* Container utama */
-    .container {
-        padding: 16px;
+    /* Container spacing */
+    .container.my-4 {
+        padding: 20px;
     }
-    /* Judul Section */
-    .section-title {
-        font-size: 16px;
+    /* Judul */
+    .container h4 {
+        font-size: 18px;
         font-weight: 600;
-        margin-bottom: 12px;
+        margin-bottom: 6px;
     }
-    /* =========================
+    .container p.text-muted {
+        font-size: 12px;
+        margin-bottom: 18px;
+    }
+    /* Gambar */
+    .container img.img-fluid {
+        border-radius: 18px !important;
+        max-height: 220px;
+        object-fit: cover;
+        margin-bottom: 18px;
+    }
+    /* Card */
+    .card {
+        border-radius: 16px !important;
+        box-shadow: none !important;
+        border: 1px solid #e5e5e5;
+    }
+    /* Header card hijau muda */
+    .cardHeaderPeminjaman {
+        background-color: #c8e6c9 !important;
+        font-size: 14px;
+        font-weight: 500;
+        text-align: center;
+        padding: 10px;
+        border-radius: 16px 16px 0 0 !important;
+    }
+    /* Card body */
+    .card .card-body {
+        padding: 14px 16px;
+    }
+    /* List jadi 2 kolom seperti figma */
+    .card .card-body ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5px 5px;
+    }
+    .card .card-body ul li {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+    /* Button container */
+    .buttonPeminjaman {
+        justify-content: center;
+        margin-top: 10px;
+    }
+    /* Button WA sesuai figma */
+    .buttonPeminjaman a.btn {
+        width: 100%;
+        background-color: #2e7d32 !important;
+        border-radius: 8px;
+        padding: 10px 0;
+        font-size: 13px;
+        font-weight: 500;
+        box-shadow: none;
+        font-size: 14px;
+        padding: 14px 0;
+        border-radius: 12px;
+    }
+    .herosectionIbu {
+        height: 190px;
+        width: 90%;
+        margin-top: 20px;
+        justify-self: center;
+        border-radius: 10px;
+        background-size: cover;
+        position: relative;
+    }
+    .herosectionIbu .ornamenGaris {
+        font-size: 12px;
+        padding: 10px;
+        text-align: center;
+        position: absolute;
+        top: 245px;
+        width: 50%;
+    }
+    .pengajianIbuContainer .container section.mb-5 {
+        padding-top: 60px;
+    }
+}
+
+@media (max-width: 767px) {
+    .zakat-card {
+        padding: 16px !important;
+    }
+    .zakatInformasi {
+        padding: 16px !important;
+    }
+    .zakatInformasi img {
+        max-width: 130px;
+    }
+    .kontakInputForm {
+        padding: 9px 11px;
+    }
+    .map-box iframe {
+        height: 220px;
+    }
+    .info-box {
+        padding: 12px;
+    }
+    .container img.img-fluid {
+        max-height: 220px;
+        object-fit: cover;
+    }
+    .card .card-body {
+        padding: 14px;
+    }
+    .buttonPeminjaman a.btn {
+        font-size: 13px;
+    }
+    .herosectionBapak {
+        height: 190px;
+        width: 90%;
+        margin-top: 20px;
+        justify-self: center;
+        border-radius: 10px;
+        background-size: cover;
+        position: relative;
+    }
+    .herosectionBapak .ornamenGaris {
+        font-size: 12px;
+        padding: 10px;
+        text-align: center;
+        position: absolute;
+        top: 245px;
+        width: 50%;
+    }
+    .herosectionRemaja {
+        height: 190px;
+        width: 90%;
+        margin-top: 20px;
+        justify-self: center;
+        border-radius: 10px;
+        background-size: cover;
+        position: relative;
+    }
+    .herosectionRemaja .ornamenGaris {
+        font-size: 12px;
+        padding: 10px;
+        text-align: center;
+        position: absolute;
+        top: 245px;
+        width: 50%;
+    }
+}
    FORM
    KONTAK - MOBILE FIX
 
@@ -1476,6 +1739,7 @@ body {
 }
 
 /* Label */
+<<<<<<< HEAD
     .kontakForm label {
         font-size: 13px;
         font-weight: 500;
@@ -1745,6 +2009,327 @@ body {
         top: 245px;
         width: 50%;
     }
+=======
+.kontakForm label {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    display: block;
+}
+
+/* Input & Textarea */
+.kontakInputForm {
+    width: 100%;
+    font-size: 13px;
+    padding: 12px 16px;
+    border-radius: 18px;
+    border: 1px solid #e0e0e0;
+    background: #f5f5f5;
+    margin-bottom: 10px;
+}
+
+.kontakInputForm:focus {
+    outline: none;
+    border-color: #2e7d32;
+    background: #ffffff;
+}
+
+/* Button kirim */
+.kontakForm button {
+    width: 100%;
+    background-color: #2e7d32;
+    border-radius: 14px;
+    padding: 12px 0;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    color: #fff;
+    margin-top: 5px;
+}
+
+/* =========================
+   HUBUNGI KAMI - MOBILE ONLY
+========================= */
+
+.hubungi-buttons {
+    display: flex;
+    gap: 12px;
+    margin: 15px 0;
+}
+
+.hubungi-buttons a {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 0;
+    border-radius: 14px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #fff;
+    transition: 0.2s ease;
+}
+
+.btn-telepon {
+    background-color: #2e7d32;
+}
+
+.btn-wa {
+    background-color: #25D366;
+}
+
+.hubungi-buttons a:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================
+   INFO EMAIL & ALAMAT
+========================= */
+
+.info-box {
+    background: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 18px;
+    padding: 12px 16px;
+    font-size: 13px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* =========================
+   MAP
+========================= */
+
+.map-box {
+    margin-top: 12px;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.map-box iframe,
+.map-box img {
+    width: 100%;
+    height: 180px;
+    border: none;
+    display: block;
+}
+
+/* Link Google Maps */
+.map-link {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 8px;
+    color: #2e7d32;
+    font-weight: 500;
+    text-decoration: none;
+    display: block;
+}
+
+/* =========================
+   FOOTER SPACING
+========================= */
+
+.footer {
+    margin-top: 30px;
+}
+
+/* =========================
+   PEMINJAMAN - MOBILE FIX
+
+/* Background section */
+body {
+    background-color: #dfe8e2;
+}
+
+/* Container spacing */
+.container.my-4 {
+    padding: 20px;
+}
+
+/* Judul */
+.container h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.container p.text-muted {
+    font-size: 12px;
+    margin-bottom: 18px;
+}
+
+/* Gambar */
+.container img.img-fluid {
+    border-radius: 18px !important;
+    max-height: 220px;
+    object-fit: cover;
+    margin-bottom: 18px;
+}
+
+/* Card */
+.card {
+    border-radius: 16px !important;
+    box-shadow: none !important;
+    border: 1px solid #e5e5e5;
+}
+
+/* Header card hijau muda */
+.cardHeaderPeminjaman {
+    background-color: #c8e6c9 !important;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    padding: 10px;
+    border-radius: 16px 16px 0 0 !important;
+}
+
+/* Card body */
+.card .card-body {
+    padding: 14px 16px;
+}
+
+/* List jadi 2 kolom seperti figma */
+.card .card-body ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px 5px;
+}
+
+.card .card-body ul li {
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+/* Button container */
+.buttonPeminjaman {
+    justify-content: center;
+    margin-top: 10px;
+}
+
+/* Button WA sesuai figma */
+.buttonPeminjaman a.btn {
+    width: 100%;
+    background-color: #2e7d32 !important;
+    border-radius: 8px;
+    padding: 10px 0;
+    font-size: 13px;
+    font-weight: 500;
+    box-shadow: none;
+    font-size: 14px;
+    padding: 14px 0;
+    border-radius: 12px;
+}
+
+.herosectionIbu {
+    height: 190px ;
+    width: 90%;
+    margin-top: 20px;
+    justify-self: center;
+    border-radius: 10px;
+    background-size: cover;
+    position: relative;
+}
+
+.herosectionIbu .ornamenGaris{
+    font-size: 12px;
+    padding: 10px;
+    text-align: center;
+    position: absolute;
+    top: 245px;
+    width: 50%;
+}
+
+.pengajianIbuContainer .container section.mb-5 {
+    padding-top: 60px;
+}
+
+}
+
+@media (max-width: 767px) {
+.zakat-card {
+    padding: 16px !important;
+}
+
+.zakatInformasi {
+    padding: 16px !important;
+}
+
+.zakatInformasi img {
+    max-width: 130px;
+}
+
+.kontakInputForm {
+    padding: 9px 11px;
+}
+
+.map-box iframe {
+    height: 220px;
+}
+
+.info-box {
+    padding: 12px;
+}
+
+.container img.img-fluid {
+    max-height: 220px;
+    object-fit: cover;
+}
+
+.card .card-body {
+    padding: 14px;
+}
+
+.buttonPeminjaman a.btn {
+    font-size: 13px;
+}
+
+.herosectionBapak {
+    height: 190px ;
+    width: 90%;
+    margin-top: 20px;
+    justify-self: center;
+    border-radius: 10px;
+    background-size: cover;
+    position: relative;
+}
+
+.herosectionBapak .ornamenGaris{
+    font-size: 12px;
+    padding: 10px;
+    text-align: center;
+    position: absolute;
+    top: 245px;
+    width: 50%;
+}
+
+.herosectionRemaja {
+    height: 190px ;
+    width: 90%;
+    margin-top: 20px;
+    justify-self: center;
+    border-radius: 10px;
+    background-size: cover;
+    position: relative;
+}
+
+.herosectionRemaja .ornamenGaris{
+    font-size: 12px;
+    padding: 10px;
+    text-align: center;
+    position: absolute;
+    top: 245px;
+    width: 50%;
+}
+
+
+
+
+>>>>>>> origin/main
 }
 
 @media (max-width: 767px) {
@@ -1773,11 +2358,17 @@ body {
         padding: 12px;
         font-size: 10px;
     }
+<<<<<<< HEAD
     .cardGaleriContainer div.row {
+=======
+
+    .cardGaleriContainer div.row{
+>>>>>>> origin/main
         padding: 10px 30px;
         display: flex;
         flex-wrap: wrap;
     }
+<<<<<<< HEAD
     .cardGaleriContainer div.row .col-md-3 {
         flex: 0 0 50%;
         max-width: 50%;
@@ -1941,4 +2532,113 @@ body {
     .kontakForm button {
         font-size: 13px;
     }
+=======
+
+    .cardGaleriContainer div.row .col-md-3{
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+  .carousel-inner .row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start !important;
+  }
+
+  .carousel-inner .col-12 {
+    flex: 0 0 auto;
+    width: 160px; 
+  }
+
+  .profile-card-remaja {
+    padding: 10px;
+  }
+
+  .profile-card-remaja img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .carousel-inner .row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .galeriAnnisa .row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+
+  }
+
+  .galeriAnnisa .row > .col-md-4 {
+    flex: 0 0 auto;
+    width: 220px; 
+  }
+
+
+  .galeriAnnisa .row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .galeriAnnisa .row {
+    scroll-behavior: smooth;
+  }
+
+.galeriBapak .row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+
+  }
+
+  .galeriBapak .row > .col-md-4 {
+    flex: 0 0 auto;
+    width: 220px; 
+  }
+
+
+  .galeriBapak .row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .galeriBapak .row {
+    scroll-behavior: smooth;
+  }
+
+  .galeriRemaja .row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+
+  }
+
+  .galeriRemaja .row > .col-md-4 {
+    flex: 0 0 auto;
+    width: 220px; 
+  }
+
+
+  .galeriRemaja .row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .galeriRemaja .row {
+    scroll-behavior: smooth;
+  }
+  
+
+
+
+}
+
+@media (max-width: 415px) {
+    .tabsLiterasi{
+        width: 100%;
+        font-size: 11px;
+    }
+
+    .literasiContainer div.row div.col-md-6 div.card div.card-body a{
+        font-size: 10px;
+        width: 50%;
+    }
+
+
+>>>>>>> origin/main
 }

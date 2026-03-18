@@ -2,7 +2,7 @@
     <div class="searchBarHearder bg-success-subtle">
         <div class="headerchild container-fluid d-flex flex-row align-items-center ">
             <div class="navbarTop">
-                <x-Navbar></x-Navbar>
+                <x-navbar></x-navbar>
             </div>
             <div class="Logo m-3">
                 <a class="navbar-brand" href="/">
@@ -58,7 +58,7 @@
         </div>
     </div>
     <div class="navbar1">
-        <x-Navbar></x-Navbar>
+        <x-navbar></x-navbar>
     </div>
 
 </div>

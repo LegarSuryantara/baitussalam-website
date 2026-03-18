@@ -4,12 +4,12 @@
             <span class="titleHero">REMAJA MASJID BAITUSSALAM</span>
             <img src="/assets/images/ornamenGaris.png" alt="ornamenGaris" class="ornamenGaris">
         </div>
-        <div class="container py-5">
+        <div class="container py-5 px-4">
 
 
-            <section class="mb-5">
+            <section class="mb-5 pt-5">
                 <h4 class="fw-bold mb-3">Tentang Kami</h4>
-                <p class="text-muted">
+                <p class="text-muted deskripsiOrganisasi">
                     Remaja masjid adalah organisasi yang menghimpun pemuda-pemudi muslim
                     untuk memakmurkan masjid melalui kegiatan sosial dan keagamaan,
                     seperti sholat berjamaah, pengajian, peringatan hari besar Islam,
@@ -115,7 +115,7 @@
                 </a>
             </section>
 
-            <section>
+            <section class="galeriRemaja">
                 <h4 class="fw-bold mb-4">Galeri Kegiatan</h4>
 
                 <div class="row g-4">

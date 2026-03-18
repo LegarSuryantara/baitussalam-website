@@ -4,11 +4,11 @@
             <span class="titleHero">Pengajian Bapak-bapak Masjid Baitussalam</span>
             <img src="/assets/images/ornamenGaris.png" alt="ornamenGaris" class="ornamenGaris">
         </div>
-        <div class="container py-5">
+        <div class="container py-5 px-4">
 
-            <section class="mb-5">
+            <section class="py-5">
                 <h4 class="fw-bold mb-3">Tentang Kami</h4>
-                <p class="text-muted">
+                <p class="text-muted deskripsiOrganisasi">
                     Pengajian bapak-bapak adalah kegiatan rutin keagamaan Islam non-formal yang lazim diadakan di
                     masjid, musholla, atau di lingkungan perumahan/desa di seluruh Indonesia, khusus untuk jamaah
                     pria.
@@ -101,7 +101,7 @@
                 </a>
             </section>
 
-            <section>
+            <section class="galeriBapak">
                 <h4 class="fw-bold mb-4">Galeri Kegiatan</h4>
 
                 <div class="row g-4">

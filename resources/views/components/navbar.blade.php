@@ -27,7 +27,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center gap-2" href="{{ route('organisasi')}}">
+                        <a class="nav-link d-flex align-items-center gap-2" href="{{ route('organisasi') }}">
                             <i class="bi bi-people nav-icon"></i>
                             <span>ORGANISASI</span>
                         </a>
@@ -61,7 +61,7 @@
                     </li>
 
                     <li class="searchBarMobile">
-                        <x-SearchBar></x-SearchBar>
+                        <x-search-bar></x-search-bar>
                     </li>
                 </ul>
             </div>

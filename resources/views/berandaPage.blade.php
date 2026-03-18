@@ -1,4 +1,4 @@
-<x-Layout title="Beranda | Baitussalam">
+<x-layout title="Beranda | Baitussalam">
     <div class="herosectionBeranda d-flex justify-content-center align-items-center">
         <span class="titleHero text-center">Masjid Baitussalam<br>Perumahan Kalirejo Permai</span>
     </div>
@@ -88,9 +88,13 @@
                     <p class="text-muted">
                         Membuat anda lebih fokus dalam memperbaiki diri dan meningkatkan keimanan.
                     </p>
+                    <a class="btn btn-success" href="">
+                        <span>Selengkapnya</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </a>
                 </div>
 
-                <div class="col-lg-6">
+                <div class="listberita col-lg-6">
                     <div class="d-flex flex-column gap-3">
 
                         <div class="d-flex align-items-center gap-3">
@@ -165,7 +169,8 @@
                     </div>
                 @endforeach
             </div>
+            </div>
 
         </div>
     </div>
-</x-Layout>
+</x-layout>
