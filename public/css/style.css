@@ -1,13 +1,75 @@
-@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Orbitron:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Orbitron:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 * {
     font-family: poppins, sans-serif;
 }
 
+/* =========================================
+   GLOBAL MOBILE TYPOGRAPHY
+   Berlaku untuk SEMUA halaman di layar HP
+========================================= */
+@media (max-width: 767px) {
+    /* Body base */
+    body {
+        font-size: 13px;
+    }
+
+    /* Headings */
+    h1 {
+        font-size: 20px !important;
+    }
+    h2 {
+        font-size: 18px !important;
+    }
+    h3 {
+        font-size: 16px !important;
+    }
+    h4 {
+        font-size: 15px !important;
+    }
+    h5 {
+        font-size: 14px !important;
+    }
+    h6 {
+        font-size: 13px !important;
+    }
+
+    /* Tabel */
+    table th,
+    table td {
+        font-size: 11px;
+        padding: 6px 8px;
+    }
+
+    /* Badge */
+    .badge {
+        font-size: 10px;
+        padding: 3px 8px;
+    }
+
+    /* Button umum */
+    .btn {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    /* Paragraf & teks muted */
+    p,
+    .text-muted {
+        font-size: 12px;
+    }
+
+    /* Label form */
+    label {
+        font-size: 12px;
+    }
+}
 
 /* css profile */
 
 .herosectionProfile {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url("/assets/images/gambarMasjid.png");
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
+        url("/assets/images/gambarMasjid.png");
     background-size: cover;
     background-position: center;
     box-shadow: none;
@@ -39,8 +101,6 @@ a.nav-link:hover {
 .navbar-collapse {
     transition: all 0.35s ease;
 }
-
-
 /* Footer */
 
 .containerFooter {
@@ -134,7 +194,7 @@ a.nav-link:hover {
 
 .visi {
     height: 203px;
-    border-top: 4px solid #81C784;
+    border-top: 4px solid #81c784;
     border-radius: 20px;
     padding: 30px 100px;
     box-shadow: 10px 7px 5px 0px rgba(217, 217, 217, 0.91);
@@ -145,7 +205,7 @@ a.nav-link:hover {
 .misi {
     padding: 30px 100px;
     height: 203px;
-    border-top: 4px solid #81C784;
+    border-top: 4px solid #81c784;
     border-radius: 20px;
     box-shadow: 10px 7px 5px 0px rgba(217, 217, 217, 0.91);
     -webkit-box-shadow: 10px 7px 5px 0px rgba(217, 217, 217, 0.91);
@@ -175,12 +235,12 @@ a.nav-link:hover {
     border-radius: 20px;
     width: 100%;
 }
-
-
 /* css beranda */
 
 .herosectionBeranda {
-    background-image: linear-gradient(rgba(181, 181, 181, 0.45), rgba(181, 181, 181, 0.45)), url("/assets/images/background2.png");
+    background-image:
+        linear-gradient(rgba(181, 181, 181, 0.45), rgba(181, 181, 181, 0.45)),
+        url("/assets/images/background2.png");
     background-size: cover;
     background-position: center;
     box-shadow: none;
@@ -242,7 +302,9 @@ a.nav-link:hover {
 }
 
 .herosectionOrganisasi {
-    background-image: linear-gradient(rgba(118, 118, 118, 0.45), rgba(118, 118, 118, 0.45)), url("/assets/images/gambarMasjid.png");
+    background-image:
+        linear-gradient(rgba(118, 118, 118, 0.45), rgba(118, 118, 118, 0.45)),
+        url("/assets/images/gambarMasjid.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -285,7 +347,7 @@ a.nav-link:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform .4s ease;
+    transition: transform 0.4s ease;
     object-position: center;
     display: block;
 }
@@ -329,7 +391,7 @@ a.nav-link:hover {
 }
 
 .kontakForm button {
-    background-color: #388E3C;
+    background-color: #388e3c;
 }
 
 .kontakForm button:hover {
@@ -351,7 +413,7 @@ a.nav-link:hover {
 }
 
 .zakatInformasi a {
-    background-color: #388E3C;
+    background-color: #388e3c;
 }
 
 .zakatInformasi a:hover {
@@ -361,11 +423,11 @@ a.nav-link:hover {
 
 .btn-success,
 .bg-success {
-    background-color: #388E3C !important;
+    background-color: #388e3c !important;
 }
 
 .tabsLiterasi {
-    background-color: #C8E6C9;
+    background-color: #c8e6c9;
     width: 475px;
     display: flex;
     justify-content: center;
@@ -378,16 +440,16 @@ a.nav-link:hover {
 }
 
 .tabsLiterasi .nav-item a:hover {
-    background-color: #388E3C;
+    background-color: #388e3c;
     color: white;
 }
 
 .downloadLiterasi .cardHeaderLiterasi {
-    background-color: #A5D6A7;
+    background-color: #a5d6a7;
 }
 
 .card .cardHeaderPeminjaman {
-    background-color: #A6E2A9;
+    background-color: #a6e2a9;
     color: black;
 }
 
@@ -402,7 +464,7 @@ a.nav-link:hover {
 }
 
 .cardKegiatan {
-    transition: .2s;
+    transition: 0.2s;
 }
 
 .cardKegiatan:hover {
@@ -410,27 +472,27 @@ a.nav-link:hover {
 }
 
 div#fiterKegiatan div.fiterKegiatanMenu {
-    background-color: #C8E6C9;
+    background-color: #c8e6c9;
     gap: 10px;
 }
 
 div#fiterKegiatan div.fiterKegiatanMenu a:hover {
-    background-color: #619A90;
+    background-color: #619a90;
 }
 
 .cardKegiatan div div span.temaKegiatan {
-    background-color: #81C784;
+    background-color: #81c784;
     color: black;
 }
 
 .cardKegiatan div div span.statusKegiatan {
-    background-color: #619A90;
+    background-color: #619a90;
     color: black;
 }
 
 .cardKegiatan div div a.detailButtonKegiatan {
     color: white;
-    background-color: #388E3C;
+    background-color: #388e3c;
     border: none;
 }
 
@@ -453,7 +515,7 @@ div.cardQris div div div img.qrisImgDonasi {
 }
 
 div.cardQris div div div a.btnDownloadQris {
-    background-color: #388E3C;
+    background-color: #388e3c;
     color: white;
     border: none;
 }
@@ -463,7 +525,7 @@ div.cardBank {
 }
 
 div.cardBank div button.btnCopyDonasi {
-    background-color: #388E3C;
+    background-color: #388e3c;
     color: white;
     border: none;
 }
@@ -477,7 +539,7 @@ div.cardBank div button.btnCopyDonasi {
     background: #fff;
     border-radius: 14px;
     border: 1px solid #ddd;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, .08);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
     height: 100%;
 }
 
@@ -513,12 +575,12 @@ div.cardBank div button.btnCopyDonasi {
 
 button.btnDokumen {
     border-radius: 15px;
-    background-color: #388E3C;
+    background-color: #388e3c;
     color: white;
     font-size: 15px;
 }
-
 /* Takmir Organization Cards */
+
 .takmir-card {
     min-width: 140px !important;
     width: 140px !important;
@@ -556,8 +618,8 @@ button.btnDokumen {
     display: block;
     line-height: 1.2;
 }
-
 /* Mobile responsive for Takmir */
+
 @media (max-width: 991px) {
     .takmir-card {
         min-width: 100px !important;
@@ -575,94 +637,256 @@ button.btnDokumen {
     }
 }
 
+/* =========================================
+   FULLCALENDAR - MODERN AESTHETIC DESIGN
+========================================= */
 .calendar-box {
-    border-radius: 20px;
-    padding: 20px;
+    border-radius: 28px;
+    padding: 28px;
     border: none;
-    background: #fff;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    background: #ffffff;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
 }
 
-/* FullCalendar Customization */
+/* Watermark/Background Decoration */
+.calendar-box::before {
+    content: "🕌";
+    position: absolute;
+    bottom: -20px;
+    right: -10px;
+    font-size: 120px;
+    opacity: 0.04;
+    transform: rotate(-15deg);
+    pointer-events: none;
+    z-index: 0;
+}
+
 :root {
-    --fc-border-color: #f0f0f0;
+    --fc-border-color: transparent;
     --fc-daygrid-event-dot-width: 8px;
-    --fc-today-bg-color: rgba(25, 135, 84, 0.05);
+    --fc-today-bg-color: transparent;
     --fc-button-bg-color: #198754;
     --fc-button-border-color: #198754;
     --fc-button-hover-bg-color: #146c43;
-    --fc-button-active-bg-color: #146c43;
+    --fc-button-active-bg-color: #0f5132;
+    --fc-page-bg-color: transparent;
+    --fc-neutral-bg-color: transparent;
+}
+
+/* Toolbar */
+.fc .fc-toolbar {
+    margin-bottom: 20px !important;
+    align-items: center;
 }
 
 .fc .fc-toolbar-title {
-    font-size: 1.5rem !important;
-    font-weight: 700 !important;
-    color: #2d3436;
-    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem !important;
+    font-weight: 800 !important;
+    color: #0f5132;
+    font-family: "Poppins", sans-serif;
+    letter-spacing: -0.5px;
+    background: linear-gradient(90deg, #198754, #146c43);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
+/* Navigation Buttons (prev, next, today) */
 .fc .fc-button {
-    border-radius: 30px !important;
-    padding: 8px 20px !important;
+    border-radius: 50px !important;
+    padding: 7px 18px !important;
     font-weight: 600 !important;
+    font-size: 13px !important;
     text-transform: capitalize !important;
-    transition: all 0.3s ease !important;
-    box-shadow: 0 4px 6px rgba(25, 135, 84, 0.1) !important;
+    transition: all 0.25s ease !important;
+    box-shadow: 0 4px 12px rgba(25, 135, 84, 0.2) !important;
+    border: none !important;
+    letter-spacing: 0.2px;
 }
 
+.fc .fc-button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 20px rgba(25, 135, 84, 0.3) !important;
+}
+
+.fc .fc-button:active,
+.fc .fc-button.fc-button-active {
+    transform: translateY(0) !important;
+    box-shadow: 0 2px 8px rgba(25, 135, 84, 0.2) !important;
+}
+
+/* Prev / Next icon buttons — buat lebih bulat */
+.fc .fc-prev-button,
+.fc .fc-next-button {
+    padding: 7px 12px !important;
+    background: #ffffff !important;
+    color: #198754 !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05) !important;
+    border: 1.5px solid #e8f5e9 !important;
+}
+
+.fc .fc-prev-button:hover,
+.fc .fc-next-button:hover {
+    background: #198754 !important;
+    color: #fff !important;
+    border-color: #198754 !important;
+    box-shadow: 0 4px 12px rgba(25, 135, 84, 0.3) !important;
+}
+
+/* Header hari (Sun, Mon, ...) */
+.fc .fc-col-header-cell-cushion {
+    font-weight: 700;
+    font-size: 11px;
+    color: #9e9e9e;
+    text-decoration: none !important;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 12px 0 8px !important;
+}
+
+/* Garis pemisah header */
+.fc .fc-col-header-cell {
+    border: none !important;
+    background: transparent !important;
+}
+
+/* Grid cell */
+.fc .fc-daygrid-day {
+    border: none !important;
+    background: transparent !important;
+    transition: background 0.2s ease;
+}
+
+.fc .fc-daygrid-day:hover {
+    background: #f0faf5 !important;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+/* Tanggal angka */
+.fc .fc-daygrid-day-number {
+    font-weight: 500;
+    font-size: 13px;
+    color: #424242;
+    padding: 8px 10px !important;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4px;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+}
+
+.fc .fc-daygrid-day-number:hover {
+    background: #e8f5e9;
+    color: #198754;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+/* Hari ini — lingkaran hijau solid */
+.fc .fc-day-today {
+    background: transparent !important;
+}
+
+.fc .fc-day-today .fc-daygrid-day-number {
+    background: linear-gradient(135deg, #198754, #2dce89) !important;
+    color: #fff !important;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(25, 135, 84, 0.4);
+    transform: scale(1.1);
+}
+
+/* Event Tooltip/Pop look */
+.fc .fc-event {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+.fc .fc-event:hover {
+    transform: scale(1.05);
+}
+
+/* Events dot */
+.fc .fc-daygrid-event {
+    border-radius: 6px !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    padding: 2px 6px !important;
+    border: none !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hapus border tabel grid */
+.fc-theme-standard td,
+.fc-theme-standard th,
+.fc-theme-standard .fc-scrollgrid {
+    border-color: #f5f5f5 !important;
+}
+
+.fc .fc-scrollgrid {
+    border: none !important;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+/* Weekend hari — warna sedikit berbeda */
+.fc .fc-day-sat .fc-daygrid-day-number,
+.fc .fc-day-sun .fc-daygrid-day-number {
+    color: #e53935;
+}
+
+/* Tanggal di luar bulan ini — redup */
+.fc .fc-day-other .fc-daygrid-day-number {
+    color: #d1d1d1 !important;
+    font-weight: 400;
+}
+
+/* Mobile responsive */
 @media (max-width: 991px) {
     .fc .fc-toolbar {
         flex-direction: column;
-        gap: 12px;
-        flex-wrap: wrap;
+        gap: 10px;
     }
+
     .fc .fc-toolbar-title {
-        font-size: 1.15rem !important;
+        font-size: 1rem !important;
         text-align: center;
     }
+
     .fc .fc-button {
-        padding: 6px 14px !important;
-        font-size: 12px !important;
+        padding: 5px 12px !important;
+        font-size: 11px !important;
     }
+
     .fc .fc-toolbar-chunk {
         display: flex;
         justify-content: center;
         width: 100%;
     }
-}
 
-body {
-    overflow-x: clip;
-}
+    .fc .fc-daygrid-day-number {
+        font-size: 11px;
+        width: 26px;
+        height: 26px;
+        padding: 4px !important;
+    }
 
-.fc .fc-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(25, 135, 84, 0.2) !important;
-}
+    .fc .fc-col-header-cell-cushion {
+        font-size: 9px;
+    }
 
-.fc .fc-daygrid-day-number {
-    font-weight: 500;
-    color: #636e72;
-    padding: 10px !important;
-}
-
-.fc .fc-col-header-cell-cushion {
-    font-weight: 600;
-    color: #2d3436;
-    text-decoration: none !important;
-    padding: 10px 0 !important;
-}
-
-.fc .fc-day-today {
-    background-color: var(--fc-today-bg-color) !important;
-}
-
-.fc .fc-day-today .fc-daygrid-day-number {
-    color: #198754 !important;
-    font-weight: 700;
+    .calendar-box {
+        padding: 14px;
+        border-radius: 18px;
+    }
 }
 
 /* Agenda Box & Items */
+
 .agenda-box {
     border-radius: 20px;
     border: none;
@@ -698,8 +922,7 @@ body {
     border: 1px solid #ddd;
     border-radius: 14px;
     padding: 16px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, .08);
-}
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .bg-success-subtle {
@@ -708,7 +931,7 @@ body {
 
 .profile-card-remaja {
     border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, .06);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     padding: 20px;
     text-align: center;
     background: #fff;
@@ -730,7 +953,9 @@ body {
 .herosectionRemaja,
 .herosectionIbu,
 .herosectionBapak {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url("/assets/images/gambarMasjid.png");
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
+        url("/assets/images/gambarMasjid.png");
     background-size: cover;
     background-position: center;
     box-shadow: none;
@@ -759,8 +984,6 @@ body {
     border-top: 1px solid #e5e5e5;
     margin: 24px 0;
 }
-
-
 /* Accordion style */
 
 #imarahAccordion .accordion-button,
@@ -878,11 +1101,11 @@ body {
 }
 
 .shadow-soft {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, .08);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 .shadow-soft {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .preview-img {
@@ -897,7 +1120,21 @@ body {
     border: 1.5px solid #000;
     border-radius: 50px;
     padding: 10px 18px;
-    transition: .2s ease;
+    transition: 0.2s ease;
+    font-size: 14px;
+}
+
+@media (max-width: 767px) {
+    #signInContainer .btn-signin {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    #signInContainer .btn-signin .icon-circle {
+        width: 22px;
+        height: 22px;
+        font-size: 11px;
+    }
 }
 
 #signInContainer .btn-signin:hover {
@@ -945,8 +1182,6 @@ body {
 .deskripsiOrganisasi {
     text-align: justify;
 }
-
-
 /* Responsive */
 
 @media (min-width: 992px) {
@@ -974,7 +1209,7 @@ body {
         display: none;
     }
     #searchBarDesktop {
-        display: none
+        display: none;
     }
     .fotoProfileContainer {
         margin-left: auto;
@@ -1122,7 +1357,7 @@ body {
         font-size: 14px;
     }
     .herosectionProfile .ornamenGaris {
-        width: 60%
+        width: 60%;
     }
     .herosectionOrganisasi {
         height: 50vh;
@@ -1225,7 +1460,7 @@ body {
         margin-bottom: 40px;
     }
     .tentangBerandaContainer .container .listberita .d-flex .d-flex {
-        background-color: #C8E6C9;
+        background-color: #c8e6c9;
         border-radius: 10px;
     }
     .tentangBerandaContainer .container .listberita .d-flex .d-flex p::after {
@@ -1236,7 +1471,6 @@ body {
     /* ====================
      GALERI
   ===================== */
-<<<<<<< HEAD
     .galeriContainer .container {
         padding: 24px;
     }
@@ -1520,7 +1754,7 @@ body {
         background-color: #2e7d32;
     }
     .btn-wa {
-        background-color: #25D366;
+        background-color: #25d366;
     }
     .hubungi-buttons a:active {
         transform: scale(0.97);
@@ -1731,20 +1965,308 @@ body {
         width: 50%;
     }
 }
-   FORM
-   KONTAK - MOBILE FIX
+/* FORM KONTAK - MOBILE FIX */
 
 .kontakForm {
     margin-bottom: 20px;
 }
-
 /* Label */
-<<<<<<< HEAD
-    .kontakForm label {
+
+.kontakForm label {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    display: block;
+}
+/* Input & Textarea */
+
+.kontakInputForm {
+    width: 100%;
+    font-size: 13px;
+    padding: 12px 16px;
+    border-radius: 18px;
+    border: 1px solid #e0e0e0;
+    background: #f5f5f5;
+    margin-bottom: 10px;
+}
+
+.kontakInputForm:focus {
+    outline: none;
+    border-color: #2e7d32;
+    background: #ffffff;
+}
+/* Button kirim */
+
+.kontakForm button {
+    width: 100%;
+    background-color: #2e7d32;
+    border-radius: 14px;
+    padding: 12px 0;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    color: #fff;
+    margin-top: 5px;
+}
+/* =========================
+   HUBUNGI KAMI - MOBILE ONLY
+========================= */
+
+.hubungi-buttons {
+    display: flex;
+    gap: 12px;
+    margin: 15px 0;
+}
+
+.hubungi-buttons a {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 0;
+    border-radius: 14px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #fff;
+    transition: 0.2s ease;
+}
+
+.btn-telepon {
+    background-color: #2e7d32;
+}
+
+.btn-wa {
+    background-color: #25d366;
+}
+
+.hubungi-buttons a:active {
+    transform: scale(0.97);
+}
+/* =========================
+   INFO EMAIL & ALAMAT
+========================= */
+
+.info-box {
+    background: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 18px;
+    padding: 12px 16px;
+    font-size: 13px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+/* =========================
+   MAP
+========================= */
+
+.map-box {
+    margin-top: 12px;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.map-box iframe,
+.map-box img {
+    width: 100%;
+    height: 180px;
+    border: none;
+    display: block;
+}
+/* Link Google Maps */
+
+.map-link {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 8px;
+    color: #2e7d32;
+    font-weight: 500;
+    text-decoration: none;
+    display: block;
+}
+/* =========================
+   FOOTER SPACING
+========================= */
+
+.footer {
+    margin-top: 30px;
+}
+/* =========================
+   PEMINJAMAN - MOBILE FIX
+
+/* Background section */
+
+body {
+    background-color: #dfe8e2;
+}
+/* Container spacing */
+
+.container.my-4 {
+    padding: 20px;
+}
+/* Judul */
+
+.container h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.container p.text-muted {
+    font-size: 12px;
+    margin-bottom: 18px;
+}
+/* Gambar */
+
+.container img.img-fluid {
+    border-radius: 18px !important;
+    max-height: 220px;
+    object-fit: cover;
+    margin-bottom: 18px;
+}
+/* Card */
+
+.card {
+    border-radius: 16px !important;
+    box-shadow: none !important;
+    border: 1px solid #e5e5e5;
+}
+/* Header card hijau muda */
+
+.cardHeaderPeminjaman {
+    background-color: #c8e6c9 !important;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    padding: 10px;
+    border-radius: 16px 16px 0 0 !important;
+}
+/* Card body */
+
+.card .card-body {
+    padding: 14px 16px;
+}
+/* List jadi 2 kolom seperti figma */
+
+.card .card-body ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px 5px;
+}
+
+.card .card-body ul li {
+    font-size: 12px;
+    line-height: 1.4;
+}
+/* Button container */
+
+.buttonPeminjaman {
+    justify-content: center;
+    margin-top: 10px;
+}
+/* Button WA sesuai figma */
+
+.buttonPeminjaman a.btn {
+    width: 100%;
+    background-color: #2e7d32 !important;
+    border-radius: 8px;
+    padding: 10px 0;
+    font-size: 13px;
+    font-weight: 500;
+    box-shadow: none;
+    font-size: 14px;
+    padding: 14px 0;
+    border-radius: 12px;
+}
+
+.herosectionIbu {
+    height: 190px;
+    width: 90%;
+    margin-top: 20px;
+    justify-self: center;
+    border-radius: 10px;
+    background-size: cover;
+    position: relative;
+}
+
+.herosectionIbu .ornamenGaris {
+    font-size: 12px;
+    padding: 10px;
+    text-align: center;
+    position: absolute;
+    top: 245px;
+    width: 50%;
+}
+
+.pengajianIbuContainer .container section.mb-5 {
+    padding-top: 60px;
+}
+
+@media (max-width: 767px) {
+    .zakat-card {
+        padding: 16px !important;
+    }
+    .zakatInformasi {
+        padding: 16px !important;
+    }
+    .zakatInformasi img {
+        max-width: 130px;
+    }
+    .kontakInputForm {
+        padding: 9px 11px;
+    }
+    .map-box iframe {
+        height: 220px;
+    }
+    .info-box {
+        padding: 12px;
+    }
+    .container img.img-fluid {
+        max-height: 220px;
+        object-fit: cover;
+    }
+    .card .card-body {
+        padding: 14px;
+    }
+    .buttonPeminjaman a.btn {
         font-size: 13px;
-        font-weight: 500;
-        margin-bottom: 6px;
-        display: block;
+    }
+    .herosectionBapak {
+        height: 190px;
+        width: 90%;
+        margin-top: 20px;
+        justify-self: center;
+        border-radius: 10px;
+        background-size: cover;
+        position: relative;
+    }
+    .herosectionBapak .ornamenGaris {
+        font-size: 12px;
+        padding: 10px;
+        text-align: center;
+        position: absolute;
+        top: 245px;
+        width: 50%;
+    }
+    .herosectionRemaja {
+        height: 190px;
+        width: 90%;
+        margin-top: 20px;
+        justify-self: center;
+        border-radius: 10px;
+        background-size: cover;
+        position: relative;
+    }
+    .herosectionRemaja .ornamenGaris {
+        font-size: 12px;
+        padding: 10px;
+        text-align: center;
+        position: absolute;
+        top: 245px;
+        width: 50%;
     }
     /* Input & Textarea */
     .kontakInputForm {
@@ -1799,7 +2321,7 @@ body {
         background-color: #2e7d32;
     }
     .btn-wa {
-        background-color: #25D366;
+        background-color: #25d366;
     }
     .hubungi-buttons a:active {
         transform: scale(0.97);
@@ -2009,327 +2531,6 @@ body {
         top: 245px;
         width: 50%;
     }
-=======
-.kontakForm label {
-    font-size: 13px;
-    font-weight: 500;
-    margin-bottom: 6px;
-    display: block;
-}
-
-/* Input & Textarea */
-.kontakInputForm {
-    width: 100%;
-    font-size: 13px;
-    padding: 12px 16px;
-    border-radius: 18px;
-    border: 1px solid #e0e0e0;
-    background: #f5f5f5;
-    margin-bottom: 10px;
-}
-
-.kontakInputForm:focus {
-    outline: none;
-    border-color: #2e7d32;
-    background: #ffffff;
-}
-
-/* Button kirim */
-.kontakForm button {
-    width: 100%;
-    background-color: #2e7d32;
-    border-radius: 14px;
-    padding: 12px 0;
-    font-size: 14px;
-    font-weight: 500;
-    border: none;
-    color: #fff;
-    margin-top: 5px;
-}
-
-/* =========================
-   HUBUNGI KAMI - MOBILE ONLY
-========================= */
-
-.hubungi-buttons {
-    display: flex;
-    gap: 12px;
-    margin: 15px 0;
-}
-
-.hubungi-buttons a {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    padding: 12px 0;
-    border-radius: 14px;
-    font-size: 13px;
-    font-weight: 500;
-    text-decoration: none;
-    color: #fff;
-    transition: 0.2s ease;
-}
-
-.btn-telepon {
-    background-color: #2e7d32;
-}
-
-.btn-wa {
-    background-color: #25D366;
-}
-
-.hubungi-buttons a:active {
-    transform: scale(0.97);
-}
-
-
-/* =========================
-   INFO EMAIL & ALAMAT
-========================= */
-
-.info-box {
-    background: #f5f5f5;
-    border: 1px solid #e0e0e0;
-    border-radius: 18px;
-    padding: 12px 16px;
-    font-size: 13px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-/* =========================
-   MAP
-========================= */
-
-.map-box {
-    margin-top: 12px;
-    border-radius: 18px;
-    overflow: hidden;
-}
-
-.map-box iframe,
-.map-box img {
-    width: 100%;
-    height: 180px;
-    border: none;
-    display: block;
-}
-
-/* Link Google Maps */
-.map-link {
-    text-align: center;
-    font-size: 12px;
-    margin-top: 8px;
-    color: #2e7d32;
-    font-weight: 500;
-    text-decoration: none;
-    display: block;
-}
-
-/* =========================
-   FOOTER SPACING
-========================= */
-
-.footer {
-    margin-top: 30px;
-}
-
-/* =========================
-   PEMINJAMAN - MOBILE FIX
-
-/* Background section */
-body {
-    background-color: #dfe8e2;
-}
-
-/* Container spacing */
-.container.my-4 {
-    padding: 20px;
-}
-
-/* Judul */
-.container h4 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 6px;
-}
-
-.container p.text-muted {
-    font-size: 12px;
-    margin-bottom: 18px;
-}
-
-/* Gambar */
-.container img.img-fluid {
-    border-radius: 18px !important;
-    max-height: 220px;
-    object-fit: cover;
-    margin-bottom: 18px;
-}
-
-/* Card */
-.card {
-    border-radius: 16px !important;
-    box-shadow: none !important;
-    border: 1px solid #e5e5e5;
-}
-
-/* Header card hijau muda */
-.cardHeaderPeminjaman {
-    background-color: #c8e6c9 !important;
-    font-size: 14px;
-    font-weight: 500;
-    text-align: center;
-    padding: 10px;
-    border-radius: 16px 16px 0 0 !important;
-}
-
-/* Card body */
-.card .card-body {
-    padding: 14px 16px;
-}
-
-/* List jadi 2 kolom seperti figma */
-.card .card-body ul {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5px 5px;
-}
-
-.card .card-body ul li {
-    font-size: 12px;
-    line-height: 1.4;
-}
-
-/* Button container */
-.buttonPeminjaman {
-    justify-content: center;
-    margin-top: 10px;
-}
-
-/* Button WA sesuai figma */
-.buttonPeminjaman a.btn {
-    width: 100%;
-    background-color: #2e7d32 !important;
-    border-radius: 8px;
-    padding: 10px 0;
-    font-size: 13px;
-    font-weight: 500;
-    box-shadow: none;
-    font-size: 14px;
-    padding: 14px 0;
-    border-radius: 12px;
-}
-
-.herosectionIbu {
-    height: 190px ;
-    width: 90%;
-    margin-top: 20px;
-    justify-self: center;
-    border-radius: 10px;
-    background-size: cover;
-    position: relative;
-}
-
-.herosectionIbu .ornamenGaris{
-    font-size: 12px;
-    padding: 10px;
-    text-align: center;
-    position: absolute;
-    top: 245px;
-    width: 50%;
-}
-
-.pengajianIbuContainer .container section.mb-5 {
-    padding-top: 60px;
-}
-
-}
-
-@media (max-width: 767px) {
-.zakat-card {
-    padding: 16px !important;
-}
-
-.zakatInformasi {
-    padding: 16px !important;
-}
-
-.zakatInformasi img {
-    max-width: 130px;
-}
-
-.kontakInputForm {
-    padding: 9px 11px;
-}
-
-.map-box iframe {
-    height: 220px;
-}
-
-.info-box {
-    padding: 12px;
-}
-
-.container img.img-fluid {
-    max-height: 220px;
-    object-fit: cover;
-}
-
-.card .card-body {
-    padding: 14px;
-}
-
-.buttonPeminjaman a.btn {
-    font-size: 13px;
-}
-
-.herosectionBapak {
-    height: 190px ;
-    width: 90%;
-    margin-top: 20px;
-    justify-self: center;
-    border-radius: 10px;
-    background-size: cover;
-    position: relative;
-}
-
-.herosectionBapak .ornamenGaris{
-    font-size: 12px;
-    padding: 10px;
-    text-align: center;
-    position: absolute;
-    top: 245px;
-    width: 50%;
-}
-
-.herosectionRemaja {
-    height: 190px ;
-    width: 90%;
-    margin-top: 20px;
-    justify-self: center;
-    border-radius: 10px;
-    background-size: cover;
-    position: relative;
-}
-
-.herosectionRemaja .ornamenGaris{
-    font-size: 12px;
-    padding: 10px;
-    text-align: center;
-    position: absolute;
-    top: 245px;
-    width: 50%;
-}
-
-
-
-
->>>>>>> origin/main
 }
 
 @media (max-width: 767px) {
@@ -2358,81 +2559,77 @@ body {
         padding: 12px;
         font-size: 10px;
     }
-<<<<<<< HEAD
     .cardGaleriContainer div.row {
-=======
-
-    .cardGaleriContainer div.row{
->>>>>>> origin/main
-        padding: 10px 30px;
-        display: flex;
-        flex-wrap: wrap;
-    }
-<<<<<<< HEAD
-    .cardGaleriContainer div.row .col-md-3 {
-        flex: 0 0 50%;
-        max-width: 50%;
-    }
-    .carousel-inner .row {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        justify-content: flex-start !important;
-    }
-    .carousel-inner .col-12 {
-        flex: 0 0 auto;
-        width: 160px;
-    }
-    .profile-card-remaja {
-        padding: 10px;
-    }
-    .profile-card-remaja img {
-        width: 60px;
-        height: 60px;
-    }
-    .carousel-inner .row::-webkit-scrollbar {
-        display: none;
-    }
-    .galeriAnnisa .row {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-    }
-    .galeriAnnisa .row>.col-md-4 {
-        flex: 0 0 auto;
-        width: 220px;
-    }
-    .galeriAnnisa .row::-webkit-scrollbar {
-        display: none;
-    }
-    .galeriAnnisa .row {
-        scroll-behavior: smooth;
-    }
-    .galeriBapak .row {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-    }
-    .galeriBapak .row>.col-md-4 {
-        flex: 0 0 auto;
-        width: 220px;
-    }
-    .galeriBapak .row::-webkit-scrollbar {
-        display: none;
-    }
-    .galeriBapak .row {
-        scroll-behavior: smooth;
-    }
-    .galeriRemaja .row {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-    }
-    .galeriRemaja .row>.col-md-4 {
-        flex: 0 0 auto;
-        width: 220px;
-    }
-    .galeriRemaja .row::-webkit-scrollbar {
-        display: none;
-    }
-    .galeriRemaja .row {
-        scroll-behavior: smooth;
+        .cardGaleriContainer div.row {
+            padding: 10px 30px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .cardGaleriContainer div.row .col-md-3 {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+        .carousel-inner .row {
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            justify-content: flex-start !important;
+        }
+        .carousel-inner .col-12 {
+            flex: 0 0 auto;
+            width: 160px;
+        }
+        .profile-card-remaja {
+            padding: 10px;
+        }
+        .profile-card-remaja img {
+            width: 60px;
+            height: 60px;
+        }
+        .carousel-inner .row::-webkit-scrollbar {
+            display: none;
+        }
+        .galeriAnnisa .row {
+            flex-wrap: nowrap;
+            overflow-x: auto;
+        }
+        .galeriAnnisa .row > .col-md-4 {
+            flex: 0 0 auto;
+            width: 220px;
+        }
+        .galeriAnnisa .row::-webkit-scrollbar {
+            display: none;
+        }
+        .galeriAnnisa .row {
+            scroll-behavior: smooth;
+        }
+        .galeriBapak .row {
+            flex-wrap: nowrap;
+            overflow-x: auto;
+        }
+        .galeriBapak .row > .col-md-4 {
+            flex: 0 0 auto;
+            width: 220px;
+        }
+        .galeriBapak .row::-webkit-scrollbar {
+            display: none;
+        }
+        .galeriBapak .row {
+            scroll-behavior: smooth;
+        }
+        .galeriRemaja .row {
+            flex-wrap: nowrap;
+            overflow-x: auto;
+        }
+        .galeriRemaja .row > .col-md-4 {
+            flex: 0 0 auto;
+            width: 220px;
+        }
+        .galeriRemaja .row::-webkit-scrollbar {
+            display: none;
+        }
+        .galeriRemaja .row {
+            scroll-behavior: smooth;
+        }
     }
 }
 
@@ -2446,8 +2643,6 @@ body {
         width: 50%;
     }
 }
-
-
 /* Custom breakpoints for very small devices */
 
 @media (max-width: 575.98px) {
@@ -2532,113 +2727,116 @@ body {
     .kontakForm button {
         font-size: 13px;
     }
-=======
-
-    .cardGaleriContainer div.row .col-md-3{
+    .cardGaleriContainer div.row .col-md-3 {
         flex: 0 0 50%;
         max-width: 50%;
     }
-
-  .carousel-inner .row {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    justify-content: flex-start !important;
-  }
-
-  .carousel-inner .col-12 {
-    flex: 0 0 auto;
-    width: 160px; 
-  }
-
-  .profile-card-remaja {
-    padding: 10px;
-  }
-
-  .profile-card-remaja img {
-    width: 60px;
-    height: 60px;
-  }
-
-  .carousel-inner .row::-webkit-scrollbar {
-    display: none;
-  }
-
-  .galeriAnnisa .row {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-
-  }
-
-  .galeriAnnisa .row > .col-md-4 {
-    flex: 0 0 auto;
-    width: 220px; 
-  }
-
-
-  .galeriAnnisa .row::-webkit-scrollbar {
-    display: none;
-  }
-
-  .galeriAnnisa .row {
-    scroll-behavior: smooth;
-  }
-
-.galeriBapak .row {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-
-  }
-
-  .galeriBapak .row > .col-md-4 {
-    flex: 0 0 auto;
-    width: 220px; 
-  }
-
-
-  .galeriBapak .row::-webkit-scrollbar {
-    display: none;
-  }
-
-  .galeriBapak .row {
-    scroll-behavior: smooth;
-  }
-
-  .galeriRemaja .row {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-
-  }
-
-  .galeriRemaja .row > .col-md-4 {
-    flex: 0 0 auto;
-    width: 220px; 
-  }
-
-
-  .galeriRemaja .row::-webkit-scrollbar {
-    display: none;
-  }
-
-  .galeriRemaja .row {
-    scroll-behavior: smooth;
-  }
-  
-
-
-
+    .carousel-inner .row {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start !important;
+    }
+    .carousel-inner .col-12 {
+        flex: 0 0 auto;
+        width: 160px;
+    }
+    .profile-card-remaja {
+        padding: 10px;
+    }
+    .profile-card-remaja img {
+        width: 60px;
+        height: 60px;
+    }
+    .carousel-inner .row::-webkit-scrollbar {
+        display: none;
+    }
+    .galeriAnnisa .row {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+    .galeriAnnisa .row > .col-md-4 {
+        flex: 0 0 auto;
+        width: 220px;
+    }
+    .galeriAnnisa .row::-webkit-scrollbar {
+        display: none;
+    }
+    .galeriAnnisa .row {
+        scroll-behavior: smooth;
+    }
+    .galeriBapak .row {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+    .galeriBapak .row > .col-md-4 {
+        flex: 0 0 auto;
+        width: 220px;
+    }
+    .galeriBapak .row::-webkit-scrollbar {
+        display: none;
+    }
+    .galeriBapak .row {
+        scroll-behavior: smooth;
+    }
+    .galeriRemaja .row {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+    .galeriRemaja .row > .col-md-4 {
+        flex: 0 0 auto;
+        width: 220px;
+    }
+    .galeriRemaja .row::-webkit-scrollbar {
+        display: none;
+    }
+    .galeriRemaja .row {
+        scroll-behavior: smooth;
+    }
 }
 
 @media (max-width: 415px) {
-    .tabsLiterasi{
+    .tabsLiterasi {
         width: 100%;
         font-size: 11px;
     }
-
-    .literasiContainer div.row div.col-md-6 div.card div.card-body a{
+    .literasiContainer div.row div.col-md-6 div.card div.card-body a {
         font-size: 10px;
         width: 50%;
     }
+}
 
+/* Penjadwalan - mobile font fix */
+@media (max-width: 767px) {
+    /* Judul halaman "Penjadwalan Masjid" */
+    .container.my-5 > h3 {
+        font-size: 18px;
+    }
 
->>>>>>> origin/main
+    /* Heading section Jadwal Jumat & Hari Raya */
+    .agenda-box h5 {
+        font-size: 14px;
+    }
+
+    /* Header tabel */
+    .agenda-box thead tr th {
+        font-size: 10px;
+        padding: 8px 6px;
+    }
+
+    /* Isi tabel */
+    .agenda-box tbody tr td {
+        font-size: 11px;
+        padding: 8px 6px;
+    }
+
+    /* Badge jenis (Jumat, Idul Fitri, dst) */
+    .agenda-box .badge {
+        font-size: 10px;
+        padding: 4px 8px;
+    }
+
+    /* Padding box */
+    .agenda-box.p-4 {
+        padding: 16px !important;
+    }
 }

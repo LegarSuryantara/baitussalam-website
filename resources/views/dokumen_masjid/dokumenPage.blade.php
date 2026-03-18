@@ -49,11 +49,8 @@
                 </div>
             </div>
 
-<<<<<<< HEAD:resources/views/dokumen_masjid/dokumenPage.blade.php
             <hr>
 
-=======
->>>>>>> origin/main:resources/views/dokumenPage.blade.php
         </div>
     </div>
 </x-layout>
