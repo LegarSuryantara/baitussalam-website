@@ -61,11 +61,7 @@ class ScheduleController extends Controller
      * ========================================================= */
     public function agendaByDate(Request $request)
     {
-        return Schedule::where('date', '<=', $request->date)
-            ->where(function ($q) use ($request) {
-                $q->whereNull('end_date')
-                    ->orWhere('end_date', '>=', $request->date);
-            })
+        return Schedule::where('date', $request->date)
             ->orderBy('start')
             ->get()
             ->map(function ($s) {
@@ -173,7 +169,7 @@ class ScheduleController extends Controller
             'location' => $request->location ?: $schedule->location,
         ]);
         return redirect()
-            ->route('lihatkegiatan', $schedule->id)
+            ->route('penjadwalan')
             ->with('success', 'Agenda berhasil diupdate');
     }
 
@@ -189,7 +185,7 @@ class ScheduleController extends Controller
         }
         $schedule->delete();
         return redirect()
-            ->route('agenda')
+            ->route('penjadwalan')
             ->with('success', 'Agenda dihapus');
     }
 

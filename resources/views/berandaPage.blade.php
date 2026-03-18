@@ -6,7 +6,7 @@
         <div class="container my-5">
             <div class="row g-4 justify-content-center mt-3">
 
-                <div class="col-6 col-md-4 col-lg-3">
+                <div class="col-12 col-md-4 col-lg-3">
                     <div class="feature-card text-center h-100">
                         <a class="text-decoration-none text-dark" href="{{ route('kegiatan') }}">
                             <div class="icon-box">
@@ -22,7 +22,7 @@
                     </div>
                 </div>
 
-                <div class="col-6 col-md-4 col-lg-3">
+                <div class="col-12 col-md-4 col-lg-3">
                     <div class="feature-card text-center h-100">
                         <a class="text-decoration-none text-dark" href="{{ route('donasi') }}">
                             <div class="icon-box">
@@ -41,7 +41,7 @@
             </div>
             <div class="row g-4 justify-content-center mt-3">
 
-                <div class="col-6 col-md-4 col-lg-3">
+                <div class="col-12 col-md-4 col-lg-3">
                     <div class="feature-card text-center h-100">
                         <a class="text-decoration-none text-dark" href="{{ route('dokumen') }}">
                             <div class="icon-box">
@@ -57,7 +57,7 @@
                     </div>
                 </div>
 
-                <div class="col-6 col-md-4 col-lg-3">
+                <div class="col-12 col-md-4 col-lg-3">
                     <div class="feature-card text-center h-100">
                         <a class="text-decoration-none text-dark" href="{{ route('penjadwalan') }}">
                             <div class="icon-box">

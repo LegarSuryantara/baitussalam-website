@@ -13,6 +13,22 @@
             <div class="row g-4">
                 <div class="col-lg-7">
                     <div id="calendar" class="calendar-box"></div>
+
+                    <!-- Keterangan Kalender -->
+                    <div class="row g-3 mt-2">
+                        <div class="col-6">
+                            <div class="d-flex align-items-center gap-2">
+                                <div style="min-width: 24px; width: 24px; height: 24px; background: linear-gradient(135deg, #198754, #2dce89); border-radius: 50%; box-shadow: 0 4px 12px rgba(25, 135, 84, 0.3);"></div>
+                                <small class="text-muted fw-semibold">Hari Ini</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center gap-2">
+                                <div style="min-width: 24px; width: 24px; height: 24px; background: linear-gradient(135deg, #198754, #2dce89); border-radius: 6px;"></div>
+                                <small class="text-muted fw-semibold">Agenda</small>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-lg-5">
