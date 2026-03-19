@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\EnsureTakmir;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -10,8 +11,12 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
-    ->withMiddleware(function (Middleware $middleware): void {
-        //
+    ->withMiddleware(function ($middleware) {
+        $middleware->alias([
+            'takmir' => EnsureTakmir::class,
+            'no-cache' => \App\Http\Middleware\NoCache::class,
+            'role' => \App\Http\Middleware\RoleMiddleware::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

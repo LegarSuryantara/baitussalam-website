@@ -13,15 +13,16 @@
         <div class="container profileVisiMisi">
             <div class="visi p-3">
                 <span>VISI</span>
-                <p>Menjadi masjid yang kokoh dalam beribadah, rukun dalam
-                    berumah tangga, dan berdaya dalam berbangsa</p>
+                <p>Terwujudnya Masjid BAITUSSALAM sebagai Lembaga Pemberdayaan Umat Islam</p>
             </div>
             <div class="misi p-3">
                 <span>MISI</span>
                 <ol>
-                    <li>Membangun masjid yang nyaman dan representatif</li>
-                    <li>Membangun masyarakat yang kuat secara spiritual dan moral</li>
-                    <li>Meningkatkan kehidupan sosial umat melalui pembangunan ekonomi</li>
+                    <li>Melakukan pembinaan terhadap aktifis dakwah.</li>
+                    <li>Membangun iklim yang kondusif untuk perkembangan nilai-nilai Islam dalam melaksanakan syiar Islam secara konsisten.</li>
+                    <li>Membangun ukhuwah islamiyah.</li>
+                    <li>Membangun kesadaran tanggung jawab kemasyarakatan melalui pemberdayaan masyarakat..</li>
+                    <li>Menyelenggarakan aktifitas yang bernafaskan Islam dalam bidang pendidikan seperti Hotmil Qur'an. Majlis Ta'lim dan PHBI.</li>
                 </ol>
             </div>
         </div>

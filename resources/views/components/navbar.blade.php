@@ -48,10 +48,8 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ route('zakatinfaq') }}">Zakat & Infaq</a></li>
-                            <li><a class="dropdown-item" href="{{ route('leterasikeagamaan') }}">Literasi Keagamaan</a>
-                            </li>
-                            <li><a class="dropdown-item" href="{{ route('peminjamanfasilitas') }}">Peminjaman
-                                    Fasilitas</a></li>
+                            <li><a class="dropdown-item" href="{{ route('literasikeagamaan') }}">Literasi Keagamaan</a></li>
+                            <li><a class="dropdown-item" href="{{ route('peminjamanfasilitas') }}">Peminjaman Fasilitas</a></li>
                         </ul>
                     </li>
 
